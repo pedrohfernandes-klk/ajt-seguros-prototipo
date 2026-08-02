@@ -182,13 +182,12 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 /* Marca — monograma em caixa + nome */
 .marca{ display:flex; align-items:center; gap:12px; text-decoration:none; margin-right:auto }
 /* Tile do símbolo. Para trocar o logótipo basta substituir o ficheiro
-   assets/img/marca-ajt.svg (e a versão -branco). Ver GUIA-DE-EDICAO.md */
+   assets/img/marca-ajt.png. Ver GUIA-DE-EDICAO.md */
 .marca-simbolo{
-  width:46px; height:46px; flex:none;
-  display:grid; place-items:center;
-  background:var(--tinta); border-radius:var(--raio); padding:7px;
+  width:46px; height:46px; flex:none; overflow:hidden;
+  border-radius:var(--raio); background:#00112b;
 }
-.marca-simbolo img{ width:100%; height:auto }
+.marca-simbolo img{ width:100%; height:100%; display:block; object-fit:cover }
 .marca-nome{ display:flex; flex-direction:column; line-height:1.15 }
 .marca-nome b{
   font-family:var(--f-titulo); font-weight:600; font-size:1.14rem;
@@ -574,8 +573,16 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
 .conjunto{ display:grid; gap:0; align-items:stretch }
 .conjunto-lado{
   background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
-  padding:clamp(26px, 3vw, 34px); box-shadow:var(--sombra-sub);
+  box-shadow:var(--sombra-sub); overflow:hidden;
   display:flex; flex-direction:column; gap:12px; align-items:flex-start;
+  padding:0 clamp(26px, 3vw, 34px) clamp(26px, 3vw, 34px);
+}
+/* A montra sangra até às bordas do cartão, por cima do texto */
+.conjunto-lado > img{
+  width:calc(100% + clamp(52px, 6vw, 68px));
+  margin:0 clamp(-34px, -3vw, -26px) clamp(20px, 2.5vw, 26px);
+  aspect-ratio:16/9; object-fit:cover; display:block;
+  border-bottom:1px solid var(--linha);
 }
 .conjunto-lado h3{
   font-family:var(--f-titulo); font-weight:600; font-size:1.25rem; color:var(--tinta);
@@ -825,7 +832,9 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
    ───────────────────────────────────────────────────────────────────────── */
 .rodape{ background:var(--tinta); color:var(--texto-claro); padding-block:clamp(52px, 6vw, 80px) 0 }
 .rodape-grelha{ display:grid; gap:clamp(32px, 4vw, 52px) }
-.rodape .marca-simbolo{ background:var(--sal); color:var(--tinta) }
+/* O símbolo tem fundo próprio; no rodapé escuro ganha um filete para se
+   destacar do azul-noite da secção. */
+.rodape .marca-simbolo{ box-shadow:inset 0 0 0 1px rgba(255,255,255,.16) }
 .rodape .marca-nome b{ color:#fff }
 .rodape .marca-nome small{ color:var(--mare-claro) }
 .rodape-sobre p{ font-size:.9rem; line-height:1.65; margin-top:20px; max-width:38ch }

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AJT Seguros">
-  <rect width="64" height="64" rx="7" fill="#0d2233"/>
-  <g transform="translate(7 7) scale(0.53)" fill="none"
-     stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M23 83 L48 23" stroke="#8ed3f0"/>
-    <path d="M36 62 L60 62" stroke="#cfe9f7"/>
-    <path d="M48 23 L73 83" stroke="#ffffff"/>
-  </g>
-</svg>

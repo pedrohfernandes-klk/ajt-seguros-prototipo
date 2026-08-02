@@ -35,12 +35,19 @@ e volte a abrir.
 | Quer mudar… | Abra este ficheiro |
 |---|---|
 | A página de entrada | `index.html` |
-| Texto sobre seguro automóvel | `seguros/automovel.html` |
-| Texto sobre seguro de casa | `seguros/habitacao.html` |
-| Texto sobre seguro de saúde | `seguros/saude.html` |
-| Texto sobre seguro de vida | `seguros/vida.html` |
-| Texto sobre acidentes pessoais | `seguros/acidentes-pessoais.html` |
-| Texto sobre seguros de empresa | `seguros/empresas.html` |
+| O índice dos seguros de particulares | `particulares/index.html` |
+| Automóvel | `particulares/automovel.html` |
+| Motociclo | `particulares/motociclo.html` |
+| Habitação | `particulares/habitacao.html` |
+| Saúde | `particulares/saude.html` |
+| Vida | `particulares/vida.html` |
+| Acidentes pessoais | `particulares/acidentes-pessoais.html` |
+| O índice dos seguros de empresas | `empresas/index.html` |
+| Acidentes de trabalho | `empresas/acidentes-trabalho.html` |
+| Responsabilidade civil | `empresas/responsabilidade-civil.html` |
+| Multirriscos empresarial | `empresas/multirriscos.html` |
+| Frotas auto | `empresas/frotas.html` |
+| Saúde de grupo | `empresas/saude-grupo.html` |
 | A história da empresa | `sobre.html` |
 | Moradas, telefones, formulário | `contactos.html` |
 | O guia de sinistros | `sinistros.html` |
@@ -55,7 +62,7 @@ Use `Ctrl+F` e procure por `EDITAR` para os encontrar todos.
 
 | Ficheiro | Porquê |
 |---|---|
-| `assets/css/style.css` | Controla todo o aspecto visual do site. Um erro aqui afecta as 12 páginas. |
+| `assets/css/style.css` | Controla todo o aspecto visual do site. Um erro aqui afecta as 19 páginas. |
 | `assets/js/main.js` | Faz funcionar o menu e o formulário. |
 | O bloco `rodape-legal` no fim de cada página | É informação legal obrigatória de um mediador de seguros. |
 | Os blocos `<script type="application/ld+json">` | São os dados que o Google lê. Se alterar textos visíveis das perguntas frequentes, altere aqui também (ver abaixo). |
@@ -97,6 +104,14 @@ Para uma resposta com dois parágrafos, use dois `<p>...</p>` seguidos.
 
 ---
 
+### As imagens têm duas versões
+
+Cada ilustração existe em duas larguras — `-800.jpg` e `-1400.jpg` — e o HTML
+escolhe a certa conforme o ecrã do visitante (é o atributo `srcset`). Se
+substituir uma imagem, substitua **as duas versões**, ou remova o `srcset`.
+
+---
+
 ### Trocar uma imagem
 
 1. Grave a imagem nova em `assets/img/` com um nome sem espaços nem acentos
@@ -105,21 +120,24 @@ Para uma resposta com dois parágrafos, use dois `<p>...</p>` seguidos.
 3. Actualize o texto do `alt="..."` para descrever a imagem nova — é o que
    leem as pessoas invisuais e é o que o Google usa.
 
-Formatos recomendados: `.jpg` para fotografias, `.svg` para logótipos.
+Formatos recomendados: `.jpg` para fotografias e ilustrações, `.png` para o logótipo.
 Largura ideal para fotografias grandes: 1600 px.
 
 ---
 
 ### Trocar o logótipo
 
-Basta substituir estes quatro ficheiros, **mantendo exactamente os mesmos nomes**:
+Basta substituir estes três ficheiros, **mantendo exactamente os mesmos nomes**:
 
-- `assets/img/marca-ajt.svg` — símbolo a cores (fundos claros)
-- `assets/img/marca-ajt-branco.svg` — símbolo claro (fundos escuros)
-- `assets/img/logo-ajt.svg` — logótipo completo com texto
-- `assets/img/favicon.svg` — ícone do separador do browser
+- `assets/img/marca-ajt.png` — o símbolo, quadrado, usado no cabeçalho e no rodapé
+- `assets/img/favicon.png` — o ícone do separador do browser
+- `assets/img/logo-ajt.jpg` — o logótipo completo com texto, usado quando o site é
+  partilhado no WhatsApp, Facebook ou LinkedIn
 
 Não é preciso mexer em nenhum ficheiro HTML.
+
+Se um dia tiver o logótipo em vetor (`.ai`, `.eps` ou `.svg`), vale a pena
+substituir os PNG por SVG: fica nítido em qualquer ecrã e ocupa menos espaço.
 
 ---
 
@@ -167,11 +185,12 @@ O plano gratuito chega para 50 mensagens por mês.
 
 ### Acrescentar uma página nova
 
-1. Copie uma página existente parecida (por exemplo `seguros/saude.html`).
+1. Copie uma página existente parecida (por exemplo `particulares/saude.html`).
 2. Dê-lhe um nome novo, sem espaços nem acentos.
 3. Altere o `<title>`, a `<meta name="description">` e o `<link rel="canonical">`.
-4. Acrescente a página ao menu — **em todos os 12 ficheiros HTML**, nos blocos
-   `nav-submenu` e `nav-movel`.
+4. Acrescente a página ao menu — **em todos os 19 ficheiros HTML**, nos blocos
+   `nav-submenu` e `nav-movel`. E ao índice do universo respectivo
+   (`particulares/index.html` ou `empresas/index.html`).
 5. Acrescente a página ao `sitemap.xml`.
 
 > Este é o único inconveniente de um site sem sistema de gestão: o menu está

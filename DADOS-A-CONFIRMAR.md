@@ -75,48 +75,52 @@ Se for outro, é preciso substituir em:
 
 ---
 
-## 🟠 5 · Fotografias reais
+## 🟢 5 · Ilustrações — resolvido
 
-**Já resolvido.** As seis ilustrações originais estão integradas e
-optimizadas (duas larguras cada, para `srcset`):
+As dez ilustrações originais estão integradas e optimizadas em duas larguras
+cada, para `srcset`:
 
 | Ilustração | Onde aparece |
 |---|---|
 | `estuario-tejo` | página inicial, no cartucho do cabeçalho |
-| `escritorio-alameda` | `sobre.html` — a montra do n.º 97 |
+| `escritorio-alameda` | `sobre.html` e bloco "dois balcões" — montra do n.º 97 |
+| `escritorio-carlos-manuel` | bloco "dois balcões" — montra do n.º 229 |
 | `alcochete-marginal` | `contactos.html` |
-| `acidente-automovel` | `seguros/automovel.html` e `sinistros.html` |
-| `acidente-trabalho` | `seguros/empresas.html` |
-| `acidentes-pessoais` | `seguros/acidentes-pessoais.html` |
+| `automovel` | `particulares/automovel.html`, `motociclo.html` e `sinistros.html` |
+| `habitacao` | `particulares/habitacao.html` |
+| `saude` | `particulares/saude.html` e `empresas/saude-grupo.html` |
+| `vida` | `particulares/vida.html` |
+| `acidentes-pessoais` | `particulares/acidentes-pessoais.html` |
+| `acidentes-trabalho` | `empresas/acidentes-trabalho.html` e `multirriscos.html` |
+| `responsabilidade-civil` | `empresas/responsabilidade-civil.html` |
+| `frotas` | `empresas/frotas.html` |
 
 **Ainda por decidir:** as ilustrações foram criadas com base em fotografias
-encontradas na internet. Antes de publicar, convém confirmar com o
-proprietário que fica satisfeito com a representação do espaço — sobretudo
-a da montra, que reproduz a fachada real e a insígnia Allianz.
+encontradas na internet. As duas montras reproduzem fachadas reais e as
+insígnias da Allianz e da Generali Tranquilidade — vale a pena mostrá-las ao
+proprietário, porque é ele que tem a relação com as companhias e quem sabe
+que regras elas têm sobre o uso das marcas.
 
-**Também úteis, se houver:** fotografias reais do segundo balcão e da equipa.
-Fotografias de pessoas verdadeiras são dos elementos que mais aumentam a
-confiança num site de serviços locais — mais até do que boas ilustrações.
+**Ainda sem ilustração própria:** motociclo (usa a do automóvel) e
+multirriscos empresarial (usa a dos acidentes de trabalho).
 
-**Ramos ainda sem ilustração:** habitação, saúde e vida.
-
----
-
-## 🟠 6 · Logótipo em vetor
-
-O símbolo actual (`assets/img/marca-ajt.svg` e `marca-ajt-branco.svg`) é uma
-**vetorização feita a partir do papel timbrado** — aproximada, não oficial.
-
-Quando houver o ficheiro original (`.ai`, `.eps`, `.pdf` ou `.svg`), substituir:
-
-- `assets/img/marca-ajt.svg` — símbolo a cores, para fundos claros
-- `assets/img/marca-ajt-branco.svg` — símbolo claro, para fundos escuros
-- `assets/img/logo-ajt.svg` — lockup completo com o texto
-- `assets/img/favicon.svg` — ícone do separador do browser
-
-Não é preciso mexer no HTML: basta manter os mesmos nomes de ficheiro.
+**Também úteis, se houver:** fotografias reais da equipa. Fotografias de
+pessoas verdadeiras são dos elementos que mais aumentam a confiança num site
+de serviços locais — mais até do que boas ilustrações.
 
 ---
+
+## 🟢 6 · Logótipo — resolvido
+
+O logótipo fornecido está integrado, recortado a partir do original:
+
+- `assets/img/marca-ajt.png` — símbolo no cabeçalho e no rodapé
+- `assets/img/favicon.png` — ícone do separador
+- `assets/img/logo-ajt.jpg` — lockup completo, usado nas partilhas em redes sociais
+
+**Melhoria futura:** se existir o ficheiro vetorial original (`.ai`, `.eps`
+ou `.svg`), substituir os PNG por SVG. Fica nítido em qualquer resolução e
+pesa menos.
 
 ## 🟠 7 · Avaliações de clientes
 
@@ -160,8 +164,13 @@ Se preferir receber os pedidos directamente na caixa de correio, ver a secção
 
 - [ ] Os ramos listados estão completos? (Falta responsabilidade civil de caça,
       animais de companhia, viagem, náutica?)
-- [ ] O horário está certo? Uma fonte indicava sábados de manhã, outra indicava
-      encerrado. O site diz **encerrado ao fim-de-semana**.
+- [ ] **O horário do balcão Generali está contraditório na fonte.** A página
+      do agente indica "Segunda a sexta: 09:00–13:00 e 14:00–18:00", mas logo
+      abaixo tem uma nota a dizer "Encerra para almoço das 13:00 às 15:00".
+      O site usa a versão das 14:00 — confirmar qual está certa e corrigir a
+      página do agente na Generali, se for o caso.
+- [ ] Ao sábado abre? Uma fonte indicava sábados de manhã, outra encerrado.
+      O site diz **encerrado ao fim-de-semana**.
 - [ ] Há mais companhias representadas além da Allianz e da Generali
       Tranquilidade? O site menciona apenas estas duas, por serem as únicas
       confirmadas.
@@ -181,4 +190,10 @@ inventados:
 | Morada, telefone, email e horário do balcão Allianz | [allianz.pt/mediador/ajtseguros](https://www.allianz.pt/mediador/ajtseguros.html) |
 | Morada, telefones e email do balcão Generali Tranquilidade | [agentes.tranquilidade.pt](https://agentes.tranquilidade.pt/alcochete/largo-da-revolucao--1910--loja-1) |
 | NIF 505991888 e data de constituição (30/01/2002) | [Iberinform](https://www.iberinform.pt/empresa/21355973/a-j-t-sociedade-de-mediacao-de-seguros-lda) · [Racius](https://www.racius.com/a-j-t-sociedade-de-mediacao-de-seguros-lda/) |
-| Ramos comercializados | [allianz.pt/mediador/ajtseguros](https://www.allianz.pt/mediador/ajtseguros.html) |
+| Ramos do balcão Allianz — auto, casa, saúde, vida, acidentes pessoais, saúde dental | [allianz.pt/mediador/ajtseguros](https://www.allianz.pt/mediador/ajtseguros.html) |
+| Ramos do balcão Generali — auto, casa, acidentes pessoais, bicicleta, moto e três linhas de vida | [agentes.tranquilidade.pt](https://agentes.tranquilidade.pt/alcochete/largo-da-revolucao--1910--loja-1) |
+
+> Nota: o endereço da página do agente Generali contém "largo-da-revolucao--1910--loja-1",
+> mas o corpo da página indica **Rua Carlos Manuel Rodrigues Francisco, 229**.
+> É essa a morada usada no site. O endereço da página parece ser um resto de
+> uma localização anterior — vale a pena pedir à Generali que o corrija.
