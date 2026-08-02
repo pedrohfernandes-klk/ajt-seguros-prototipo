@@ -23,6 +23,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contactos"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="saltar" href="#conteudo">Saltar para o conteúdo</a>
@@ -35,22 +57,39 @@
     </a>
 
     <nav class="nav-principal" aria-label="Navegação principal">
+
       <div class="nav-grupo" data-aberto="false">
         <button type="button" aria-expanded="false">
-          Seguros
+          Particulares
           <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg>
         </button>
         <div class="nav-submenu">
-          <a href="seguros/automovel.html">Automóvel <span>Ligeiros, motos e comerciais</span></a>
-          <a href="seguros/habitacao.html">Habitação <span>Casa própria e arrendada</span></a>
-          <a href="seguros/saude.html">Saúde <span>Rede convencionada e dentária</span></a>
-          <a href="seguros/vida.html">Vida <span>Crédito habitação e proteção familiar</span></a>
-          <a href="seguros/acidentes-pessoais.html">Acidentes pessoais <span>Desporto, escola e trabalho</span></a>
-          <a href="seguros/empresas.html">Empresas <span>Responsabilidade civil e frotas</span></a>
+          <a class="nav-submenu-topo" href="particulares/">Ver todos os seguros para particulares <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+          <a href="particulares/automovel.html">Automóvel <span>Ligeiros, comerciais e clássicos</span></a>
+          <a href="particulares/motociclo.html">Motociclo <span>Motas, scooters e ciclomotores</span></a>
+          <a href="particulares/habitacao.html">Habitação <span>Multirriscos para casa própria e arrendada</span></a>
+          <a href="particulares/saude.html">Saúde <span>Rede convencionada e estomatologia</span></a>
+          <a href="particulares/vida.html">Vida <span>Crédito habitação e proteção familiar</span></a>
+          <a href="particulares/acidentes-pessoais.html">Acidentes pessoais <span>Desporto, escola e tempos livres</span></a>
         </div>
       </div>
-      <a href="sobre.html">A AJT</a>
+
+      <div class="nav-grupo" data-aberto="false">
+        <button type="button" aria-expanded="false">
+          Empresas
+          <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg>
+        </button>
+        <div class="nav-submenu">
+          <a class="nav-submenu-topo" href="empresas/">Ver todos os seguros para empresas <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+          <a href="empresas/acidentes-trabalho.html">Acidentes de trabalho <span>Obrigatório desde o primeiro trabalhador</span></a>
+          <a href="empresas/responsabilidade-civil.html">Responsabilidade civil <span>Exploração e profissional</span></a>
+          <a href="empresas/multirriscos.html">Multirriscos empresarial <span>Instalações, equipamento e existências</span></a>
+          <a href="empresas/frotas.html">Frotas auto <span>Ligeiros, comerciais e pesados</span></a>
+          <a href="empresas/saude-grupo.html">Saúde de grupo <span>Benefício para os colaboradores</span></a>
+        </div>
+      </div>
       <a href="sinistros.html">Sinistros</a>
+      <a href="sobre.html">A AJT</a>
       <a href="contactos.html" aria-current="page">Contactos</a>
     </nav>
 
@@ -62,16 +101,26 @@
   </div>
 
   <div class="envelope nav-movel" id="nav-movel">
-    <p class="nav-movel-titulo">Seguros</p>
-    <a class="sub" href="seguros/automovel.html">Automóvel</a>
-    <a class="sub" href="seguros/habitacao.html">Habitação</a>
-    <a class="sub" href="seguros/saude.html">Saúde</a>
-    <a class="sub" href="seguros/vida.html">Vida</a>
-    <a class="sub" href="seguros/acidentes-pessoais.html">Acidentes pessoais</a>
-    <a class="sub" href="seguros/empresas.html">Empresas</a>
+
+    <p class="nav-movel-titulo">Particulares</p>
+    <a class="sub" href="particulares/">Ver todos</a>
+    <a class="sub" href="particulares/automovel.html">Automóvel</a>
+    <a class="sub" href="particulares/motociclo.html">Motociclo</a>
+    <a class="sub" href="particulares/habitacao.html">Habitação</a>
+    <a class="sub" href="particulares/saude.html">Saúde</a>
+    <a class="sub" href="particulares/vida.html">Vida</a>
+    <a class="sub" href="particulares/acidentes-pessoais.html">Acidentes pessoais</a>
+
+    <p class="nav-movel-titulo">Empresas</p>
+    <a class="sub" href="empresas/">Ver todos</a>
+    <a class="sub" href="empresas/acidentes-trabalho.html">Acidentes de trabalho</a>
+    <a class="sub" href="empresas/responsabilidade-civil.html">Responsabilidade civil</a>
+    <a class="sub" href="empresas/multirriscos.html">Multirriscos empresarial</a>
+    <a class="sub" href="empresas/frotas.html">Frotas auto</a>
+    <a class="sub" href="empresas/saude-grupo.html">Saúde de grupo</a>
     <p class="nav-movel-titulo">A casa</p>
-    <a href="sobre.html">A AJT</a>
     <a href="sinistros.html">Participar um sinistro</a>
+    <a href="sobre.html">A AJT</a>
     <a href="contactos.html" aria-current="page">Contactos</a>
     <div class="nav-movel-accoes">
       <a class="botao botao-primario" href="tel:+351212348047">Ligar 212 348 047</a>
@@ -107,16 +156,50 @@
     <div class="envelope">
       <figure class="figura surge">
         <img src="assets/img/alcochete-marginal-1400.jpg"
-             srcset="assets/img/alcochete-marginal-800.jpg 800w,
-                     assets/img/alcochete-marginal-1400.jpg 1400w"
+             srcset="assets/img/alcochete-marginal-800.jpg 800w, assets/img/alcochete-marginal-1400.jpg 1400w"
              sizes="(min-width: 940px) 1100px, 100vw"
-             alt="Ilustração da marginal de Alcochete ao entardecer, com as casas brancas de telhado vermelho debruçadas sobre o Tejo"
-             width="1400" height="788" loading="lazy">
+             alt="Ilustração da marginal de Alcochete ao entardecer, com as casas brancas de telhado vermelho debruçadas sobre o Tejo" width="1400" height="788" loading="lazy">
         <figcaption>Alcochete ao fim da tarde. Os dois balcões ficam a poucos minutos daqui.</figcaption>
       </figure>
     </div>
   </section>
 
+  <section class="secao secao-tinta claro">
+    <div class="envelope">
+      <div class="secao-cabeca surge">
+        <div>
+          <p class="etiqueta">Dois balcões, uma casa</p>
+          <h2 class="titulo titulo-l">Portas diferentes,<br><em>a mesma equipa.</em></h2>
+        </div>
+        <p>Cada balcão representa uma companhia diferente. É essa a razão de existirem dois — e é isso que nos permite comparar propostas em vez de vender sempre a mesma.</p>
+      </div>
+
+      <div class="conjunto surge">
+        <article class="conjunto-lado">
+          <span class="balcao-selo">Allianz</span>
+          <h3>Balcão da Alameda</h3>
+          <p class="conjunto-morada">Alameda do Grupo Desportivo Alcochetense, 97</p>
+          <p>A porta natural para <strong>saúde e saúde dental</strong>, além de auto, casa, vida e acidentes pessoais.</p>
+          <a class="ligacao" href="tel:+351212348047">212 348 047</a>
+        </article>
+
+        <div class="conjunto-elo" aria-hidden="true"><span>uma casa</span></div>
+
+        <article class="conjunto-lado">
+          <span class="balcao-selo">Generali Tranquilidade</span>
+          <h3>Balcão da Rua Carlos Manuel</h3>
+          <p class="conjunto-morada">Rua Carlos Manuel Rodrigues Francisco, 229</p>
+          <p>A porta natural para <strong>motociclo e bicicleta</strong>, além de auto, casa, acidentes pessoais e as linhas de vida.</p>
+          <a class="ligacao" href="tel:+351210889917">210 889 917</a>
+        </article>
+      </div>
+
+      <div class="destaque destaque-mare surge" style="margin-top:clamp(28px,4vw,40px)">
+        <b>Entre em qualquer um dos dois</b>
+        <p>Não precisa de saber de antemão qual é o balcão certo. Quem o atender trata do assunto ou encaminha-o internamente — é a mesma equipa, os mesmos processos e o mesmo interlocutor a acompanhar o seu caso até ao fim. Os seguros de empresa são tratados nos dois espaços.</p>
+      </div>
+    </div>
+  </section>
   <section class="secao secao-areia">
     <div class="envelope">
       <div class="secao-cabeca surge">
@@ -173,12 +256,10 @@
 
       <div class="surge">
         <!-- ⚙️ FORMULÁRIO
-             Enquanto o atributo action contiver "COLOCAR-AQUI", o botão abre o
-             programa de email do visitante com a mensagem já preenchida — o site
-             funciona desde o primeiro dia, sem configuração nenhuma.
-             Para receber os pedidos automaticamente por email, crie uma conta
-             gratuita em formspree.io e troque o action pelo endereço indicado.
-             Passo a passo em GUIA-DE-EDICAO.md -->
+             Enquanto o action contiver "COLOCAR-AQUI", o botão abre o programa
+             de email do visitante com a mensagem já preenchida — funciona desde
+             o primeiro dia, sem configuração. Para receber os pedidos
+             automaticamente, ver GUIA-DE-EDICAO.md -->
         <form class="formulario" data-formulario-contacto
               data-email="geral@ajtseguros.pt"
               action="COLOCAR-AQUI-O-ENDERECO-DO-SERVICO" method="post">
@@ -202,14 +283,25 @@
           <div class="campo">
             <label for="assunto">Sobre que seguro?</label>
             <select id="assunto" name="assunto">
-              <option>Automóvel</option>
-              <option>Habitação</option>
-              <option>Saúde</option>
-              <option>Vida / crédito habitação</option>
-              <option>Acidentes pessoais</option>
-              <option>Empresas e frotas</option>
-              <option>Participar um sinistro</option>
-              <option>Outro assunto</option>
+              <optgroup label="Particulares">
+                <option>Automóvel</option>
+                <option>Motociclo</option>
+                <option>Habitação</option>
+                <option>Saúde</option>
+                <option>Vida</option>
+                <option>Acidentes pessoais</option>
+              </optgroup>
+              <optgroup label="Empresas">
+                <option>Acidentes de trabalho</option>
+                <option>Responsabilidade civil</option>
+                <option>Multirriscos empresarial</option>
+                <option>Frotas auto</option>
+                <option>Saúde de grupo</option>
+              </optgroup>
+              <optgroup label="Outros">
+                <option>Participar um sinistro</option>
+                <option>Outro assunto</option>
+              </optgroup>
             </select>
           </div>
 
@@ -248,24 +340,25 @@
       </div>
 
       <div>
-        <h4>Seguros</h4>
+        <h4>Particulares</h4>
         <ul>
-          <li><a href="seguros/automovel.html">Automóvel</a></li>
-          <li><a href="seguros/habitacao.html">Habitação</a></li>
-          <li><a href="seguros/saude.html">Saúde</a></li>
-          <li><a href="seguros/vida.html">Vida</a></li>
-          <li><a href="seguros/acidentes-pessoais.html">Acidentes pessoais</a></li>
-          <li><a href="seguros/empresas.html">Empresas</a></li>
+          <li><a href="particulares/automovel.html">Automóvel</a></li>
+          <li><a href="particulares/motociclo.html">Motociclo</a></li>
+          <li><a href="particulares/habitacao.html">Habitação</a></li>
+          <li><a href="particulares/saude.html">Saúde</a></li>
+          <li><a href="particulares/vida.html">Vida</a></li>
+          <li><a href="particulares/acidentes-pessoais.html">Acidentes pessoais</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>A casa</h4>
+        <h4>Empresas</h4>
         <ul>
-          <li><a href="sobre.html">A AJT</a></li>
-          <li><a href="sinistros.html">Participar um sinistro</a></li>
-          <li><a href="contactos.html">Contactos</a></li>
-          <li><a href="informacao-legal.html">Informação legal</a></li>
+          <li><a href="empresas/acidentes-trabalho.html">Acidentes de trabalho</a></li>
+          <li><a href="empresas/responsabilidade-civil.html">Responsabilidade civil</a></li>
+          <li><a href="empresas/multirriscos.html">Multirriscos empresarial</a></li>
+          <li><a href="empresas/frotas.html">Frotas auto</a></li>
+          <li><a href="empresas/saude-grupo.html">Saúde de grupo</a></li>
         </ul>
       </div>
 
@@ -275,7 +368,9 @@
           <li><a href="tel:+351212348047">212 348 047 — balcão Allianz</a></li>
           <li><a href="tel:+351210889917">210 889 917 — balcão Generali</a></li>
           <li><a href="mailto:geral@ajtseguros.pt">geral@ajtseguros.pt</a></li>
-          <li><a href="contactos.html">Alcochete, Portugal</a></li>
+          <li><a href="sinistros.html">Participar um sinistro</a></li>
+          <li><a href="sobre.html">A AJT</a></li>
+          <li><a href="informacao-legal.html">Informação legal</a></li>
         </ul>
       </div>
     </div>

@@ -7,15 +7,15 @@
 
 <!-- ✏️ EDITAR: título e descrição desta página (é o que aparece no Google) -->
 <title>Seguro de acidentes pessoais em Alcochete — AJT Seguros</title>
-<meta name="description" content="Seguro de acidentes pessoais em Alcochete: desporto, escola e tempos livres. Morte, invalidez e despesas de tratamento explicadas com clareza.">
+<meta name="description" content="Seguro de acidentes pessoais em Alcochete: desporto, escola e tempos livres. Morte, invalidez, despesas de tratamento e subsídio diário explicados com clareza.">
 
-<link rel="canonical" href="https://www.ajtseguros.pt/seguros/acidentes-pessoais.html">
+<link rel="canonical" href="https://www.ajtseguros.pt/particulares/acidentes-pessoais.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_PT">
 <meta property="og:site_name" content="AJT Seguros">
 <meta property="og:title" content="Seguro de acidentes pessoais em Alcochete — AJT Seguros">
-<meta property="og:description" content="Seguro de acidentes pessoais em Alcochete: desporto, escola e tempos livres. Morte, invalidez e despesas de tratamento explicadas com clareza.">
-<meta property="og:url" content="https://www.ajtseguros.pt/seguros/acidentes-pessoais.html">
+<meta property="og:description" content="Seguro de acidentes pessoais em Alcochete: desporto, escola e tempos livres. Morte, invalidez, despesas de tratamento e subsídio diário explicados com clareza.">
+<meta property="og:url" content="https://www.ajtseguros.pt/particulares/acidentes-pessoais.html">
 
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,14 +33,13 @@
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Início",
-          "item": "https://www.ajtseguros.pt/"
+          "name": "Início"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Seguros",
-          "item": "https://www.ajtseguros.pt/#o-que-protegemos"
+          "name": "Particulares",
+          "item": "https://www.ajtseguros.pt/particulares/"
         },
         {
           "@type": "ListItem",
@@ -109,22 +108,39 @@
     </a>
 
     <nav class="nav-principal" aria-label="Navegação principal">
+
       <div class="nav-grupo" data-aberto="false">
-        <button type="button" aria-expanded="false">
-          Seguros
+        <button type="button" aria-expanded="false" class="activo">
+          Particulares
           <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg>
         </button>
         <div class="nav-submenu">
-          <a href="automovel.html">Automóvel <span>Ligeiros, motos e comerciais</span></a>
-          <a href="habitacao.html">Habitação <span>Casa própria e arrendada</span></a>
-          <a href="saude.html">Saúde <span>Rede convencionada e dentária</span></a>
-          <a href="vida.html">Vida <span>Crédito habitação e proteção familiar</span></a>
-          <a href="acidentes-pessoais.html" aria-current="page">Acidentes pessoais <span>Desporto, escola e trabalho</span></a>
-          <a href="empresas.html">Empresas <span>Responsabilidade civil e frotas</span></a>
+          <a class="nav-submenu-topo" href="../particulares/">Ver todos os seguros para particulares <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+          <a href="../particulares/automovel.html">Automóvel <span>Ligeiros, comerciais e clássicos</span></a>
+          <a href="../particulares/motociclo.html">Motociclo <span>Motas, scooters e ciclomotores</span></a>
+          <a href="../particulares/habitacao.html">Habitação <span>Multirriscos para casa própria e arrendada</span></a>
+          <a href="../particulares/saude.html">Saúde <span>Rede convencionada e estomatologia</span></a>
+          <a href="../particulares/vida.html">Vida <span>Crédito habitação e proteção familiar</span></a>
+          <a href="../particulares/acidentes-pessoais.html" aria-current="page">Acidentes pessoais <span>Desporto, escola e tempos livres</span></a>
         </div>
       </div>
-      <a href="../sobre.html">A AJT</a>
+
+      <div class="nav-grupo" data-aberto="false">
+        <button type="button" aria-expanded="false">
+          Empresas
+          <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg>
+        </button>
+        <div class="nav-submenu">
+          <a class="nav-submenu-topo" href="../empresas/">Ver todos os seguros para empresas <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+          <a href="../empresas/acidentes-trabalho.html">Acidentes de trabalho <span>Obrigatório desde o primeiro trabalhador</span></a>
+          <a href="../empresas/responsabilidade-civil.html">Responsabilidade civil <span>Exploração e profissional</span></a>
+          <a href="../empresas/multirriscos.html">Multirriscos empresarial <span>Instalações, equipamento e existências</span></a>
+          <a href="../empresas/frotas.html">Frotas auto <span>Ligeiros, comerciais e pesados</span></a>
+          <a href="../empresas/saude-grupo.html">Saúde de grupo <span>Benefício para os colaboradores</span></a>
+        </div>
+      </div>
       <a href="../sinistros.html">Sinistros</a>
+      <a href="../sobre.html">A AJT</a>
       <a href="../contactos.html">Contactos</a>
     </nav>
 
@@ -136,16 +152,26 @@
   </div>
 
   <div class="envelope nav-movel" id="nav-movel">
-    <p class="nav-movel-titulo">Seguros</p>
-    <a class="sub" href="automovel.html">Automóvel</a>
-    <a class="sub" href="habitacao.html">Habitação</a>
-    <a class="sub" href="saude.html">Saúde</a>
-    <a class="sub" href="vida.html">Vida</a>
-    <a class="sub" href="acidentes-pessoais.html" aria-current="page">Acidentes pessoais</a>
-    <a class="sub" href="empresas.html">Empresas</a>
+
+    <p class="nav-movel-titulo">Particulares</p>
+    <a class="sub" href="../particulares/">Ver todos</a>
+    <a class="sub" href="../particulares/automovel.html">Automóvel</a>
+    <a class="sub" href="../particulares/motociclo.html">Motociclo</a>
+    <a class="sub" href="../particulares/habitacao.html">Habitação</a>
+    <a class="sub" href="../particulares/saude.html">Saúde</a>
+    <a class="sub" href="../particulares/vida.html">Vida</a>
+    <a class="sub" href="../particulares/acidentes-pessoais.html" aria-current="page">Acidentes pessoais</a>
+
+    <p class="nav-movel-titulo">Empresas</p>
+    <a class="sub" href="../empresas/">Ver todos</a>
+    <a class="sub" href="../empresas/acidentes-trabalho.html">Acidentes de trabalho</a>
+    <a class="sub" href="../empresas/responsabilidade-civil.html">Responsabilidade civil</a>
+    <a class="sub" href="../empresas/multirriscos.html">Multirriscos empresarial</a>
+    <a class="sub" href="../empresas/frotas.html">Frotas auto</a>
+    <a class="sub" href="../empresas/saude-grupo.html">Saúde de grupo</a>
     <p class="nav-movel-titulo">A casa</p>
-    <a href="../sobre.html">A AJT</a>
     <a href="../sinistros.html">Participar um sinistro</a>
+    <a href="../sobre.html">A AJT</a>
     <a href="../contactos.html">Contactos</a>
     <div class="nav-movel-accoes">
       <a class="botao botao-primario" href="tel:+351212348047">Ligar 212 348 047</a>
@@ -161,12 +187,12 @@
       <nav class="migalhas" aria-label="Percurso">
         <a href="../index.html">Início</a>
         <svg viewBox="0 0 8 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m1.5 1 5 5-5 5"/></svg>
-        <a href="../index.html#o-que-protegemos">Seguros</a>
+        <a href="../particulares/">Particulares</a>
         <svg viewBox="0 0 8 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m1.5 1 5 5-5 5"/></svg>
         <span aria-current="page">Acidentes pessoais</span>
       </nav>
       <h1 class="titulo titulo-xl">Acidentes <em>pessoais</em></h1>
-      <p class="lede">A maior parte dos acidentes não acontece na estrada nem no trabalho. Acontece num treino, numa escada, numa caminhada ao fim-de-semana.</p>
+      <p class="lede">A maior parte dos acidentes não acontece na estrada nem no trabalho. Acontece num treino, numas escadas, numa caminhada ao domingo.</p>
     </div>
   </section>
 
@@ -175,15 +201,15 @@
       <div class="surge">
         <p class="etiqueta">O que pode incluir</p>
         <h2 class="titulo titulo-l">Para o que acontece<br><em>fora das outras apólices.</em></h2>
-        <p class="lede" style="margin:22px 0 34px">É um seguro simples e barato que cobre lesões corporais resultantes de acidente, em qualquer lugar e a qualquer hora, ou apenas durante determinada actividade. Serve para o que fica no espaço em branco entre o seguro do carro, o do trabalho e o de saúde.</p>
+        <p class="lede" style="margin:22px 0 34px">É um seguro simples e barato que cobre lesões corporais resultantes de acidente, a qualquer hora e em qualquer lugar — ou apenas durante determinada actividade. Serve para o espaço em branco entre o seguro do carro, o do trabalho e o de saúde.</p>
 
         <!-- ✏️ EDITAR: lista de coberturas -->
         <ul class="coberturas">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Morte por acidente.</b> Capital pago aos beneficiários. Nalguns planos duplica em caso de acidente de viação.</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Invalidez permanente.</b> Indemnização proporcional ao grau de desvalorização atribuído por perícia médica.</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Despesas de tratamento.</b> Consultas, exames, fisioterapia e internamento resultantes do acidente.</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Incapacidade temporária.</b> Subsídio diário durante a baixa. Decisivo para quem não recebe se não trabalhar.</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Despesas de funeral.</b> Capital autónomo, disponível de imediato, sem esperar pela regularização do processo.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Incapacidade temporária.</b> Subsídio diário durante o período de baixa. Essencial para quem não recebe se não trabalhar.</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Assistência em viagem.</b> Repatriamento e apoio médico fora de casa, consoante o plano.</span></li>
         </ul>
       </div>
@@ -191,7 +217,7 @@
       <aside class="surge">
         <div class="destaque">
           <b>Não confundir com acidentes de trabalho</b>
-          <p>O seguro de acidentes de trabalho é <b>obrigatório</b> e cobre o que acontece ao serviço da entidade patronal, incluindo o trajecto casa-trabalho. O acidentes pessoais é facultativo e cobre a vida fora disso. Não se substituem: complementam-se.</p>
+          <p>O seguro de acidentes de trabalho é obrigatório e cobre o que acontece ao serviço da entidade patronal, incluindo o trajecto casa-trabalho. O acidentes pessoais é facultativo e cobre a vida fora disso. Não se substituem: completam-se.</p>
         </div>
         <div class="destaque destaque-mare" style="margin-top:22px">
           <b>Leia o capital de despesas de tratamento</b>
@@ -205,18 +231,15 @@
     <div class="envelope">
       <figure class="figura surge">
         <img src="../assets/img/acidentes-pessoais-1400.jpg"
-             srcset="../assets/img/acidentes-pessoais-800.jpg 800w,
-                     ../assets/img/acidentes-pessoais-1400.jpg 1400w"
+             srcset="../assets/img/acidentes-pessoais-800.jpg 800w, ../assets/img/acidentes-pessoais-1400.jpg 1400w"
              sizes="(min-width: 940px) 1100px, 100vw"
-             alt="Ilustração de duas mulheres a passear na marginal de Alcochete, uma delas com o braço ao peito depois de uma queda"
-             width="1400" height="788" loading="lazy">
-        <figcaption>Uma queda numa caminhada não é acidente de trabalho nem acidente de viação. É aqui que este seguro entra.</figcaption>
+             alt="Ilustração de duas mulheres a passear na marginal de Alcochete, uma delas com o braço ao peito depois de uma queda" width="1400" height="788" loading="lazy">
+        <figcaption>Uma queda numa caminhada não é acidente de trabalho nem de viação. É aqui que este seguro entra.</figcaption>
       </figure>
     </div>
   </section>
-
-  <!-- Coberto vs. excluído: dizer onde acaba a cobertura constrói mais
-       confiança do que escondê-lo até ao dia do sinistro. -->
+  <!-- Dizer onde acaba a cobertura constrói mais confiança do que escondê-lo
+       até ao dia do sinistro. -->
   <section class="secao secao-areia">
     <div class="envelope">
       <div class="secao-cabeca surge">
@@ -224,7 +247,7 @@
           <p class="etiqueta">Sem letra pequena</p>
           <h2 class="titulo titulo-l">Onde acaba<br><em>a cobertura.</em></h2>
         </div>
-        <p>Uma leitura geral, para ter uma ideia clara antes da conversa. Cada apólice tem as suas condições — e é por isso que as lemos consigo, uma a uma.</p>
+        <p>Uma leitura geral, para ter ideia clara antes da conversa. Cada apólice tem as suas condições — e é por isso que as lemos consigo, uma a uma.</p>
       </div>
 
       <div class="balanco surge">
@@ -265,15 +288,15 @@
       <div class="tres-colunas surge">
         <div class="cartao">
           <h3>Filhos no desporto federado</h3>
-          <p>O seguro do clube costuma ser mínimo e limitado aos treinos e jogos oficiais. Um acidentes pessoais 24 horas cobre também o resto do dia — e é dos seguros mais baratos que existem.</p>
+          <p>O seguro do clube costuma ser mínimo e limitado a treinos e jogos oficiais. Um acidentes pessoais 24 horas cobre o resto do dia — e é dos seguros mais baratos que existem.</p>
         </div>
         <div class="cartao">
           <h3>Trabalhador independente</h3>
-          <p>Se não trabalhar, não recebe. A cobertura de incapacidade temporária com subsídio diário é, para muitos recibos verdes, mais importante do que o próprio capital por morte.</p>
+          <p>Se não trabalhar, não recebe. A incapacidade temporária com subsídio diário é, para muitos recibos verdes, mais importante do que o próprio capital por morte.</p>
         </div>
         <div class="cartao">
           <h3>Reformados e maiores de 65</h3>
-          <p>Quedas são a causa número um de internamento nesta faixa etária. Há planos desenhados para o efeito, com capitais para despesas de tratamento e apoio domiciliário.</p>
+          <p>As quedas são a causa número um de internamento nesta faixa etária. Há planos desenhados para o efeito, com capitais para tratamento e apoio domiciliário.</p>
         </div>
       </div>
     </div>
@@ -342,24 +365,25 @@
       </div>
 
       <div>
-        <h4>Seguros</h4>
+        <h4>Particulares</h4>
         <ul>
-          <li><a href="automovel.html">Automóvel</a></li>
-          <li><a href="habitacao.html">Habitação</a></li>
-          <li><a href="saude.html">Saúde</a></li>
-          <li><a href="vida.html">Vida</a></li>
-          <li><a href="acidentes-pessoais.html">Acidentes pessoais</a></li>
-          <li><a href="empresas.html">Empresas</a></li>
+          <li><a href="../particulares/automovel.html">Automóvel</a></li>
+          <li><a href="../particulares/motociclo.html">Motociclo</a></li>
+          <li><a href="../particulares/habitacao.html">Habitação</a></li>
+          <li><a href="../particulares/saude.html">Saúde</a></li>
+          <li><a href="../particulares/vida.html">Vida</a></li>
+          <li><a href="../particulares/acidentes-pessoais.html">Acidentes pessoais</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>A casa</h4>
+        <h4>Empresas</h4>
         <ul>
-          <li><a href="../sobre.html">A AJT</a></li>
-          <li><a href="../sinistros.html">Participar um sinistro</a></li>
-          <li><a href="../contactos.html">Contactos</a></li>
-          <li><a href="../informacao-legal.html">Informação legal</a></li>
+          <li><a href="../empresas/acidentes-trabalho.html">Acidentes de trabalho</a></li>
+          <li><a href="../empresas/responsabilidade-civil.html">Responsabilidade civil</a></li>
+          <li><a href="../empresas/multirriscos.html">Multirriscos empresarial</a></li>
+          <li><a href="../empresas/frotas.html">Frotas auto</a></li>
+          <li><a href="../empresas/saude-grupo.html">Saúde de grupo</a></li>
         </ul>
       </div>
 
@@ -369,7 +393,9 @@
           <li><a href="tel:+351212348047">212 348 047 — balcão Allianz</a></li>
           <li><a href="tel:+351210889917">210 889 917 — balcão Generali</a></li>
           <li><a href="mailto:geral@ajtseguros.pt">geral@ajtseguros.pt</a></li>
-          <li><a href="../contactos.html">Alcochete, Portugal</a></li>
+          <li><a href="../sinistros.html">Participar um sinistro</a></li>
+          <li><a href="../sobre.html">A AJT</a></li>
+          <li><a href="../informacao-legal.html">Informação legal</a></li>
         </ul>
       </div>
     </div>
