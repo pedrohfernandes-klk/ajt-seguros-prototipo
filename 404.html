@@ -105,8 +105,10 @@
   // Funciona num domínio próprio (raiz) e numa subpasta do GitHub Pages.
   (function () {
     var raiz = '/';
-    if (location.hostname.slice(-10) === 'github.io') {
-      raiz = '/' + location.pathname.split('/')[1] + '/';
+    if (/(^|\.)github\.io$/.test(location.hostname)) {
+      // GitHub Pages de projecto: o site vive em /nome-do-repositorio/
+      var primeiro = location.pathname.split('/')[1];
+      if (primeiro) raiz = '/' + primeiro + '/';
     }
     var alvos = document.querySelectorAll('[data-para]');
     for (var i = 0; i < alvos.length; i++) {
