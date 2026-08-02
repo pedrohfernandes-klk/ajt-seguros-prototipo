@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mapa do sítio para os motores de busca.
+     ✏️ Se acrescentar páginas novas, acrescente-as aqui também.
+     A data em <lastmod> deve ser actualizada quando alterar a página. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.ajtseguros.pt/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.ajtseguros.pt/seguros/automovel.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ajtseguros.pt/seguros/habitacao.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ajtseguros.pt/seguros/saude.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ajtseguros.pt/seguros/vida.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ajtseguros.pt/seguros/acidentes-pessoais.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ajtseguros.pt/seguros/empresas.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.ajtseguros.pt/sinistros.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ajtseguros.pt/sobre.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ajtseguros.pt/contactos.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ajtseguros.pt/informacao-legal.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

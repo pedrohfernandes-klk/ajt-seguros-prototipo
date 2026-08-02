@@ -1,0 +1,844 @@
+/* ==========================================================================
+   AJT SEGUROS · Alcochete
+   Sistema visual "MARÉ" — azul-noite do Tejo + areia das salinas
+   --------------------------------------------------------------------------
+   ⚠️  NÃO é preciso mexer neste ficheiro para mudar textos.
+       Todo o texto vive nos ficheiros .html, assinalado com  ✏️ EDITAR.
+   --------------------------------------------------------------------------
+   Índice
+   01 · Tokens (cores, tipos, medidas)
+   02 · Reset e base
+   03 · Utilitários e tipografia
+   04 · Cabeçalho e navegação
+   05 · Botões e links
+   06 · Hero
+   07 · Faixa de factos
+   08 · Secções genéricas
+   09 · Registo de ramos (lista de seguros)
+   10 · Blocos de conteúdo (dois-terços, colunas, destaque)
+   11 · Companhias
+   12 · Percurso (como trabalhamos)
+   13 · Balcões e contactos
+   14 · Formulário
+   15 · FAQ (acordeão)
+   16 · Rodapé
+   17 · Movimento e reveal
+   18 · Responsivo
+   19 · Impressão
+   ========================================================================== */
+
+/* ─────────────────────────────────────────────────────────────────────────
+   01 · TOKENS
+   ───────────────────────────────────────────────────────────────────────── */
+:root{
+  /* Cores — azul-noite do estuário, areia das salinas, cobre discreto */
+  --tinta:      #0d2233;   /* azul-noite, cor institucional principal */
+  --tinta-90:   #16334a;
+  --tinta-70:   #2b4a63;
+  --mare:       #33718f;   /* azul-maré — ligações e acentos frios */
+  --mare-claro: #6f9db4;
+  --cobre:      #8f5527;   /* acento quente, usado com muita parcimónia */
+  --sal:        #ffffff;
+  --papel:      #fbf9f5;   /* fundo geral, quase-branco quente */
+  --areia:      #ece3d3;   /* fundo de secção alternado */
+  --areia-2:    #f5efe4;
+  --linha:      #ddd4c4;   /* hairline sobre fundos claros */
+  --linha-esc:  rgba(255,255,255,.16);
+  --texto:      #253544;
+  --texto-fraco:#546673;
+  --texto-claro:#b6c7d3;   /* sobre fundo escuro */
+  --verde:      #2f6b4f;   /* "está coberto" */
+  --vermelho:   #a33a32;   /* "não está coberto" */
+
+  /* Todas as combinações de cor deste ficheiro foram medidas e cumprem o
+     rácio de contraste 4.5:1 exigido pela norma WCAG 2.1 nível AA. */
+
+  /* Tipografia — Fraunces (serifa editorial) + Public Sans (institucional) */
+  --f-titulo: "Fraunces", Georgia, "Times New Roman", serif;
+  --f-texto:  "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Medidas */
+  --max:        1180px;
+  --max-texto:  62ch;
+  --raio:       3px;        /* quase reto — sobriedade institucional */
+  --gutter:     clamp(20px, 5vw, 56px);
+  --secao-y:    clamp(64px, 9vw, 128px);
+  --sombra:     0 18px 44px rgba(13,34,51,.09);
+  --sombra-sub: 0 2px 10px rgba(13,34,51,.05);
+  --transicao:  .28s cubic-bezier(.2,.6,.3,1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   02 · RESET E BASE
+   ───────────────────────────────────────────────────────────────────────── */
+*, *::before, *::after{ box-sizing:border-box }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100% }
+body{
+  margin:0;
+  background:var(--papel);
+  color:var(--texto);
+  font-family:var(--f-texto);
+  font-size:1.0rem;
+  line-height:1.68;
+  font-synthesis-weight:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+h1,h2,h3,h4,h5,p,figure,blockquote,dl,dd{ margin:0 }
+ul,ol{ margin:0; padding:0; list-style:none }
+img,svg{ display:block; max-width:100%; height:auto }
+a{ color:inherit }
+button,input,select,textarea{ font:inherit; color:inherit }
+address{ font-style:normal }
+hr{ border:0; border-top:1px solid var(--linha); margin:0 }
+
+/* Acessibilidade */
+.saltar{
+  position:absolute; left:-9999px; top:10px; z-index:999;
+  background:var(--tinta); color:#fff; padding:12px 18px; border-radius:var(--raio);
+  font-weight:600;
+}
+.saltar:focus{ left:12px }
+:focus-visible{ outline:3px solid var(--mare); outline-offset:3px; border-radius:2px }
+.visualmente-oculto{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   03 · UTILITÁRIOS E TIPOGRAFIA
+   ───────────────────────────────────────────────────────────────────────── */
+.envelope{ width:min(100% - (var(--gutter) * 2), var(--max)); margin-inline:auto }
+.envelope-estreito{ width:min(100% - (var(--gutter) * 2), 760px); margin-inline:auto }
+
+/* Título editorial — serifa, contraste alto, quebras equilibradas */
+.titulo{
+  font-family:var(--f-titulo);
+  font-weight:600;
+  font-variation-settings:"SOFT" 0, "WONK" 0;
+  line-height:1.06;
+  letter-spacing:-.018em;
+  color:var(--tinta);
+  text-wrap:balance;
+}
+.titulo-xl{ font-size:clamp(2.15rem, 6.2vw, 4.6rem) }
+.titulo-l { font-size:clamp(2rem, 4.2vw, 3.1rem) }
+.titulo-m { font-size:clamp(1.45rem, 2.6vw, 2rem) }
+.titulo-s { font-size:clamp(1.15rem, 1.7vw, 1.35rem); line-height:1.25 }
+
+/* Ênfase em itálico "wonky" — a assinatura tipográfica da AJT */
+.titulo em, .realce{
+  font-style:italic;
+  font-variation-settings:"SOFT" 40, "WONK" 1;
+  color:var(--mare);
+}
+.claro .titulo, .claro .titulo em{ color:#fff }
+.claro .titulo em{ color:var(--mare-claro) }
+
+/* Etiqueta de secção — serifa itálica + traço fino.
+   (Deliberadamente NÃO é maiúsculas monoespaçadas, para não repetir o
+   registo de outros sites.) */
+.etiqueta{
+  font-family:var(--f-titulo);
+  font-style:italic;
+  font-size:.98rem;
+  font-variation-settings:"SOFT" 30, "WONK" 1;
+  color:var(--cobre);
+  display:flex; align-items:center; gap:14px;
+  margin-bottom:20px;
+}
+.etiqueta::before{
+  content:""; width:34px; height:1px; background:currentColor; flex:none; opacity:.6;
+}
+.claro .etiqueta{ color:var(--mare-claro) }
+
+.lede{
+  font-size:clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height:1.66;
+  color:var(--texto-fraco);
+  max-width:var(--max-texto);
+}
+.claro .lede{ color:var(--texto-claro) }
+.prosa p + p{ margin-top:1.05em }
+.prosa a{ color:var(--mare); text-decoration:underline; text-underline-offset:3px }
+
+/* Nota fina, para rodapés de secção e avisos legais */
+.nota{ font-size:.83rem; line-height:1.6; color:var(--texto-fraco) }
+.claro .nota{ color:var(--texto-claro); opacity:.8 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   04 · CABEÇALHO E NAVEGAÇÃO
+   ───────────────────────────────────────────────────────────────────────── */
+.cabecalho{
+  position:sticky; top:0; z-index:100;
+  background:rgba(251,249,245,.88);
+  backdrop-filter:saturate(140%) blur(12px);
+  border-bottom:1px solid var(--linha);
+}
+.cabecalho-barra{
+  min-height:76px; display:flex; align-items:center; gap:18px;
+}
+
+/* Marca — monograma em caixa + nome */
+.marca{ display:flex; align-items:center; gap:12px; text-decoration:none; margin-right:auto }
+/* Tile do símbolo. Para trocar o logótipo basta substituir o ficheiro
+   assets/img/marca-ajt.svg (e a versão -branco). Ver GUIA-DE-EDICAO.md */
+.marca-simbolo{
+  width:46px; height:46px; flex:none;
+  display:grid; place-items:center;
+  background:var(--tinta); border-radius:var(--raio); padding:7px;
+}
+.marca-simbolo img{ width:100%; height:auto }
+.marca-nome{ display:flex; flex-direction:column; line-height:1.15 }
+.marca-nome b{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.14rem;
+  color:var(--tinta); letter-spacing:-.01em;
+}
+.marca-nome small{
+  font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--texto-fraco); font-weight:600;
+}
+
+/* Navegação — desktop */
+.nav-principal{ display:none; align-items:center; gap:4px }
+.nav-principal a{
+  position:relative; text-decoration:none; padding:9px 13px; border-radius:var(--raio);
+  font-size:.92rem; font-weight:500; color:var(--texto);
+  transition:color var(--transicao);
+}
+.nav-principal a::after{
+  content:""; position:absolute; left:13px; right:13px; bottom:3px; height:1.5px;
+  background:var(--mare); transform:scaleX(0); transform-origin:left;
+  transition:transform var(--transicao);
+}
+.nav-principal a:hover{ color:var(--tinta) }
+.nav-principal a:hover::after,
+.nav-principal a[aria-current="page"]::after{ transform:scaleX(1) }
+.nav-principal a[aria-current="page"]{ color:var(--tinta); font-weight:600 }
+
+/* Submenu "Seguros" */
+.nav-grupo{ position:relative }
+.nav-grupo > button{
+  display:inline-flex; align-items:center; gap:7px;
+  background:none; border:0; cursor:pointer; padding:9px 13px; border-radius:var(--raio);
+  font-size:.92rem; font-weight:500; color:var(--texto);
+}
+.nav-grupo > button svg{ width:10px; transition:transform var(--transicao) }
+.nav-grupo[data-aberto="true"] > button svg{ transform:rotate(180deg) }
+.nav-submenu{
+  position:absolute; top:calc(100% + 10px); left:0; min-width:250px;
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
+  box-shadow:var(--sombra); padding:8px; display:none; flex-direction:column;
+}
+.nav-grupo[data-aberto="true"] .nav-submenu{ display:flex }
+.nav-submenu a{
+  padding:10px 12px; border-radius:var(--raio); text-decoration:none;
+  font-size:.9rem; display:flex; flex-direction:column; gap:2px;
+  transition:background var(--transicao);
+}
+.nav-submenu a:hover{ background:var(--areia-2) }
+.nav-submenu a span{ font-size:.76rem; color:var(--texto-fraco) }
+
+/* Telefone no cabeçalho — a acção mais provável num site de seguros */
+.cabecalho-tel{
+  display:none; align-items:center; gap:8px; text-decoration:none;
+  font-weight:600; font-size:.92rem; color:var(--tinta);
+  padding:10px 14px; border:1px solid var(--linha); border-radius:var(--raio);
+  background:var(--sal); transition:border-color var(--transicao), color var(--transicao);
+}
+.cabecalho-tel:hover{ border-color:var(--mare); color:var(--mare) }
+.cabecalho-tel svg{ width:15px; flex:none }
+
+/* Botão de menu — mobile */
+.menu-botao{
+  display:inline-flex; align-items:center; gap:9px; cursor:pointer;
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
+  padding:10px 15px; font-size:.85rem; font-weight:600; color:var(--tinta);
+}
+.menu-botao span{ display:block; width:16px; height:9px; position:relative }
+.menu-botao span::before,
+.menu-botao span::after{
+  content:""; position:absolute; left:0; right:0; height:1.5px; background:currentColor;
+  transition:transform var(--transicao), top var(--transicao);
+}
+.menu-botao span::before{ top:0 }
+.menu-botao span::after{ top:7.5px }
+.menu-botao[aria-expanded="true"] span::before{ top:4px; transform:rotate(45deg) }
+.menu-botao[aria-expanded="true"] span::after{ top:4px; transform:rotate(-45deg) }
+
+/* Painel de navegação — mobile */
+.nav-movel{
+  display:none; border-top:1px solid var(--linha); background:var(--papel);
+  padding:12px 0 24px;
+}
+.nav-movel.aberto{ display:block }
+.nav-movel a{
+  display:block; text-decoration:none; padding:13px 4px;
+  border-bottom:1px solid var(--linha); font-size:1rem; font-weight:500;
+}
+.nav-movel a[aria-current="page"]{ color:var(--mare); font-weight:600 }
+.nav-movel .nav-movel-titulo{
+  font-family:var(--f-titulo); font-style:italic; color:var(--cobre);
+  font-size:.9rem; padding:18px 4px 6px; border:0;
+}
+.nav-movel .sub{ padding-left:18px; font-size:.94rem; font-weight:400 }
+.nav-movel-accoes{ display:grid; gap:10px; margin-top:20px }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   05 · BOTÕES E LINKS
+   ───────────────────────────────────────────────────────────────────────── */
+.botao{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:15px 24px; border-radius:var(--raio); border:1px solid transparent;
+  font-size:.94rem; font-weight:600; text-decoration:none; cursor:pointer;
+  transition:background var(--transicao), color var(--transicao),
+             border-color var(--transicao), transform var(--transicao);
+}
+.botao svg{ width:14px; flex:none; transition:transform var(--transicao) }
+.botao:hover svg{ transform:translateX(3px) }
+.botao-primario{ background:var(--tinta); color:#fff }
+.botao-primario:hover{ background:var(--mare) }
+.botao-secundario{ background:transparent; color:var(--tinta); border-color:var(--tinta) }
+.botao-secundario:hover{ background:var(--tinta); color:#fff }
+.claro .botao-primario{ background:var(--sal); color:var(--tinta) }
+.claro .botao-primario:hover{ background:var(--areia) }
+.claro .botao-secundario{ color:#fff; border-color:rgba(255,255,255,.42) }
+.claro .botao-secundario:hover{ background:#fff; color:var(--tinta); border-color:#fff }
+
+/* Ligação de texto com traço — usada para "ver mais" */
+.ligacao{
+  display:inline-flex; align-items:center; gap:9px; text-decoration:none;
+  font-weight:600; font-size:.92rem; color:var(--tinta);
+  border-bottom:1.5px solid var(--mare); padding-bottom:3px;
+  transition:gap var(--transicao), color var(--transicao);
+}
+.ligacao:hover{ gap:14px; color:var(--mare) }
+.ligacao svg{ width:13px }
+.claro .ligacao{ color:#fff; border-color:var(--mare-claro) }
+
+.accoes{ display:flex; flex-wrap:wrap; gap:14px; align-items:center }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   06 · HERO
+   ───────────────────────────────────────────────────────────────────────── */
+.hero{ position:relative; background:var(--areia-2); overflow:hidden }
+.hero::after{
+  /* horizonte do estuário desenhado em CSS — sem imagens pesadas */
+  content:""; position:absolute; inset:auto 0 0 0; height:34%;
+  background:
+    linear-gradient(180deg, rgba(236,227,211,0) 0%, rgba(214,203,183,.55) 55%, rgba(191,180,160,.7) 100%);
+  pointer-events:none;
+}
+.hero-grelha{
+  position:relative; z-index:1;
+  display:grid; gap:clamp(32px, 5vw, 64px);
+  padding-block:clamp(38px, 8vw, 104px) clamp(48px, 9vw, 120px);
+}
+.hero h1{ margin-bottom:clamp(18px, 2.5vw, 26px) }
+.hero .lede{ margin-bottom:clamp(26px, 3.5vw, 34px) }
+.hero .etiqueta{ margin-bottom:16px }
+.hero .accoes{ margin-bottom:0 }
+
+/* Cartucho lateral — o "postal" de Alcochete */
+.hero-cartucho{
+  position:relative; align-self:center;
+  border:1px solid var(--linha); border-radius:var(--raio);
+  background:var(--sal); box-shadow:var(--sombra); overflow:hidden;
+}
+.hero-cartucho-figura{ position:relative; aspect-ratio:16/10; background:var(--tinta) }
+.hero-cartucho-figura img,
+.hero-cartucho-figura svg{ width:100%; height:100%; display:block; object-fit:cover }
+.hero-cartucho-legenda{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:16px 20px; display:flex; justify-content:space-between; align-items:flex-end;
+  color:#fff; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; font-weight:600;
+  /* véu reforçado: a legenda tem de ler-se por cima de qualquer imagem */
+  background:linear-gradient(180deg,
+    rgba(13,34,51,0) 0%, rgba(13,34,51,.45) 45%, rgba(13,34,51,.88) 100%);
+  padding-top:38px;
+}
+.hero-cartucho-corpo{ padding:22px 24px 24px }
+.hero-cartucho-corpo > b{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.08rem; color:var(--tinta);
+  display:block; margin-bottom:6px;
+}
+.hero-cartucho-corpo p{ font-size:.88rem; color:var(--texto-fraco); line-height:1.6 }
+
+/* Hero curto — páginas interiores */
+.hero-interior{
+  background:var(--tinta); color:#fff;
+  padding-block:clamp(48px, 7vw, 84px) clamp(52px, 7vw, 88px);
+  position:relative; overflow:hidden;
+}
+.hero-interior::before{
+  /* marca-d'água: linhas de maré */
+  content:""; position:absolute; inset:0; opacity:.28; pointer-events:none;
+  background-image:repeating-linear-gradient(180deg, rgba(255,255,255,.06) 0 1px, transparent 1px 34px);
+}
+.hero-interior .titulo, .hero-interior .titulo em{ color:#fff }
+.hero-interior .titulo em{ color:var(--mare-claro) }
+.hero-interior .lede{ color:var(--texto-claro); margin-top:20px }
+.hero-interior > *{ position:relative; z-index:1 }
+
+/* Migalhas */
+.migalhas{
+  display:flex; flex-wrap:wrap; align-items:center; gap:9px;
+  font-size:.82rem; margin-bottom:22px; color:var(--texto-claro);
+}
+.migalhas a{ text-decoration:none; opacity:.85; display:inline-block; padding-block:3px }
+.migalhas a:hover{ opacity:1; text-decoration:underline; text-underline-offset:3px }
+.migalhas svg{ width:9px; opacity:.5 }
+.migalhas [aria-current]{ font-weight:600; color:#fff }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   07 · FAIXA DE FACTOS
+   ───────────────────────────────────────────────────────────────────────── */
+.faixa-factos{ background:var(--tinta); color:var(--texto-claro) }
+.faixa-factos ul{
+  display:grid; grid-template-columns:1fr; gap:0;
+  padding-block:0;
+}
+.faixa-factos li{
+  padding:22px 0; display:flex; align-items:baseline; gap:14px;
+  border-bottom:1px solid var(--linha-esc);
+}
+.faixa-factos li:last-child{ border-bottom:0 }
+.faixa-factos b{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.9rem; color:#fff;
+  line-height:1; letter-spacing:-.02em; flex:none;
+}
+.faixa-factos b sup{ font-size:.5em; color:var(--mare-claro); top:-.7em; position:relative }
+.faixa-factos span{ font-size:.88rem; line-height:1.45 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   08 · SECÇÕES GENÉRICAS
+   ───────────────────────────────────────────────────────────────────────── */
+.secao{ padding-block:var(--secao-y) }
+.secao-areia{ background:var(--areia-2) }
+.secao-areia-forte{ background:var(--areia) }
+.secao-tinta{ background:var(--tinta); color:var(--texto-claro) }
+.secao-tinta p{ color:var(--texto-claro) }
+
+.secao-cabeca{
+  display:grid; gap:clamp(20px, 3vw, 48px); align-items:end;
+  margin-bottom:clamp(38px, 5vw, 62px);
+}
+.secao-cabeca > p{ max-width:46ch }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   09 · REGISTO DE RAMOS
+   Lista larga com filete — registo institucional, não "cartões".
+   ───────────────────────────────────────────────────────────────────────── */
+.registo{ border-top:1px solid var(--linha) }
+.registo a{
+  display:grid; grid-template-columns:1fr auto; align-items:center;
+  gap:16px 28px; padding:26px 0 26px;
+  text-decoration:none; border-bottom:1px solid var(--linha);
+  position:relative; transition:padding var(--transicao), color var(--transicao);
+}
+.registo a::before{
+  /* preenchimento de maré que sobe ao passar o rato */
+  content:""; position:absolute; left:calc(var(--gutter) * -.5); right:calc(var(--gutter) * -.5);
+  top:0; bottom:0; background:var(--areia-2); border-radius:var(--raio);
+  opacity:0; transition:opacity var(--transicao); z-index:0;
+}
+.registo a:hover::before{ opacity:1 }
+.registo a > *{ position:relative; z-index:1 }
+.registo a:hover{ padding-left:14px }
+.registo-titulo{ display:flex; align-items:baseline; gap:16px; flex-wrap:wrap }
+.registo-titulo h3{
+  font-family:var(--f-titulo); font-weight:600; font-size:clamp(1.3rem, 2.4vw, 1.75rem);
+  color:var(--tinta); letter-spacing:-.015em; line-height:1.15;
+}
+.registo-titulo .marcador{
+  font-family:var(--f-titulo); font-style:italic; font-size:.9rem; color:var(--cobre);
+  font-variation-settings:"WONK" 1;
+}
+.registo p{ font-size:.94rem; color:var(--texto-fraco); margin-top:7px; max-width:56ch }
+.registo-seta{
+  width:48px; height:48px; flex:none; border:1px solid var(--linha); border-radius:50%;
+  display:grid; place-items:center; color:var(--tinta);
+  transition:background var(--transicao), color var(--transicao), border-color var(--transicao);
+}
+.registo-seta svg{ width:14px }
+.registo a:hover .registo-seta{ background:var(--tinta); color:#fff; border-color:var(--tinta) }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   10 · BLOCOS DE CONTEÚDO
+   ───────────────────────────────────────────────────────────────────────── */
+.duas-colunas{ display:grid; gap:clamp(32px, 5vw, 72px); align-items:start }
+.tres-colunas{ display:grid; gap:clamp(26px, 3vw, 40px) }
+
+/* Argumentos com filete superior */
+.argumentos{ display:grid; gap:0 }
+.argumentos article{ padding:26px 0; border-top:1px solid var(--linha) }
+.claro .argumentos article,
+.secao-tinta .argumentos article{ border-color:var(--linha-esc) }
+.argumentos h3{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.22rem; color:var(--tinta);
+  margin-bottom:9px; letter-spacing:-.01em;
+}
+.secao-tinta .argumentos h3{ color:#fff }
+.argumentos p{ font-size:.94rem; color:var(--texto-fraco); line-height:1.65; max-width:58ch }
+.secao-tinta .argumentos p{ color:var(--texto-claro) }
+
+/* Lista de coberturas com marca de verificação */
+.coberturas{ display:grid; gap:14px }
+.coberturas li{
+  display:grid; grid-template-columns:22px 1fr; gap:14px; align-items:start;
+  font-size:.97rem; line-height:1.6;
+}
+.coberturas li svg{ width:20px; margin-top:5px; color:var(--mare); flex:none }
+.coberturas li b{ color:var(--tinta); font-weight:600 }
+.secao-tinta .coberturas li b{ color:#fff }
+
+/* Caixa de destaque — avisos úteis e "bom saber" */
+.destaque{
+  background:var(--sal); border:1px solid var(--linha); border-left:3px solid var(--cobre);
+  border-radius:var(--raio); padding:24px 26px; box-shadow:var(--sombra-sub);
+}
+/* Só o <b> que é filho directo é o título da caixa; os <b> dentro dos
+   parágrafos continuam a ser ênfase em linha. */
+.destaque > b{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.05rem; color:var(--tinta);
+  display:block; margin-bottom:8px;
+}
+.destaque p b, .destaque p strong{ color:var(--tinta); font-weight:600 }
+.destaque p{ font-size:.92rem; color:var(--texto-fraco); line-height:1.65 }
+.destaque.destaque-mare{ border-left-color:var(--mare) }
+
+/* Figura com legenda — fotografias dos balcões */
+.figura{ margin:0 }
+.figura img{
+  width:100%; border:1px solid var(--linha); border-radius:var(--raio);
+  box-shadow:var(--sombra); object-fit:cover;
+}
+.figura figcaption{
+  margin-top:14px; font-size:.86rem; color:var(--texto-fraco);
+  font-family:var(--f-titulo); font-style:italic;
+}
+
+/* Cartão simples reutilizável */
+.cartao{
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
+  padding:28px; box-shadow:var(--sombra-sub);
+  transition:box-shadow var(--transicao), transform var(--transicao);
+}
+a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
+.cartao h3{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.2rem; color:var(--tinta);
+  margin-bottom:10px;
+}
+.cartao p{ font-size:.93rem; color:var(--texto-fraco) }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   11 · COMPANHIAS
+   ───────────────────────────────────────────────────────────────────────── */
+.companhias{
+  display:grid; gap:0; border-top:1px solid var(--linha); border-bottom:1px solid var(--linha);
+}
+.companhias article{
+  padding:30px 0; border-bottom:1px solid var(--linha);
+  display:grid; gap:8px;
+}
+.companhias article:last-child{ border-bottom:0 }
+.companhias b{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.35rem; color:var(--tinta);
+  letter-spacing:-.01em;
+}
+.companhias span{ font-size:.9rem; color:var(--texto-fraco) }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   12 · PERCURSO
+   ───────────────────────────────────────────────────────────────────────── */
+.percurso{ display:grid; gap:0; position:relative }
+.percurso article{
+  display:grid; grid-template-columns:auto 1fr; gap:22px;
+  padding:0 0 34px; position:relative;
+}
+.percurso article:last-child{ padding-bottom:0 }
+.percurso-marca{
+  width:13px; height:13px; border-radius:50%; margin-top:8px;
+  background:var(--mare-claro); border:2.5px solid var(--tinta);
+  position:relative; z-index:1; flex:none;
+}
+.percurso article:not(:last-child)::before{
+  content:""; position:absolute; left:6px; top:20px; bottom:-2px; width:1px;
+  background:var(--linha-esc);
+}
+.percurso h3{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.22rem; color:#fff;
+  margin-bottom:7px;
+}
+.percurso p{ font-size:.93rem; color:var(--texto-claro); line-height:1.65; max-width:52ch }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   13 · BALCÕES E CONTACTOS
+   ───────────────────────────────────────────────────────────────────────── */
+.balcoes{ display:grid; gap:clamp(22px, 3vw, 32px) }
+.balcao{
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
+  padding:clamp(26px, 3vw, 36px); box-shadow:var(--sombra-sub);
+  display:flex; flex-direction:column; gap:18px;
+}
+.balcao-topo{
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  padding-bottom:16px; border-bottom:1px solid var(--linha);
+}
+.balcao-topo h3{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.3rem; color:var(--tinta);
+  letter-spacing:-.01em;
+}
+.balcao-selo{
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--mare); background:rgba(51,113,143,.09);
+  border:1px solid rgba(51,113,143,.22); border-radius:var(--raio);
+  padding:6px 11px; white-space:nowrap;
+}
+.balcao dl{ display:grid; gap:14px }
+.balcao dt{
+  font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--texto-fraco); margin-bottom:3px;
+}
+.balcao dd{ margin:0; font-size:.97rem; line-height:1.55 }
+.balcao dd a{ color:var(--tinta); text-decoration:none; font-weight:600 }
+.balcao dd a:hover{ color:var(--mare); text-decoration:underline; text-underline-offset:3px }
+.balcao .botao{ margin-top:auto }
+
+/* Linha de contacto rápido (telefone/email grandes) */
+.contacto-directo{ display:grid; gap:18px }
+.contacto-directo a{
+  display:flex; align-items:center; gap:16px; text-decoration:none;
+  padding:20px 22px; background:var(--sal); border:1px solid var(--linha);
+  border-radius:var(--raio); transition:border-color var(--transicao), transform var(--transicao);
+}
+.contacto-directo a:hover{ border-color:var(--mare); transform:translateY(-2px) }
+.contacto-directo svg{ width:22px; color:var(--mare); flex:none }
+.contacto-directo span{ display:block; font-size:.76rem; color:var(--texto-fraco); margin-bottom:2px }
+.contacto-directo b{
+  font-family:var(--f-titulo); font-weight:600; font-size:1.12rem; color:var(--tinta);
+}
+
+/* Mapa incorporado */
+.mapa{
+  border:1px solid var(--linha); border-radius:var(--raio); overflow:hidden;
+  background:var(--areia-2); aspect-ratio:16/10;
+}
+.mapa iframe{ width:100%; height:100%; border:0; display:block; filter:saturate(.82) }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   14 · FORMULÁRIO
+   ───────────────────────────────────────────────────────────────────────── */
+.formulario{ display:grid; gap:18px }
+.campo{ display:grid; gap:7px }
+.campo label{ font-size:.86rem; font-weight:600; color:var(--tinta) }
+.campo label .opc{ font-weight:400; color:var(--texto-fraco) }
+.campo input, .campo select, .campo textarea{
+  width:100%; padding:13px 15px; background:var(--sal);
+  border:1px solid var(--linha); border-radius:var(--raio);
+  font-size:.97rem; transition:border-color var(--transicao), box-shadow var(--transicao);
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus{
+  outline:0; border-color:var(--mare); box-shadow:0 0 0 3px rgba(51,113,143,.14);
+}
+.campo textarea{ min-height:132px; resize:vertical }
+.campo-duplo{ display:grid; gap:18px }
+.consentimento{
+  display:grid; grid-template-columns:20px 1fr; gap:12px; align-items:start;
+  font-size:.85rem; line-height:1.55; color:var(--texto-fraco);
+}
+.consentimento input{ width:18px; height:18px; margin-top:3px; accent-color:var(--mare) }
+.consentimento a{ color:var(--mare) }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   15 · FAQ
+   ───────────────────────────────────────────────────────────────────────── */
+.faq{ border-top:1px solid var(--linha) }
+.faq details{ border-bottom:1px solid var(--linha) }
+.faq summary{
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+  padding:22px 0; cursor:pointer; list-style:none;
+  font-family:var(--f-titulo); font-weight:600; font-size:1.07rem; color:var(--tinta);
+  line-height:1.35;
+}
+.faq summary::-webkit-details-marker{ display:none }
+.faq summary::after{
+  content:""; width:13px; height:13px; flex:none;
+  background:currentColor; color:var(--mare);
+  clip-path:polygon(44% 0, 56% 0, 56% 44%, 100% 44%, 100% 56%, 56% 56%, 56% 100%, 44% 100%, 44% 56%, 0 56%, 0 44%, 44% 44%);
+  transition:transform var(--transicao);
+}
+.faq details[open] summary::after{ transform:rotate(135deg) }
+.faq details > div{ padding:0 0 24px; max-width:70ch }
+.faq details p{ font-size:.95rem; color:var(--texto-fraco); line-height:1.68 }
+.faq details p + p{ margin-top:.9em }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   15b · BALANÇO — "o que está coberto" vs "o que não está"
+   A objecção número um em seguros é não saber onde acaba a cobertura.
+   Dizê-lo antes de perguntarem constrói mais confiança do que escondê-lo.
+   ───────────────────────────────────────────────────────────────────────── */
+.balanco{ display:grid; gap:clamp(20px, 3vw, 28px) }
+.balanco-coluna{
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
+  padding:clamp(24px, 3vw, 32px); box-shadow:var(--sombra-sub);
+}
+.balanco-coluna h3{
+  display:flex; align-items:center; gap:11px;
+  font-family:var(--f-titulo); font-weight:600; font-size:1.12rem; color:var(--tinta);
+  padding-bottom:16px; margin-bottom:18px; border-bottom:1px solid var(--linha);
+}
+.balanco-coluna h3 .sinal{
+  width:26px; height:26px; flex:none; border-radius:50%; display:grid; place-items:center;
+}
+.balanco-coluna h3 .sinal svg{ width:14px; color:#fff }
+.balanco-inclui h3 .sinal{ background:var(--verde) }
+.balanco-exclui h3 .sinal{ background:var(--vermelho) }
+.balanco-coluna ul{ display:grid; gap:13px }
+.balanco-coluna li{
+  display:grid; grid-template-columns:18px 1fr; gap:12px; align-items:start;
+  font-size:.95rem; line-height:1.6;
+}
+.balanco-coluna li svg{ width:16px; margin-top:5px; flex:none }
+.balanco-inclui li svg{ color:var(--verde) }
+.balanco-exclui li svg{ color:var(--vermelho) }
+.balanco-coluna li b{ color:var(--tinta); font-weight:600 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   15c · AVALIAÇÕES — prova social
+   ⚠️ Usar apenas avaliações REAIS (Google, email, carta). Ver GUIA-DE-EDICAO.md
+   ───────────────────────────────────────────────────────────────────────── */
+.avaliacoes{ display:grid; gap:clamp(20px, 3vw, 26px) }
+.avaliacao{
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
+  padding:clamp(24px, 3vw, 30px); box-shadow:var(--sombra-sub);
+  display:flex; flex-direction:column; gap:16px;
+}
+.avaliacao-estrelas{ display:flex; gap:3px; color:var(--cobre) }
+.avaliacao-estrelas svg{ width:16px }
+.avaliacao blockquote{
+  font-family:var(--f-titulo); font-size:1.05rem; line-height:1.5; color:var(--tinta);
+  letter-spacing:-.005em;
+}
+.avaliacao figcaption{
+  margin-top:auto; padding-top:14px; border-top:1px solid var(--linha);
+  font-size:.85rem; color:var(--texto-fraco);
+}
+.avaliacao figcaption b{ display:block; color:var(--tinta); font-weight:600; font-size:.92rem }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   15d · BARRA DE ACÇÃO FIXA (só telemóvel)
+   Num negócio local, a chamada telefónica é a conversão principal.
+   Mantém "Ligar" sempre ao alcance do polegar.
+   ───────────────────────────────────────────────────────────────────────── */
+.barra-accao{
+  position:fixed; left:0; right:0; bottom:0; z-index:95;
+  display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  background:var(--linha);
+  border-top:1px solid var(--linha);
+  box-shadow:0 -6px 22px rgba(13,34,51,.10);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.barra-accao a{
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  min-height:56px; padding:14px 10px; text-decoration:none;
+  font-size:.94rem; font-weight:600;
+}
+.barra-accao a:first-child{ background:var(--tinta); color:#fff }
+.barra-accao a:last-child{ background:var(--sal); color:var(--tinta) }
+.barra-accao svg{ width:17px; flex:none }
+body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
+
+@media (min-width:780px){
+  .barra-accao{ display:none }
+  body{ padding-bottom:0 }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   16 · RODAPÉ
+   ───────────────────────────────────────────────────────────────────────── */
+.rodape{ background:var(--tinta); color:var(--texto-claro); padding-block:clamp(52px, 6vw, 80px) 0 }
+.rodape-grelha{ display:grid; gap:clamp(32px, 4vw, 52px) }
+.rodape .marca-simbolo{ background:var(--sal); color:var(--tinta) }
+.rodape .marca-nome b{ color:#fff }
+.rodape .marca-nome small{ color:var(--mare-claro) }
+.rodape-sobre p{ font-size:.9rem; line-height:1.65; margin-top:20px; max-width:38ch }
+.rodape h4{
+  font-family:var(--f-titulo); font-weight:600; font-size:1rem; color:#fff;
+  margin-bottom:16px;
+}
+/* gap menor + padding para dar aos links uma área de toque ≥24 px
+   (WCAG 2.2, critério 2.5.8 Target Size Minimum) */
+.rodape ul{ display:grid; gap:5px }
+.rodape ul a{ display:inline-block; padding-block:4px }
+.rodape a{ text-decoration:none; font-size:.9rem; transition:color var(--transicao) }
+.rodape a:hover{ color:#fff; text-decoration:underline; text-underline-offset:3px }
+.rodape-legal{
+  margin-top:clamp(40px, 5vw, 60px); padding-block:26px 30px;
+  border-top:1px solid var(--linha-esc);
+  display:grid; gap:14px; font-size:.8rem; line-height:1.6;
+}
+.rodape-legal p{ opacity:.78; max-width:88ch }
+.rodape-legal-linha{ display:flex; flex-wrap:wrap; gap:8px 22px; align-items:center }
+.rodape-legal-linha a{ font-size:.8rem }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   17 · MOVIMENTO
+   ───────────────────────────────────────────────────────────────────────── */
+.surge{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease }
+.surge.visivel{ opacity:1; transform:none }
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto }
+  *, *::before, *::after{
+    animation-duration:.01ms !important; animation-iteration-count:1 !important;
+    transition-duration:.01ms !important; scroll-behavior:auto !important;
+  }
+  .surge{ opacity:1; transform:none }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   18 · RESPONSIVO
+   ───────────────────────────────────────────────────────────────────────── */
+@media (min-width:600px){
+  .faixa-factos ul{ grid-template-columns:repeat(2, 1fr); column-gap:clamp(24px, 4vw, 56px) }
+  .faixa-factos li:nth-last-child(2){ border-bottom:0 }
+  .campo-duplo{ grid-template-columns:1fr 1fr }
+  .rodape-legal{ grid-template-columns:1fr auto; align-items:center }
+}
+
+@media (min-width:780px){
+  .tres-colunas{ grid-template-columns:repeat(3, 1fr) }
+  .balcoes{ grid-template-columns:repeat(2, 1fr) }
+  .balanco{ grid-template-columns:repeat(2, 1fr) }
+  .avaliacoes{ grid-template-columns:repeat(3, 1fr) }
+  .contacto-directo{ grid-template-columns:repeat(2, 1fr) }
+  .secao-cabeca{ grid-template-columns:1.5fr 1fr }
+  .companhias{ grid-template-columns:repeat(2, 1fr); column-gap:clamp(32px, 5vw, 64px) }
+  .companhias article:nth-last-child(2){ border-bottom:0 }
+}
+
+@media (min-width:940px){
+  .nav-principal{ display:flex }
+  .cabecalho-tel{ display:inline-flex }
+  .menu-botao{ display:none }
+  .nav-movel{ display:none !important }
+  .hero-grelha{ grid-template-columns:1.15fr .85fr; align-items:center }
+  .faixa-factos ul{ grid-template-columns:repeat(4, 1fr) }
+  .faixa-factos li{ border-bottom:0; padding:30px 0 }
+  .duas-colunas{ grid-template-columns:1fr 1fr }
+  .duas-colunas.pende-esquerda{ grid-template-columns:1.25fr .75fr }
+  .duas-colunas.pende-direita{ grid-template-columns:.75fr 1.25fr }
+  .rodape-grelha{ grid-template-columns:1.6fr 1fr 1fr 1.1fr }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   19 · IMPRESSÃO
+   ───────────────────────────────────────────────────────────────────────── */
+@media print{
+  .cabecalho, .nav-movel, .rodape, .botao, .mapa, .barra-accao{ display:none !important }
+  body{ background:#fff; color:#000; font-size:11pt; padding-bottom:0 }
+  .faq details > div{ display:block !important }
+  .secao{ padding-block:16px }
+  a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:9pt; color:#555 }
+}

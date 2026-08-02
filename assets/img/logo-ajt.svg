@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" role="img" aria-label="AJT Seguros">
+  <title>AJT Seguros</title>
+  <!-- Lockup completo, para papel timbrado, partilhas e og:image.
+       Vetorização temporária — substituir pelo original quando disponível. -->
+  <defs>
+    <linearGradient id="lkClaro" x1="0.1" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#8ed3f0"/><stop offset="100%" stop-color="#3f9fd4"/>
+    </linearGradient>
+    <linearGradient id="lkEscuro" x1="0.2" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b9bd0"/><stop offset="55%" stop-color="#1f6ea3"/><stop offset="100%" stop-color="#164a72"/>
+    </linearGradient>
+    <linearGradient id="lkBarra" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5fb4e0"/><stop offset="100%" stop-color="#2078ac"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Forma de fundo em azul-noite, como no papel timbrado -->
+  <path d="M118 12 h34 a52 52 0 0 1 0 104 h-34 z" fill="#16375a"/>
+
+  <!-- Símbolo -->
+  <g transform="translate(106 24) scale(0.85)" stroke-linejoin="round" stroke-width="2.5">
+    <path d="M48 8 L90 88 L69 88 L48 44 Z" fill="url(#lkEscuro)" stroke="url(#lkEscuro)"/>
+    <path d="M48 8 L6 88 L27 88 L48 44 Z"  fill="url(#lkClaro)"  stroke="url(#lkClaro)"/>
+    <path d="M32 58 L64 58 L70 71 L26 71 Z" fill="url(#lkBarra)" stroke="url(#lkBarra)"/>
+  </g>
+
+  <!-- Assinatura -->
+  <text x="150" y="130" text-anchor="middle" fill="#16375a"
+        font-family="'Public Sans','Segoe UI',Arial,sans-serif"
+        font-size="34" font-weight="600" letter-spacing="2">AJT</text>
+  <text x="150" y="146" text-anchor="middle" fill="#2f6f9b"
+        font-family="'Public Sans','Segoe UI',Arial,sans-serif"
+        font-size="11" font-weight="500" letter-spacing="8">SEGUROS</text>
+</svg>
