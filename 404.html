@@ -9,6 +9,20 @@
 <title>Página não encontrada — AJT Seguros</title>
 <meta name="description" content="A página que procura não existe no sítio da AJT Seguros.">
 
+<!-- ⚙️ NÃO APAGAR — o 404 é servido a partir de qualquer endereço inexistente
+     (por exemplo /seguros/pagina-que-nao-existe.html), pelo que os caminhos
+     relativos deixariam de funcionar. Isto fixa a raiz do site antes de o
+     browser carregar a folha de estilos e as imagens.
+     Funciona tanto na raiz de um domínio como numa subpasta do GitHub Pages. -->
+<script>
+  (function () {
+    var partes = location.pathname.split('/');
+    // Em GitHub Pages de projecto o site vive em /nome-do-repositorio/
+    var raiz = location.hostname.slice(-10) === 'github.io' ? '/' + partes[1] + '/' : '/';
+    document.write('<base href="' + raiz + '">');
+  })();
+</script>
+
 <link rel="canonical" href="https://www.ajtseguros.pt/404.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_PT">
@@ -88,8 +102,8 @@
       <h1 class="titulo titulo-xl">Esta página<br><em>não existe.</em></h1>
       <p class="lede" style="margin:24px auto 34px">Deve ter sido movida, ou o endereço tem um engano. Nada de grave — mostramos-lhe o caminho de volta.</p>
       <div class="accoes" style="justify-content:center">
-        <a class="botao botao-primario" href="/index.html">Ir para a página inicial <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-        <a class="botao botao-secundario" href="/contactos.html">Contactos</a>
+        <a class="botao botao-primario" href="index.html">Ir para a página inicial <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <a class="botao botao-secundario" href="contactos.html">Contactos</a>
       </div>
     </div>
   </section>
