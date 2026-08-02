@@ -77,28 +77,28 @@ Se for outro, é preciso substituir em:
 
 ## 🟠 5 · Fotografias reais
 
-**Já resolvido:** as três ilustrações originais estão integradas —
-estuário do Tejo (página inicial), marginal de Alcochete (`sobre.html`)
-e acidente automóvel (`seguros/automovel.html` e `sinistros.html`).
+**Já resolvido.** As seis ilustrações originais estão integradas e
+optimizadas (duas larguras cada, para `srcset`):
 
-**Ainda em falta — a fotografia da montra do balcão da Alameda.**
+| Ilustração | Onde aparece |
+|---|---|
+| `estuario-tejo` | página inicial, no cartucho do cabeçalho |
+| `escritorio-alameda` | `sobre.html` — a montra do n.º 97 |
+| `alcochete-marginal` | `contactos.html` |
+| `acidente-automovel` | `seguros/automovel.html` e `sinistros.html` |
+| `acidente-trabalho` | `seguros/empresas.html` |
+| `acidentes-pessoais` | `seguros/acidentes-pessoais.html` |
 
-1. Gravar em `assets/img/escritorio-alameda.jpg` (largura ideal 1600 px).
-2. Acrescentar a `contactos.html`, dentro do cartão do Balcão da Alameda,
-   ou em `sobre.html` a seguir à ilustração da marginal:
+**Ainda por decidir:** as ilustrações foram criadas com base em fotografias
+encontradas na internet. Antes de publicar, convém confirmar com o
+proprietário que fica satisfeito com a representação do espaço — sobretudo
+a da montra, que reproduz a fachada real e a insígnia Allianz.
 
-```html
-<figure class="figura">
-  <img src="assets/img/escritorio-alameda.jpg"
-       alt="Montra do balcão da AJT Seguros na Alameda do Grupo Desportivo Alcochetense, 97"
-       width="1600" height="900" loading="lazy">
-  <figcaption>O balcão da Alameda, no número 97. Entra-se sem marcação.</figcaption>
-</figure>
-```
+**Também úteis, se houver:** fotografias reais do segundo balcão e da equipa.
+Fotografias de pessoas verdadeiras são dos elementos que mais aumentam a
+confiança num site de serviços locais — mais até do que boas ilustrações.
 
-**Também úteis, se houver:** fotografia do segundo balcão e uma fotografia
-da equipa. Fotografias reais de pessoas e do espaço são dos elementos que mais
-aumentam a confiança num site de serviços locais.
+**Ramos ainda sem ilustração:** habitação, saúde e vida.
 
 ---
 
