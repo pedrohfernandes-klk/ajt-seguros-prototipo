@@ -535,6 +535,17 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
   font-family:var(--f-titulo); font-style:italic;
 }
 
+/* Pares editoriais — dois momentos complementares do mesmo seguro */
+.figuras-duplas{
+  display:grid;
+  gap:clamp(28px, 4vw, 48px);
+  align-items:start;
+}
+.figuras-duplas .figura img{ aspect-ratio:16/9 }
+@media (min-width:940px){
+  .figuras-duplas{ grid-template-columns:repeat(2, minmax(0, 1fr)) }
+}
+
 /* Cartão simples reutilizável */
 .cartao{
   background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
