@@ -230,43 +230,35 @@
 
 <main id="conteudo">
 
-  <section class="hero">
-    <div class="envelope hero-grelha">
+  <section class="hero claro">
+    <!-- A ilustração do estuário passou de miniatura a fundo da página.
+         O véu escuro está no CSS (.hero::before) e garante o contraste. -->
+    <img class="hero-fundo"
+         src="assets/img/estuario-tejo-1400.jpg"
+         srcset="assets/img/estuario-tejo-800.jpg 800w, assets/img/estuario-tejo-1400.jpg 1400w"
+         sizes="100vw"
+         alt="Ilustração do estuário do Tejo visto de Alcochete: flamingos na água baixa, sapal em primeiro plano e a Ponte Vasco da Gama ao fundo"
+         width="1400" height="788" fetchpriority="high">
+
+    <div class="envelope hero-conteudo">
       <div class="surge">
         <!-- ✏️ EDITAR: etiqueta, título e parágrafo de apresentação -->
-        <p class="etiqueta">Mediação de seguros · Alcochete · desde 2002</p>
+        <p class="etiqueta">Alcochete · desde 2002</p>
         <h1 class="titulo titulo-xl">O seguro certo, explicado <em>sem letra pequena.</em></h1>
         <p class="lede">Comparamos as companhias por si, dizemos-lhe o que está — e o que não está — coberto, e tratamos do processo no dia em que precisa mesmo de accionar o seguro.</p>
 
         <div class="accoes">
           <a class="botao botao-primario" href="contactos.html">Pedir simulação gratuita <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-          <a class="ligacao" href="tel:+351212348047">ou ligue 212 348 047</a>
+          <a class="botao botao-secundario" href="tel:+351212348047">Ligar 212 348 047</a>
         </div>
-        <p class="nota" style="margin-top:20px">Resposta em 24 horas úteis · Sem compromisso · Sem insistências</p>
+        <p class="nota" style="margin-top:22px">Resposta em 24 horas úteis · Sem compromisso · Sem insistências</p>
       </div>
-
-      <figure class="hero-cartucho surge">
-        <div class="hero-cartucho-figura">
-          <img src="assets/img/estuario-tejo-1400.jpg"
-               srcset="assets/img/estuario-tejo-800.jpg 800w, assets/img/estuario-tejo-1400.jpg 1400w"
-               sizes="(min-width: 940px) 42vw, 100vw"
-               alt="Ilustração do estuário do Tejo visto de Alcochete: flamingos na água baixa, sapal em primeiro plano e a Ponte Vasco da Gama ao fundo"
-               width="1400" height="788" fetchpriority="high">
-          <figcaption class="hero-cartucho-legenda">
-            <span>Alcochete</span><span>38°45′N · 8°58′W</span>
-          </figcaption>
-        </div>
-        <div class="hero-cartucho-corpo">
-          <b>Atendimento de porta aberta.</b>
-          <p>Dois balcões na vila, com pessoas que o atendem pelo nome — e não um número de processo.</p>
-        </div>
-      </figure>
     </div>
   </section>
 
-  <section class="faixa-factos" aria-label="A AJT em números">
+  <section class="provas" aria-label="A AJT em números">
     <div class="envelope">
-      <ul>
+      <ul class="provas-cartao surge">
         <!-- ✏️ EDITAR: manter apenas números verdadeiros -->
         <li><b>2002</b><span>o ano em que abrimos portas em Alcochete</span></li>
         <li><b>2</b><span>balcões de atendimento presencial na vila</span></li>
@@ -286,66 +278,72 @@
         <p>Seis áreas que cobrem o essencial de uma vida: o que conduz, onde mora, a saúde, e quem fica se faltar.</p>
       </div>
 
-      <div class="registo surge">
-        <a href="particulares/automovel.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Automóvel</h3>
-              <span class="marcador">ligeiros, comerciais e clássicos</span>
-            </div>
+      <div class="ramos surge">
+        <a class="ramo" href="particulares/automovel.html">
+          <div class="ramo-figura">
+            <img src="assets/img/automovel-800.jpg" alt="" width="800" height="500" loading="lazy">
+          </div>
+          <div class="ramo-corpo">
+            <span class="ramo-marcador">Ligeiros, comerciais e clássicos</span>
+            <h3>Automóvel</h3>
             <p>Da responsabilidade civil obrigatória ao contra-todos-os-riscos, com a franquia e a assistência dimensionadas ao uso que dá ao carro.</p>
+            <span class="ramo-seta">Ver seguro automóvel <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="particulares/motociclo.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Motociclo</h3>
-              <span class="marcador">motas, scooters e ciclomotores</span>
-            </div>
+        <a class="ramo" href="particulares/motociclo.html">
+          <div class="ramo-figura">
+            <img src="assets/img/automovel-800.jpg" alt="" width="800" height="500" loading="lazy">
+          </div>
+          <div class="ramo-corpo">
+            <span class="ramo-marcador">Motas, scooters e ciclomotores</span>
+            <h3>Motociclo</h3>
             <p>O obrigatório é igual ao do carro. O que muda é tudo o resto: proteção do condutor, capacete e equipamento pesam aqui muito mais.</p>
+            <span class="ramo-seta">Ver seguro de motociclo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="particulares/habitacao.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Habitação</h3>
-              <span class="marcador">multirriscos para casa própria e arrendada</span>
-            </div>
+        <a class="ramo" href="particulares/habitacao.html">
+          <div class="ramo-figura">
+            <img src="assets/img/habitacao-800.jpg" alt="" width="800" height="500" loading="lazy">
+          </div>
+          <div class="ramo-corpo">
+            <span class="ramo-marcador">Casa própria e arrendada</span>
+            <h3>Habitação</h3>
             <p>Edifício e recheio, com as coberturas que o banco exige no crédito — e as que só o protegem a si, como os fenómenos sísmicos.</p>
+            <span class="ramo-seta">Ver seguro de habitação <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="particulares/saude.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Saúde</h3>
-              <span class="marcador">rede convencionada e estomatologia</span>
-            </div>
+        <a class="ramo" href="particulares/saude.html">
+          <div class="ramo-figura">
+            <img src="assets/img/saude-800.jpg" alt="" width="800" height="500" loading="lazy">
+          </div>
+          <div class="ramo-corpo">
+            <span class="ramo-marcador">Rede convencionada e estomatologia</span>
+            <h3>Saúde</h3>
             <p>Consultas, exames, internamento e dentária a preços de rede. Explicamos carências e exclusões antes de subscrever, não depois.</p>
+            <span class="ramo-seta">Ver seguro de saúde <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="particulares/vida.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Vida</h3>
-              <span class="marcador">crédito habitação e proteção familiar</span>
-            </div>
+        <a class="ramo" href="particulares/vida.html">
+          <div class="ramo-figura">
+            <img src="assets/img/vida-800.jpg" alt="" width="800" height="500" loading="lazy">
+          </div>
+          <div class="ramo-corpo">
+            <span class="ramo-marcador">Crédito habitação e proteção familiar</span>
+            <h3>Vida</h3>
             <p>O seguro de vida do crédito não tem de ficar no banco. A lei protege a transferência, e nós tratamos dela.</p>
+            <span class="ramo-seta">Ver seguro de vida <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="particulares/acidentes-pessoais.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Acidentes pessoais</h3>
-              <span class="marcador">desporto, escola e tempos livres</span>
-            </div>
-            <p>Cobre o que acontece fora do trabalho e fora da estrada: um treino, umas escadas, uma caminhada ao domingo.</p>
+        <a class="ramo" href="particulares/acidentes-pessoais.html">
+          <div class="ramo-figura">
+            <img src="assets/img/acidentes-pessoais-800.jpg" alt="" width="800" height="500" loading="lazy">
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+          <div class="ramo-corpo">
+            <span class="ramo-marcador">Desporto, escola e tempos livres</span>
+            <h3>Acidentes pessoais</h3>
+            <p>Cobre o que acontece fora do trabalho e fora da estrada: um treino, umas escadas, uma caminhada ao domingo.</p>
+            <span class="ramo-seta">Ver acidentes pessoais <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
+          </div>
         </a>
       </div>
       <div style="margin-top:28px">
@@ -364,56 +362,53 @@
         <p>Do café à oficina, da obra ao escritório. Começamos por verificar o que a lei exige para a sua actividade.</p>
       </div>
 
-      <div class="registo surge">
-        <a href="empresas/acidentes-trabalho.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Acidentes de trabalho</h3>
-              <span class="marcador">obrigatório desde o primeiro trabalhador</span>
-            </div>
+      <!-- Os seguros de empresa usam ícone em vez de fotografia: dá hierarquia
+           face aos particulares e evita onze imagens na mesma página. -->
+      <div class="ramos surge">
+        <a class="ramo ramo-icone" href="empresas/acidentes-trabalho.html">
+          <div class="ramo-corpo">
+            <span class="ramo-simbolo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16a9 9 0 0 1 18 0"/><path d="M2 16h20"/><path d="M9 7.6V4.8A1.8 1.8 0 0 1 10.8 3h2.4A1.8 1.8 0 0 1 15 4.8v2.8"/><path d="M12 7.5V16"/></svg></span>
+            <span class="ramo-marcador">Obrigatório por lei</span>
+            <h3>Acidentes de trabalho</h3>
             <p>Obrigatório por lei para trabalhadores por conta de outrem e também para independentes. É o primeiro a tratar, sem excepção.</p>
+            <span class="ramo-seta">Ver acidentes de trabalho <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="empresas/responsabilidade-civil.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Responsabilidade civil</h3>
-              <span class="marcador">exploração e profissional</span>
-            </div>
+        <a class="ramo ramo-icone" href="empresas/responsabilidade-civil.html">
+          <div class="ramo-corpo">
+            <span class="ramo-simbolo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 4.5 5.8v5.6c0 4.4 3 8.2 7.5 9.8 4.5-1.6 7.5-5.4 7.5-9.8V5.8Z"/><path d="m9 12 2.2 2.2L15.4 10"/></svg></span>
+            <span class="ramo-marcador">Exploração e profissional</span>
+            <h3>Responsabilidade civil</h3>
             <p>Responde pelos danos que a actividade causa a terceiros. Obrigatório em vários sectores, indispensável em quase todos.</p>
+            <span class="ramo-seta">Ver responsabilidade civil <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="empresas/multirriscos.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Multirriscos empresarial</h3>
-              <span class="marcador">instalações, equipamento e existências</span>
-            </div>
+        <a class="ramo ramo-icone" href="empresas/multirriscos.html">
+          <div class="ramo-corpo">
+            <span class="ramo-simbolo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M4.5 21V6.5L12 3l7.5 3.5V21"/><path d="M9 21v-4.5h6V21"/><path d="M8.5 9.5h2M13.5 9.5h2M8.5 13h2M13.5 13h2"/></svg></span>
+            <span class="ramo-marcador">Instalações, equipamento e existências</span>
+            <h3>Multirriscos empresarial</h3>
             <p>O património do negócio coberto num só contrato — incluindo o lucro que deixa de gerar enquanto está parado.</p>
+            <span class="ramo-seta">Ver multirriscos empresarial <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="empresas/frotas.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Frotas auto</h3>
-              <span class="marcador">ligeiros, comerciais e pesados</span>
-            </div>
+        <a class="ramo ramo-icone" href="empresas/frotas.html">
+          <div class="ramo-corpo">
+            <span class="ramo-simbolo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.5V8.5h11v8"/><path d="M13 11h4l3 3.2v2.3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/><path d="M8.8 17.5h5.9M2 17.5h1.2M20 17.5h2"/></svg></span>
+            <span class="ramo-marcador">Ligeiros, comerciais e pesados</span>
+            <h3>Frotas auto</h3>
             <p>A partir de três ou quatro viaturas compensa: uma renovação, um interlocutor e condições negociadas em bloco.</p>
+            <span class="ramo-seta">Ver seguro de frotas <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="empresas/saude-grupo.html">
-          <div>
-            <div class="registo-titulo">
-              <h3>Saúde de grupo</h3>
-              <span class="marcador">benefício para os colaboradores</span>
-            </div>
+        <a class="ramo ramo-icone" href="empresas/saude-grupo.html">
+          <div class="ramo-corpo">
+            <span class="ramo-simbolo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="7" r="2.8"/><path d="M3 20v-1.4A4.6 4.6 0 0 1 7.6 14h1.8a4.6 4.6 0 0 1 4.6 4.6V20"/><path d="M17.5 5.5v6M14.5 8.5h6"/></svg></span>
+            <span class="ramo-marcador">Benefício para os colaboradores</span>
+            <h3>Saúde de grupo</h3>
             <p>Custa menos por pessoa do que um seguro individual e, dentro de certos limites, é aceite como gasto em IRC.</p>
+            <span class="ramo-seta">Ver saúde de grupo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
           </div>
-          <span class="registo-seta" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
         </a>
       </div>
       <div style="margin-top:28px">
@@ -541,19 +536,19 @@
       </div>
 
       <div class="percurso surge">
-        <article><span class="percurso-marca" aria-hidden="true"></span><div>
+        <article><span class="percurso-marca" aria-hidden="true">01</span><div>
           <h3>Ouvimos o caso</h3>
           <p>O que tem, o que quer proteger e quanto está disposto a suportar em caso de sinistro. Sem formulário nem guião.</p>
         </div></article>
-        <article><span class="percurso-marca" aria-hidden="true"></span><div>
+        <article><span class="percurso-marca" aria-hidden="true">02</span><div>
           <h3>Comparamos propostas</h3>
           <p>Pedimos simulações às companhias que representamos e pomos as coberturas lado a lado, para ver onde estão as diferenças reais.</p>
         </div></article>
-        <article><span class="percurso-marca" aria-hidden="true"></span><div>
+        <article><span class="percurso-marca" aria-hidden="true">03</span><div>
           <h3>Explicamos e decide</h3>
           <p>Apresentamos as opções em português corrente, com os prós e os contras de cada uma. A decisão é sempre sua.</p>
         </div></article>
-        <article><span class="percurso-marca" aria-hidden="true"></span><div>
+        <article><span class="percurso-marca" aria-hidden="true">04</span><div>
           <h3>Ficamos por perto</h3>
           <p>Renovações, alterações de morada ou de veículo, participação de sinistros. É connosco que fala, não com um <i>call center</i>.</p>
         </div></article>

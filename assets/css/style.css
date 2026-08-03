@@ -35,8 +35,10 @@
   --tinta:      #0d2233;   /* azul-noite, cor institucional principal */
   --tinta-90:   #16334a;
   --tinta-70:   #2b4a63;
-  --mare:       #33718f;   /* azul-maré — ligações e acentos frios */
-  --mare-claro: #6f9db4;
+  --mare:       #16638f;   /* azul-maré — ligações e acentos frios */
+  --mare-forte: #0a4f77;   /* estado premido / hover de superfícies azuis */
+  --mare-claro: #7fb4cf;
+  --mare-veu:   rgba(22,99,143,.10);  /* fundo de pílulas e selos */
   --cobre:      #8f5527;   /* acento quente, usado com muita parcimónia */
   --sal:        #ffffff;
   --papel:      #fbf9f5;   /* fundo geral, quase-branco quente */
@@ -60,11 +62,14 @@
   /* Medidas */
   --max:        1180px;
   --max-texto:  62ch;
-  --raio:       3px;        /* quase reto — sobriedade institucional */
+  --raio-p:     8px;        /* pequeno — botões, campos, selos */
+  --raio:       12px;       /* médio — cartões e superfícies */
+  --raio-g:     20px;       /* grande — blocos que sangram */
   --gutter:     clamp(20px, 5vw, 56px);
   --secao-y:    clamp(64px, 9vw, 128px);
-  --sombra:     0 18px 44px rgba(13,34,51,.09);
-  --sombra-sub: 0 2px 10px rgba(13,34,51,.05);
+  --sombra:     0 22px 50px -18px rgba(13,34,51,.30);
+  --sombra-sub: 0 4px 16px -6px rgba(13,34,51,.16);
+  --sombra-alta:0 34px 70px -22px rgba(13,34,51,.38);
   --transicao:  .28s cubic-bezier(.2,.6,.3,1);
 }
 
@@ -135,22 +140,28 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 .claro .titulo, .claro .titulo em{ color:#fff }
 .claro .titulo em{ color:var(--mare-claro) }
 
-/* Etiqueta de secção — serifa itálica + traço fino.
-   (Deliberadamente NÃO é maiúsculas monoespaçadas, para não repetir o
-   registo de outros sites.) */
+/* Etiqueta de secção — pílula sans.
+   Era serifa itálica com traço: bonito, mas dava ao site um registo de
+   revista. A pílula lê-se como interface, que é o que aqui se quer. */
 .etiqueta{
-  font-family:var(--f-titulo);
-  font-style:italic;
-  font-size:.98rem;
-  font-variation-settings:"SOFT" 30, "WONK" 1;
-  color:var(--cobre);
-  display:flex; align-items:center; gap:14px;
-  margin-bottom:20px;
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--f-texto); font-style:normal;
+  font-size:.74rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--mare);
+  background:var(--mare-veu);
+  border:1px solid rgba(22,99,143,.18);
+  border-radius:999px; padding:7px 15px;
+  margin-bottom:22px;
 }
 .etiqueta::before{
-  content:""; width:34px; height:1px; background:currentColor; flex:none; opacity:.6;
+  content:""; width:5px; height:5px; border-radius:50%;
+  background:currentColor; flex:none;
 }
-.claro .etiqueta{ color:var(--mare-claro) }
+.claro .etiqueta{
+  color:#cfe4ef; background:rgba(255,255,255,.09);
+  border-color:rgba(255,255,255,.20);
+}
 
 .lede{
   font-size:clamp(1.05rem, 1.5vw, 1.2rem);
@@ -306,15 +317,16 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
    ───────────────────────────────────────────────────────────────────────── */
 .botao{
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  padding:15px 24px; border-radius:var(--raio); border:1px solid transparent;
+  padding:16px 26px; border-radius:var(--raio-p); border:1px solid transparent;
   font-size:.94rem; font-weight:600; text-decoration:none; cursor:pointer;
   transition:background var(--transicao), color var(--transicao),
-             border-color var(--transicao), transform var(--transicao);
+             border-color var(--transicao), transform var(--transicao),
+             box-shadow var(--transicao);
 }
 .botao svg{ width:14px; flex:none; transition:transform var(--transicao) }
 .botao:hover svg{ transform:translateX(3px) }
-.botao-primario{ background:var(--tinta); color:#fff }
-.botao-primario:hover{ background:var(--mare) }
+.botao-primario{ background:var(--mare); color:#fff; box-shadow:var(--sombra-sub) }
+.botao-primario:hover{ background:var(--mare-forte); transform:translateY(-2px); box-shadow:var(--sombra) }
 .botao-secundario{ background:transparent; color:var(--tinta); border-color:var(--tinta) }
 .botao-secundario:hover{ background:var(--tinta); color:#fff }
 .claro .botao-primario{ background:var(--sal); color:var(--tinta) }
@@ -338,48 +350,57 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 /* ─────────────────────────────────────────────────────────────────────────
    06 · HERO
    ───────────────────────────────────────────────────────────────────────── */
-.hero{ position:relative; background:var(--areia-2); overflow:hidden }
-.hero::after{
-  /* horizonte do estuário desenhado em CSS — sem imagens pesadas */
-  content:""; position:absolute; inset:auto 0 0 0; height:34%;
+/* Herói com imagem a sangrar e véu azul-noite.
+   A versão anterior era fundo liso com um cartão ao lado — lia-se como o
+   cabeçalho de um artigo. Uma fotografia à largura toda é o que separa
+   visualmente um site de empresa de um blogue. */
+.hero{ position:relative; background:var(--tinta); overflow:hidden; isolation:isolate }
+.hero-fundo{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 62%; z-index:-2;
+}
+.hero::before{
+  /* véu: escurece o lado do texto e mantém a imagem legível à direita */
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
   background:
-    linear-gradient(180deg, rgba(236,227,211,0) 0%, rgba(214,203,183,.55) 55%, rgba(191,180,160,.7) 100%);
-  pointer-events:none;
+    linear-gradient(100deg, rgba(8,26,41,.94) 0%, rgba(8,26,41,.86) 38%,
+                            rgba(8,26,41,.55) 68%, rgba(8,26,41,.42) 100%),
+    linear-gradient(180deg, rgba(8,26,41,.45) 0%, rgba(8,26,41,0) 30%);
 }
-.hero-grelha{
+.hero-conteudo{
   position:relative; z-index:1;
-  display:grid; gap:clamp(32px, 5vw, 64px);
-  padding-block:clamp(38px, 8vw, 104px) clamp(48px, 9vw, 120px);
+  padding-block:clamp(64px, 11vw, 148px) clamp(96px, 12vw, 168px);
+  max-width:none;
 }
+.hero-conteudo > div{ max-width:44rem }
+.hero .titulo, .hero .titulo em{ color:#fff }
+.hero .titulo em{ color:var(--mare-claro) }
+.hero .lede{ color:#dbe7ee; max-width:52ch; margin-bottom:clamp(28px, 3.5vw, 36px) }
 .hero h1{ margin-bottom:clamp(18px, 2.5vw, 26px) }
-.hero .lede{ margin-bottom:clamp(26px, 3.5vw, 34px) }
-.hero .etiqueta{ margin-bottom:16px }
-.hero .accoes{ margin-bottom:0 }
+.hero .nota{ color:#b6c7d3; opacity:.9 }
+.hero .ligacao{ color:#fff; border-color:var(--mare-claro) }
+.hero .botao-secundario{ color:#fff; border-color:rgba(255,255,255,.45) }
+.hero .botao-secundario:hover{ background:#fff; color:var(--tinta); border-color:#fff }
 
-/* Cartucho lateral — o "postal" de Alcochete */
-.hero-cartucho{
-  position:relative; align-self:center;
-  border:1px solid var(--linha); border-radius:var(--raio);
-  background:var(--sal); box-shadow:var(--sombra); overflow:hidden;
+/* Cartão de provas — sobe por cima do herói e quebra o ritmo vertical */
+.provas{ position:relative; z-index:2; margin-top:clamp(-88px, -7vw, -56px) }
+.provas-cartao{
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio-g);
+  box-shadow:var(--sombra-alta);
+  display:grid; grid-template-columns:1fr; gap:0;
+  overflow:hidden;
 }
-.hero-cartucho-figura{ position:relative; aspect-ratio:16/10; background:var(--tinta) }
-.hero-cartucho-figura img,
-.hero-cartucho-figura svg{ width:100%; height:100%; display:block; object-fit:cover }
-.hero-cartucho-legenda{
-  position:absolute; left:0; right:0; bottom:0;
-  padding:16px 20px; display:flex; justify-content:space-between; align-items:flex-end;
-  color:#fff; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; font-weight:600;
-  /* véu reforçado: a legenda tem de ler-se por cima de qualquer imagem */
-  background:linear-gradient(180deg,
-    rgba(13,34,51,0) 0%, rgba(13,34,51,.45) 45%, rgba(13,34,51,.88) 100%);
-  padding-top:38px;
+.provas-cartao li{
+  padding:26px clamp(22px, 3vw, 34px);
+  border-bottom:1px solid var(--linha);
+  display:flex; flex-direction:column; gap:6px;
 }
-.hero-cartucho-corpo{ padding:22px 24px 24px }
-.hero-cartucho-corpo > b{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.08rem; color:var(--tinta);
-  display:block; margin-bottom:6px;
+.provas-cartao li:last-child{ border-bottom:0 }
+.provas-cartao b{
+  font-family:var(--f-titulo); font-weight:600; font-size:2.4rem; line-height:1;
+  color:var(--mare); letter-spacing:-.03em;
 }
-.hero-cartucho-corpo p{ font-size:.88rem; color:var(--texto-fraco); line-height:1.6 }
+.provas-cartao span{ font-size:.88rem; line-height:1.45; color:var(--texto-fraco) }
 
 /* Hero curto — páginas interiores */
 .hero-interior{
@@ -408,24 +429,58 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 .migalhas [aria-current]{ font-weight:600; color:#fff }
 
 /* ─────────────────────────────────────────────────────────────────────────
-   07 · FAIXA DE FACTOS
+   07 · RAMOS EM CARTÃO — a grelha que substitui a lista de filetes
+   A lista com hairlines lia-se como um índice de artigos. Um cartão com
+   imagem diz "produto"; uma linha com título diz "post".
    ───────────────────────────────────────────────────────────────────────── */
-.faixa-factos{ background:var(--tinta); color:var(--texto-claro) }
-.faixa-factos ul{
-  display:grid; grid-template-columns:1fr; gap:0;
-  padding-block:0;
+.ramos{ display:grid; gap:clamp(18px, 2.2vw, 26px) }
+.ramo{
+  position:relative; display:flex; flex-direction:column;
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
+  box-shadow:var(--sombra-sub); overflow:hidden; text-decoration:none;
+  transition:box-shadow var(--transicao), transform var(--transicao),
+             border-color var(--transicao);
 }
-.faixa-factos li{
-  padding:22px 0; display:flex; align-items:baseline; gap:14px;
-  border-bottom:1px solid var(--linha-esc);
+.ramo:hover{
+  transform:translateY(-4px); box-shadow:var(--sombra); border-color:var(--mare-claro);
 }
-.faixa-factos li:last-child{ border-bottom:0 }
-.faixa-factos b{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.9rem; color:#fff;
-  line-height:1; letter-spacing:-.02em; flex:none;
+.ramo-figura{ position:relative; aspect-ratio:16/10; background:var(--tinta); overflow:hidden }
+.ramo-figura img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .6s cubic-bezier(.2,.6,.3,1);
 }
-.faixa-factos b sup{ font-size:.5em; color:var(--mare-claro); top:-.7em; position:relative }
-.faixa-factos span{ font-size:.88rem; line-height:1.45 }
+.ramo:hover .ramo-figura img{ transform:scale(1.045) }
+.ramo-corpo{ padding:clamp(20px, 2.4vw, 26px); display:flex; flex-direction:column; flex:1; gap:8px }
+.ramo-corpo h3{
+  font-family:var(--f-texto); font-weight:700; font-size:1.16rem;
+  color:var(--tinta); letter-spacing:-.01em; line-height:1.25;
+}
+.ramo-marcador{
+  font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+  color:var(--mare);
+}
+.ramo-corpo p{ font-size:.92rem; color:var(--texto-fraco); line-height:1.6 }
+.ramo-seta{
+  margin-top:auto; padding-top:16px;
+  display:inline-flex; align-items:center; gap:9px;
+  font-size:.88rem; font-weight:600; color:var(--mare);
+  transition:gap var(--transicao);
+}
+.ramo-seta svg{ width:13px }
+.ramo:hover .ramo-seta{ gap:14px }
+
+/* Variante sem imagem, com ícone — usada nos seguros de empresa.
+   A diferença de tratamento é deliberada: dá hierarquia entre os dois
+   universos e evita onze fotografias na mesma página. */
+.ramo-icone .ramo-corpo{ padding-top:clamp(24px, 2.6vw, 30px) }
+.ramo-simbolo{
+  width:46px; height:46px; flex:none; border-radius:var(--raio-p);
+  background:var(--mare-veu); color:var(--mare);
+  display:grid; place-items:center; margin-bottom:6px;
+  transition:background var(--transicao), color var(--transicao);
+}
+.ramo-simbolo svg{ width:23px }
+.ramo-icone:hover .ramo-simbolo{ background:var(--mare); color:#fff }
 
 /* ─────────────────────────────────────────────────────────────────────────
    08 · SECÇÕES GENÉRICAS
@@ -492,7 +547,7 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 .claro .argumentos article,
 .secao-tinta .argumentos article{ border-color:var(--linha-esc) }
 .argumentos h3{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.22rem; color:var(--tinta);
+  font-family:var(--f-texto); font-weight:700; font-size:1.14rem; color:var(--tinta);
   margin-bottom:9px; letter-spacing:-.01em;
 }
 .secao-tinta .argumentos h3{ color:#fff }
@@ -517,7 +572,7 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 /* Só o <b> que é filho directo é o título da caixa; os <b> dentro dos
    parágrafos continuam a ser ênfase em linha. */
 .destaque > b{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.05rem; color:var(--tinta);
+  font-family:var(--f-texto); font-weight:700; font-size:1rem; color:var(--tinta);
   display:block; margin-bottom:8px;
 }
 .destaque p b, .destaque p strong{ color:var(--tinta); font-weight:600 }
@@ -554,27 +609,26 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 }
 a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
 .cartao h3{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.2rem; color:var(--tinta);
-  margin-bottom:10px;
+  font-family:var(--f-texto); font-weight:700; font-size:1.14rem; color:var(--tinta);
+  margin-bottom:10px; letter-spacing:-.01em;
 }
 .cartao p{ font-size:.93rem; color:var(--texto-fraco) }
 
 /* ─────────────────────────────────────────────────────────────────────────
    11 · COMPANHIAS
    ───────────────────────────────────────────────────────────────────────── */
-.companhias{
-  display:grid; gap:0; border-top:1px solid var(--linha); border-bottom:1px solid var(--linha);
-}
+.companhias{ display:grid; gap:clamp(18px, 2.2vw, 24px) }
 .companhias article{
-  padding:30px 0; border-bottom:1px solid var(--linha);
-  display:grid; gap:8px;
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
+  box-shadow:var(--sombra-sub); padding:clamp(26px, 3vw, 34px);
+  display:grid; gap:10px; align-content:start;
+  border-top:4px solid var(--mare);
 }
-.companhias article:last-child{ border-bottom:0 }
 .companhias b{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.35rem; color:var(--tinta);
-  letter-spacing:-.01em;
+  font-family:var(--f-texto); font-weight:700; font-size:1.25rem; color:var(--tinta);
+  letter-spacing:-.015em;
 }
-.companhias span{ font-size:.9rem; color:var(--texto-fraco) }
+.companhias span{ font-size:.93rem; color:var(--texto-fraco); line-height:1.6 }
 
 /* ─────────────────────────────────────────────────────────────────────────
    11b · CONJUNTO — os dois balcões como um todo
@@ -596,8 +650,8 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
   border-bottom:1px solid var(--linha);
 }
 .conjunto-lado h3{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.25rem; color:var(--tinta);
-  letter-spacing:-.01em; margin:0;
+  font-family:var(--f-texto); font-weight:700; font-size:1.2rem; color:var(--tinta);
+  letter-spacing:-.015em; margin:0;
 }
 .conjunto-morada{ font-size:.85rem; color:var(--texto-fraco); margin:0 }
 .conjunto-lado > p:not(.conjunto-morada){ font-size:.95rem; color:var(--texto-fraco); line-height:1.62 }
@@ -641,18 +695,23 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
   padding:0 0 34px; position:relative;
 }
 .percurso article:last-child{ padding-bottom:0 }
+/* Número em disco, no lugar da antiga bolinha: dá a ler a ordem de
+   relance e ancora visualmente cada passo. */
 .percurso-marca{
-  width:13px; height:13px; border-radius:50%; margin-top:8px;
-  background:var(--mare-claro); border:2.5px solid var(--tinta);
-  position:relative; z-index:1; flex:none;
+  width:44px; height:44px; border-radius:50%; flex:none;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.22);
+  display:grid; place-items:center;
+  font-family:var(--f-titulo); font-weight:600; font-size:1.05rem;
+  color:var(--mare-claro); letter-spacing:-.01em;
+  position:relative; z-index:1;
 }
 .percurso article:not(:last-child)::before{
-  content:""; position:absolute; left:6px; top:20px; bottom:-2px; width:1px;
+  content:""; position:absolute; left:22px; top:52px; bottom:-2px; width:1px;
   background:var(--linha-esc);
 }
 .percurso h3{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.22rem; color:#fff;
-  margin-bottom:7px;
+  font-family:var(--f-texto); font-weight:700; font-size:1.14rem; color:#fff;
+  margin-bottom:7px; margin-top:9px;
 }
 .percurso p{ font-size:.93rem; color:var(--texto-claro); line-height:1.65; max-width:52ch }
 
@@ -670,8 +729,8 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
   padding-bottom:16px; border-bottom:1px solid var(--linha);
 }
 .balcao-topo h3{
-  font-family:var(--f-titulo); font-weight:600; font-size:1.3rem; color:var(--tinta);
-  letter-spacing:-.01em;
+  font-family:var(--f-texto); font-weight:700; font-size:1.2rem; color:var(--tinta);
+  letter-spacing:-.015em;
 }
 .balcao-selo{
   font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
@@ -742,8 +801,8 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
 .faq summary{
   display:flex; justify-content:space-between; align-items:center; gap:20px;
   padding:22px 0; cursor:pointer; list-style:none;
-  font-family:var(--f-titulo); font-weight:600; font-size:1.07rem; color:var(--tinta);
-  line-height:1.35;
+  font-family:var(--f-texto); font-weight:700; font-size:1.03rem; color:var(--tinta);
+  line-height:1.4;
 }
 .faq summary::-webkit-details-marker{ display:none }
 .faq summary::after{
@@ -769,7 +828,7 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
 }
 .balanco-coluna h3{
   display:flex; align-items:center; gap:11px;
-  font-family:var(--f-titulo); font-weight:600; font-size:1.12rem; color:var(--tinta);
+  font-family:var(--f-texto); font-weight:700; font-size:1.08rem; color:var(--tinta);
   padding-bottom:16px; margin-bottom:18px; border-bottom:1px solid var(--linha);
 }
 .balanco-coluna h3 .sinal{
@@ -850,7 +909,8 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 .rodape .marca-nome small{ color:var(--mare-claro) }
 .rodape-sobre p{ font-size:.9rem; line-height:1.65; margin-top:20px; max-width:38ch }
 .rodape h4{
-  font-family:var(--f-titulo); font-weight:600; font-size:1rem; color:#fff;
+  font-family:var(--f-texto); font-weight:700; font-size:.8rem; color:#fff;
+  letter-spacing:.09em; text-transform:uppercase;
   margin-bottom:16px;
 }
 /* gap menor + padding para dar aos links uma área de toque ≥24 px
@@ -887,8 +947,11 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
    18 · RESPONSIVO
    ───────────────────────────────────────────────────────────────────────── */
 @media (min-width:600px){
-  .faixa-factos ul{ grid-template-columns:repeat(2, 1fr); column-gap:clamp(24px, 4vw, 56px) }
-  .faixa-factos li:nth-last-child(2){ border-bottom:0 }
+  .provas-cartao{ grid-template-columns:repeat(2, 1fr) }
+  .provas-cartao li{ border-right:1px solid var(--linha) }
+  .provas-cartao li:nth-child(2n){ border-right:0 }
+  .provas-cartao li:nth-last-child(-n+2){ border-bottom:0 }
+  .ramos{ grid-template-columns:repeat(2, 1fr) }
   .campo-duplo{ grid-template-columns:1fr 1fr }
   .rodape-legal{ grid-template-columns:1fr auto; align-items:center }
 }
@@ -900,8 +963,7 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   .avaliacoes{ grid-template-columns:repeat(3, 1fr) }
   .contacto-directo{ grid-template-columns:repeat(2, 1fr) }
   .secao-cabeca{ grid-template-columns:1.5fr 1fr }
-  .companhias{ grid-template-columns:repeat(2, 1fr); column-gap:clamp(32px, 5vw, 64px) }
-  .companhias article:nth-last-child(2){ border-bottom:0 }
+  .companhias{ grid-template-columns:repeat(2, 1fr) }
 }
 
 @media (min-width:940px){
@@ -909,9 +971,11 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   .cabecalho-tel{ display:inline-flex }
   .menu-botao{ display:none }
   .nav-movel{ display:none !important }
-  .hero-grelha{ grid-template-columns:1.15fr .85fr; align-items:center }
-  .faixa-factos ul{ grid-template-columns:repeat(4, 1fr) }
-  .faixa-factos li{ border-bottom:0; padding:30px 0 }
+  .ramos{ grid-template-columns:repeat(3, 1fr) }
+  .provas-cartao{ grid-template-columns:repeat(4, 1fr) }
+  .provas-cartao li{ border-bottom:0 }
+  .provas-cartao li:nth-child(2n){ border-right:1px solid var(--linha) }
+  .provas-cartao li:last-child{ border-right:0 }
   .duas-colunas{ grid-template-columns:1fr 1fr }
   .duas-colunas.pende-esquerda{ grid-template-columns:1.25fr .75fr }
   .duas-colunas.pende-direita{ grid-template-columns:.75fr 1.25fr }
