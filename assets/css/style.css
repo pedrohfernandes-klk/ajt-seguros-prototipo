@@ -870,6 +870,64 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
 .avaliacao figcaption b{ display:block; color:var(--tinta); font-weight:600; font-size:.92rem }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   15e · SIMULADORES DAS COMPANHIAS
+   Azulejos que saem do site para o simulador da seguradora. Como levam o
+   visitante para fora, a seta diagonal e o aviso no bloco são parte do
+   componente, não decoração: quem clica tem de saber que sai daqui.
+   ───────────────────────────────────────────────────────────────────────── */
+.companhia-bloco{
+  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio-g);
+  box-shadow:var(--sombra-sub); overflow:hidden;
+  padding:clamp(26px, 3vw, 38px);
+}
+.companhia-bloco + .companhia-bloco{ margin-top:clamp(24px, 3vw, 34px) }
+.companhia-cabeca{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px;
+  padding-bottom:18px; margin-bottom:24px; border-bottom:1px solid var(--linha);
+}
+.companhia-cabeca h2{
+  font-family:var(--f-texto); font-weight:700; font-size:1.3rem;
+  color:var(--tinta); letter-spacing:-.015em;
+}
+.companhia-cabeca span{ font-size:.9rem; color:var(--texto-fraco) }
+
+.azulejos{ display:grid; gap:clamp(12px, 1.6vw, 16px); grid-template-columns:repeat(2, 1fr) }
+.azulejo{
+  position:relative; display:flex; flex-direction:column; gap:10px;
+  padding:20px 18px; text-decoration:none;
+  border:1px solid var(--linha); border-radius:var(--raio);
+  background:var(--papel);
+  transition:border-color var(--transicao), background var(--transicao),
+             transform var(--transicao), box-shadow var(--transicao);
+}
+.azulejo:hover{
+  border-color:var(--mare); background:var(--sal);
+  transform:translateY(-3px); box-shadow:var(--sombra-sub);
+}
+.azulejo-simbolo{
+  width:40px; height:40px; border-radius:var(--raio-p);
+  background:var(--mare-veu); color:var(--mare);
+  display:grid; place-items:center;
+  transition:background var(--transicao), color var(--transicao);
+}
+.azulejo-simbolo svg{ width:21px }
+.azulejo:hover .azulejo-simbolo{ background:var(--mare); color:#fff }
+.azulejo b{
+  font-weight:600; font-size:.95rem; color:var(--tinta); line-height:1.3;
+  display:flex; align-items:center; gap:7px;
+}
+/* seta diagonal: a convenção de "isto abre fora" */
+.azulejo b::after{
+  content:""; width:11px; height:11px; flex:none; opacity:.55;
+  background:currentColor;
+  clip-path:polygon(30% 0, 100% 0, 100% 70%, 87% 70%, 87% 22%, 39% 70%, 30% 61%, 78% 13%, 30% 13%);
+}
+.azulejo small{ font-size:.8rem; color:var(--texto-fraco); line-height:1.45 }
+
+@media (min-width:620px){ .azulejos{ grid-template-columns:repeat(3, 1fr) } }
+@media (min-width:940px){ .azulejos{ grid-template-columns:repeat(4, 1fr) } }
+
+/* ─────────────────────────────────────────────────────────────────────────
    15d · BARRA DE ACÇÃO FIXA (só telemóvel)
    Num negócio local, a chamada telefónica é a conversão principal.
    Mantém "Ligar" sempre ao alcance do polegar.
