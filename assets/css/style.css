@@ -665,8 +665,11 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
   /* padding em todos os lados: o cartão tem de funcionar com e sem montra */
   padding:clamp(26px, 3vw, 34px);
 }
-/* Quando há montra, ela sangra até às bordas do cartão */
+/* Quando há montra, ela sangra até às bordas do cartão.
+   max-width:none é indispensável: o max-width:100% do reset anulava o
+   calc() e a montra ficava encaixotada dentro do padding. */
 .conjunto-lado > img{
+  max-width:none;
   width:calc(100% + clamp(52px, 6vw, 68px));
   margin:clamp(-34px, -3vw, -26px) clamp(-34px, -3vw, -26px) clamp(20px, 2.5vw, 26px);
   aspect-ratio:16/9; object-fit:cover; display:block;

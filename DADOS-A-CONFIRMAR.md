@@ -75,16 +75,19 @@ Se for outro, é preciso substituir em:
 
 ---
 
-## 🟠 5 · Imagens — reduzidas a cinco
+## 🟠 5 · Imagens — reduzidas a seis
 
-O site passou de doze ilustrações para cinco. Muitas imagens espalhadas por
+O site passou de doze ilustrações para seis. Muitas imagens espalhadas por
 todas as páginas diluíam-se umas às outras e davam ao site um ar de banco de
-imagens. Cinco, cada uma no momento em que faz falta, pesam mais:
+imagens. Estas seis cobrem cinco momentos — as duas montras contam como um
+par, porque são as duas portas da mesma casa — e cada uma aparece onde faz
+falta:
 
 | Ilustração | Onde aparece | Que trabalho faz |
 |---|---|---|
 | `estuario-tejo` | página inicial, fundo do cabeçalho | ancora a AJT em Alcochete |
-| `escritorio-carlos-manuel` | página inicial, bloco dos dois balcões | prova que a casa existe e tem porta |
+| `escritorio-alameda` | página inicial, bloco dos dois balcões | a porta do n.º 97 |
+| `escritorio-carlos-manuel` | página inicial, bloco dos dois balcões | a porta do n.º 229 |
 | `atendimento` | `sobre.html` | mostra o que a AJT faz: explicar antes de vender |
 | `peritagem-telhado` | `sinistros.html` | o momento em que o seguro conta |
 | `automovel-assistencia` | `particulares/automovel.html` | o ramo mais procurado |
@@ -92,19 +95,16 @@ imagens. Cinco, cada uma no momento em que faz falta, pesam mais:
 As páginas de ramo deixaram de ter imagem. Em vez dela, cada uma abre com o
 símbolo do seu seguro no cabeçalho — dá identidade sem encher a página.
 
-### 🔴 Falta a montra do balcão da Alameda
+### 🟢 Montra da Alameda — resolvida
 
-A ilustração antiga (`escritorio-alameda`) mostrava a fachada com a insígnia
-**Allianz** e foi removida: a AJT já não representa essa companhia, e manter
-a imagem seria induzir em erro.
+A ilustração antiga mostrava a fachada com a insígnia **Allianz** e foi
+substituída. A nova imagem mostra a montra do n.º 97 com a insígnia actual
+da Generali Tranquilidade, e foi retocada a partir de uma captura de rua —
+sem os elementos de interface do Street View.
 
-**A obter:** uma fotografia da montra do n.º 97 com a insígnia actual da
-Generali Tranquilidade.
-
-> ⚠️ Não usar capturas do Google Street View. As imagens do Street View são
-> da Google e não estão licenciadas para uso comercial num site próprio.
-> Uma fotografia tirada com um telemóvel, num dia de sol, serve melhor e
-> não levanta problema nenhum.
+> ⚠️ Mesmo retocada, convém confirmar com o proprietário se prefere uma
+> fotografia própria da fachada. Uma foto tirada no local, num dia de sol,
+> não levanta nenhuma dúvida de origem.
 
 **Também útil, se houver:** fotografias reais da equipa. Fotografias de
 pessoas verdadeiras são dos elementos que mais aumentam a confiança num site
