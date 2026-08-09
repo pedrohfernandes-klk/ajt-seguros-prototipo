@@ -898,6 +898,46 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
 .avaliacao figcaption b{ display:block; color:var(--tinta); font-weight:600; font-size:.92rem }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   15f · TIRA DE VINHETAS — uma história em três tempos
+   Deliberadamente pequenas. Estas ilustrações não ocupam a página: contam
+   em três imagens o que o texto à volta explica — acontece, age-se,
+   resolve-se — e ficam do tamanho de uma nota à margem.
+   ───────────────────────────────────────────────────────────────────────── */
+.tira{
+  display:grid; grid-template-columns:repeat(3, 1fr);
+  gap:clamp(10px, 1.4vw, 16px);
+  max-width:640px;                 /* travão: nunca ganha a página */
+  margin:clamp(28px, 3.5vw, 40px) 0 0;
+}
+.tira figure{ display:flex; flex-direction:column; gap:10px; margin:0 }
+.tira img{
+  width:100%; aspect-ratio:3/5; object-fit:cover;
+  border-radius:var(--raio-p); border:1px solid var(--linha);
+  background:var(--areia-2);
+}
+.tira figcaption{
+  font-size:.78rem; line-height:1.45; color:var(--texto-fraco);
+  display:flex; gap:8px; align-items:baseline;
+}
+/* o número faz a leitura em sequência sem precisar de setas */
+.tira figcaption::before{
+  content:counter(vinheta); counter-increment:vinheta;
+  font-weight:700; color:var(--mare); font-size:.72rem; flex:none;
+}
+.tira{ counter-reset:vinheta }
+
+/* Sobre fundo escuro */
+.claro .tira figcaption, .secao-tinta .tira figcaption{ color:var(--texto-claro) }
+.claro .tira figcaption::before{ color:var(--mare-claro) }
+
+@media (max-width:520px){
+  /* em ecrãs estreitos três colunas dariam selos ilegíveis */
+  .tira{ grid-template-columns:1fr 1fr; max-width:none }
+  .tira figure:last-child{ grid-column:1 / -1 }
+  .tira figure:last-child img{ aspect-ratio:16/10 }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
    15e · SIMULADORES DAS COMPANHIAS
    Azulejos que saem do site para o simulador da seguradora. Como levam o
    visitante para fora, a seta diagonal e o aviso no bloco são parte do
