@@ -124,14 +124,14 @@ O logótipo fornecido está integrado, recortado a partir do original:
 ou `.svg`), substituir os PNG por SVG. Fica nítido em qualquer resolução e
 pesa menos.
 
-## 🟠 7 · Avaliações de clientes
+## 🟢 7 · Avaliações de clientes — resolvido por remoção
 
-A secção "O que dizem de nós" na página inicial tem **texto de marcação**,
-não avaliações reais.
+A secção "O que dizem de nós" tinha três testemunhos de marcação e foi
+**apagada** antes da publicação, para não haver texto inventado no ar.
 
-**Duas opções:**
-1. Recolher avaliações reais no Google e copiá-las para lá (ver `GUIA-DE-EDICAO.md`).
-2. Apagar a secção inteira até as haver.
+**Para a repor:** recolha avaliações reais no perfil do Google e peça que
+sejam copiadas tal como o cliente as escreveu. O componente `.avaliacoes`
+continua no CSS, pronto a usar — ver `GUIA-DE-EDICAO.md`.
 
 > ⚠️ **Nunca publicar testemunhos inventados.** Além de enganar o cliente, é
 > publicidade enganosa e pode dar origem a coima.
