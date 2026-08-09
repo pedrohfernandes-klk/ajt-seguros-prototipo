@@ -366,6 +366,42 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 .hero-fundo{
   position:absolute; inset:0; width:100%; height:100%;
   object-fit:cover; object-position:center 62%; z-index:-2;
+  opacity:0; transition:opacity 1.4s ease;
+}
+.hero-fundo.actual{ opacity:1 }
+/* sem JS fica a primeira, que já traz .actual do HTML — nada a compensar aqui */
+
+/* Controlos do carrossel — pontos e pausa.
+   O botao de pausa nao e enfeite: um carrossel que anda sozinho mais de
+   cinco segundos precisa de um travao (WCAG 2.2.2). */
+.hero-controlo{
+  position:absolute; z-index:2; left:0; right:0;
+  bottom:clamp(18px, 2.5vw, 28px);
+  display:flex; align-items:center; justify-content:center; gap:14px;
+}
+.hero-pontos{ display:flex; gap:9px }
+.hero-pontos button{
+  width:9px; height:9px; padding:0; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,.34); border:1px solid rgba(255,255,255,.5);
+  transition:background var(--transicao), width var(--transicao);
+}
+.hero-pontos button[aria-current="true"]{ background:#fff; width:26px; border-radius:999px }
+.hero-pausa{
+  display:grid; place-items:center; width:26px; height:26px; padding:0;
+  cursor:pointer; border-radius:50%; color:#fff;
+  background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.32);
+  transition:background var(--transicao);
+}
+.hero-pausa:hover{ background:rgba(255,255,255,.28) }
+.hero-pausa svg{ width:11px }
+.hero-pausa .icone-play{ display:none }
+.hero-pausa[aria-pressed="true"] .icone-pausa{ display:none }
+.hero-pausa[aria-pressed="true"] .icone-play{ display:block }
+
+@media (prefers-reduced-motion:reduce){
+  /* quem pediu menos movimento fica com uma imagem fixa e sem controlos */
+  .hero-fundo{ transition:none }
+  .hero-controlo{ display:none }
 }
 .hero::before{
   /* véu: escurece o lado do texto e mantém a imagem legível à direita */
@@ -898,6 +934,60 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
 .avaliacao figcaption b{ display:block; color:var(--tinta); font-weight:600; font-size:.92rem }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   15g · LISTA EXPANSÍVEL
+   O nome da cobertura fica à vista; a explicação abre a pedido. Quem
+   procura uma cobertura encontra-a de relance; quem quer perceber lê.
+   O <details> nativo faz isto sem JavaScript e sem perder a pesquisa do
+   browser nem a impressão — ver a regra de @media print no fim.
+   ───────────────────────────────────────────────────────────────────────── */
+.expansiveis{ border-top:1px solid var(--linha) }
+.expansiveis details{ border-bottom:1px solid var(--linha) }
+.expansiveis summary{
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  padding:15px 2px; cursor:pointer; list-style:none;
+  font-weight:600; font-size:.98rem; color:var(--tinta); line-height:1.4;
+  transition:color var(--transicao);
+}
+.expansiveis summary::-webkit-details-marker{ display:none }
+.expansiveis summary:hover{ color:var(--mare) }
+.expansiveis summary::after{
+  content:""; width:11px; height:11px; flex:none;
+  background:currentColor; color:var(--mare);
+  clip-path:polygon(44% 0, 56% 0, 56% 44%, 100% 44%, 100% 56%, 56% 56%,
+                    56% 100%, 44% 100%, 44% 56%, 0 56%, 0 44%, 44% 44%);
+  transition:transform var(--transicao);
+}
+.expansiveis details[open] summary::after{ transform:rotate(135deg) }
+.expansiveis details > p{
+  padding:0 2px 18px; margin:0; max-width:62ch;
+  font-size:.93rem; line-height:1.65; color:var(--texto-fraco);
+}
+.secao-tinta .expansiveis, .claro .expansiveis{ border-color:var(--linha-esc) }
+.secao-tinta .expansiveis details, .claro .expansiveis details{ border-color:var(--linha-esc) }
+.secao-tinta .expansiveis summary, .claro .expansiveis summary{ color:#fff }
+.secao-tinta .expansiveis details > p, .claro .expansiveis details > p{ color:var(--texto-claro) }
+
+/* Bloco inteiro atrás de um clique — usado no balanço de coberturas */
+.revelar{ border:1px solid var(--linha); border-radius:var(--raio); background:var(--sal) }
+.revelar > summary{
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  padding:18px clamp(20px, 2.4vw, 26px); cursor:pointer; list-style:none;
+  font-weight:600; font-size:1rem; color:var(--tinta);
+}
+.revelar > summary::-webkit-details-marker{ display:none }
+.revelar > summary small{ font-weight:400; font-size:.85rem; color:var(--texto-fraco) }
+.revelar > summary::after{
+  content:""; width:12px; height:12px; flex:none; background:currentColor; color:var(--mare);
+  clip-path:polygon(44% 0, 56% 0, 56% 44%, 100% 44%, 100% 56%, 56% 56%,
+                    56% 100%, 44% 100%, 44% 56%, 0 56%, 0 44%, 44% 44%);
+  transition:transform var(--transicao);
+}
+.revelar[open] > summary::after{ transform:rotate(135deg) }
+.revelar[open] > summary{ border-bottom:1px solid var(--linha) }
+.revelar > div{ padding:clamp(22px, 2.6vw, 30px) }
+.revelar .balanco-coluna{ border:0; box-shadow:none; padding:0; background:none }
+
+/* ─────────────────────────────────────────────────────────────────────────
    15f · TIRA DE VINHETAS — uma história em três tempos
    Deliberadamente pequenas. Estas ilustrações não ocupam a página: contam
    em três imagens o que o texto à volta explica — acontece, age-se,
@@ -1114,7 +1204,7 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 @media print{
   .cabecalho, .nav-movel, .rodape, .botao, .mapa, .barra-accao{ display:none !important }
   body{ background:#fff; color:#000; font-size:11pt; padding-bottom:0 }
-  .faq details > div{ display:block !important }
+  .faq details > div, .expansiveis details > p, .revelar > div{ display:block !important }
   .secao{ padding-block:16px }
   a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:9pt; color:#555 }
 }

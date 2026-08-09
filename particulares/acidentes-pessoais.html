@@ -209,14 +209,32 @@
         <p class="lede" style="margin:22px 0 34px">É um seguro simples e barato que cobre lesões corporais resultantes de acidente, a qualquer hora e em qualquer lugar — ou apenas durante determinada actividade. Serve para o espaço em branco entre o seguro do carro, o do trabalho e o de saúde.</p>
 
         <!-- ✏️ EDITAR: lista de coberturas -->
-        <ul class="coberturas">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Morte por acidente.</b> Capital pago aos beneficiários. Nalguns planos duplica em caso de acidente de viação.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Invalidez permanente.</b> Indemnização proporcional ao grau de desvalorização atribuído por perícia médica.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Despesas de tratamento.</b> Consultas, exames, fisioterapia e internamento resultantes do acidente.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Incapacidade temporária.</b> Subsídio diário durante a baixa. Decisivo para quem não recebe se não trabalhar.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Despesas de funeral.</b> Capital autónomo, disponível de imediato, sem esperar pela regularização do processo.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Assistência em viagem.</b> Repatriamento e apoio médico fora de casa, consoante o plano.</span></li>
-        </ul>
+        <div class="expansiveis">
+          <details>
+            <summary>Morte por acidente</summary>
+            <p>Capital pago aos beneficiários. Nalguns planos duplica em caso de acidente de viação.</p>
+          </details>
+          <details>
+            <summary>Invalidez permanente</summary>
+            <p>Indemnização proporcional ao grau de desvalorização atribuído por perícia médica.</p>
+          </details>
+          <details>
+            <summary>Despesas de tratamento</summary>
+            <p>Consultas, exames, fisioterapia e internamento resultantes do acidente.</p>
+          </details>
+          <details>
+            <summary>Incapacidade temporária</summary>
+            <p>Subsídio diário durante a baixa. Decisivo para quem não recebe se não trabalhar.</p>
+          </details>
+          <details>
+            <summary>Despesas de funeral</summary>
+            <p>Capital autónomo, disponível de imediato, sem esperar pela regularização do processo.</p>
+          </details>
+          <details>
+            <summary>Assistência em viagem</summary>
+            <p>Repatriamento e apoio médico fora de casa, consoante o plano.</p>
+          </details>
+        </div>
       </div>
 
       <aside class="surge">
@@ -244,7 +262,9 @@
         <p>Uma leitura geral, para ter ideia clara antes da conversa. Cada apólice tem as suas condições — e é por isso que as lemos consigo, uma a uma.</p>
       </div>
 
-      <div class="balanco surge">
+      <details class="revelar surge">
+        <summary>Ver o que está e o que não está coberto <small>lista indicativa</small></summary>
+        <div class="balanco">
         <div class="balanco-coluna balanco-inclui">
           <h3><span class="sinal" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg></span> Normalmente coberto</h3>
           <ul>
@@ -266,7 +286,8 @@
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span><b>Actos sob influência</b> de álcool ou estupefacientes.</span></li>
           </ul>
         </div>
-      </div>
+        </div>
+      </details>
       <p class="nota" style="margin-top:24px">Lista indicativa e de carácter geral. As coberturas e exclusões concretas são as que constarem das condições gerais, especiais e particulares da apólice que vier a subscrever.</p>
     </div>
   </section>

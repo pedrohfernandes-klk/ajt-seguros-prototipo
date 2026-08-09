@@ -209,15 +209,36 @@
         <p class="lede" style="margin:22px 0 34px">Um seguro de saúde raramente é a decisão mais barata. É a decisão que dá acesso mais rápido e escolha de médico. Antes de assinar convém perceber bem três coisas: a <b>rede</b>, as <b>carências</b> e as <b>exclusões</b>.</p>
 
         <!-- ✏️ EDITAR: lista de coberturas -->
-        <ul class="coberturas">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Ambulatório.</b> Consultas, exames, análises e tratamentos sem internamento. É a parte que mais se usa no dia-a-dia.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Internamento e cirurgia.</b> Hospitalização, bloco operatório e honorários médicos. É a cobertura com o capital mais alto.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Estomatologia.</b> Consultas, destartarizações, tratamentos e próteses, com limites anuais. Muitas vezes vendida à parte.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Parto e assistência à maternidade.</b> Com período de carência longo, normalmente à volta de um ano. Contrata-se bem antes de precisar.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Medicamentos.</b> Comparticipação sobre medicação prescrita, com plafond anual e, em regra, coparticipação.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Próteses e ortóteses.</b> Óculos, lentes, aparelhos auditivos e ortopédicos, com sublimites próprios.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Assistência no estrangeiro.</b> Para quem viaja com frequência em trabalho ou passa temporadas fora.</span></li>
-        </ul>
+        <div class="expansiveis">
+          <details>
+            <summary>Ambulatório</summary>
+            <p>Consultas, exames, análises e tratamentos sem internamento. É a parte que mais se usa no dia-a-dia.</p>
+          </details>
+          <details>
+            <summary>Internamento e cirurgia</summary>
+            <p>Hospitalização, bloco operatório e honorários médicos. É a cobertura com o capital mais alto.</p>
+          </details>
+          <details>
+            <summary>Estomatologia</summary>
+            <p>Consultas, destartarizações, tratamentos e próteses, com limites anuais. Muitas vezes vendida à parte.</p>
+          </details>
+          <details>
+            <summary>Parto e assistência à maternidade</summary>
+            <p>Com período de carência longo, normalmente à volta de um ano. Contrata-se bem antes de precisar.</p>
+          </details>
+          <details>
+            <summary>Medicamentos</summary>
+            <p>Comparticipação sobre medicação prescrita, com plafond anual e, em regra, coparticipação.</p>
+          </details>
+          <details>
+            <summary>Próteses e ortóteses</summary>
+            <p>Óculos, lentes, aparelhos auditivos e ortopédicos, com sublimites próprios.</p>
+          </details>
+          <details>
+            <summary>Assistência no estrangeiro</summary>
+            <p>Para quem viaja com frequência em trabalho ou passa temporadas fora.</p>
+          </details>
+        </div>
       </div>
 
       <aside class="surge">
@@ -245,7 +266,9 @@
         <p>Uma leitura geral, para ter ideia clara antes da conversa. Cada apólice tem as suas condições — e é por isso que as lemos consigo, uma a uma.</p>
       </div>
 
-      <div class="balanco surge">
+      <details class="revelar surge">
+        <summary>Ver o que está e o que não está coberto <small>lista indicativa</small></summary>
+        <div class="balanco">
         <div class="balanco-coluna balanco-inclui">
           <h3><span class="sinal" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg></span> Normalmente coberto</h3>
           <ul>
@@ -268,10 +291,40 @@
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span><b>Desportos de alto risco</b> e actividades profissionais perigosas, salvo extensão contratada.</span></li>
           </ul>
         </div>
-      </div>
+        </div>
+      </details>
       <p class="nota" style="margin-top:24px">Lista indicativa e de carácter geral. As coberturas e exclusões concretas são as que constarem das condições gerais, especiais e particulares da apólice que vier a subscrever.</p>
     </div>
   </section>
+
+  <section class="secao" style="padding-block:0">
+    <div class="envelope">
+      <div class="tira surge" role="group" aria-label="Uma consulta que não esperou meses">
+        <figure>
+          <img src="../assets/img/vinheta-saude-1-300.jpg"
+               srcset="../assets/img/vinheta-saude-1-300.jpg 300w, ../assets/img/vinheta-saude-1-600.jpg 600w"
+               sizes="200px"
+               alt="Uma mulher esfrega os olhos com dores de cabeça, à frente do computador ao fim do dia" width="300" height="509" loading="lazy">
+          <figcaption>Dores de cabeça ao fim do dia.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/vinheta-saude-2-300.jpg"
+               srcset="../assets/img/vinheta-saude-2-300.jpg 300w, ../assets/img/vinheta-saude-2-600.jpg 600w"
+               sizes="200px"
+               alt="A mesma mulher numa consulta de oftalmologia, a fazer o exame de vista, com dois pares de óculos numa bandeja" width="300" height="507" loading="lazy">
+          <figcaption>Consulta e exame sem meses de espera.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/vinheta-saude-3-300.jpg"
+               srcset="../assets/img/vinheta-saude-3-300.jpg 300w, ../assets/img/vinheta-saude-3-600.jpg 600w"
+               sizes="200px"
+               alt="Já de óculos novos, descobre o esconderijo de meias que o cão tinha escondido debaixo da manta do sofá" width="300" height="507" loading="lazy">
+          <figcaption>E o mistério das meias resolvido.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
 
   <section class="secao">
     <div class="envelope">

@@ -209,14 +209,32 @@
         <p class="lede" style="margin:22px 0 34px">A Lei n.º 98/2009 torna o seguro de acidentes de trabalho obrigatório para trabalhadores por conta de outrem e também para <b>trabalhadores independentes</b>, relativamente a si próprios. Cobre salários, tratamentos, pensões e indemnizações resultantes de acidentes ocorridos ao serviço, incluindo o trajecto entre casa e o local de trabalho.</p>
 
         <!-- ✏️ EDITAR: lista de coberturas -->
-        <ul class="coberturas">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Assistência médica e cirúrgica.</b> Tratamentos, cirurgias, medicamentos e transporte, sem limite de capital e enquanto for clinicamente necessário.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Indemnizações por incapacidade temporária.</b> Substituem parte do salário durante a baixa, calculadas sobre a retribuição declarada.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Pensões por incapacidade permanente.</b> Quando fica sequela definitiva, apuradas por junta médica segundo tabela legal.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Pensões por morte.</b> Para cônjuge, filhos e outros familiares a cargo, nos termos da lei.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Despesas de funeral.</b> Comparticipação nas despesas, com valor definido legalmente.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Reabilitação e readaptação.</b> Fisioterapia, próteses e apoio ao regresso à actividade profissional.</span></li>
-        </ul>
+        <div class="expansiveis">
+          <details>
+            <summary>Assistência médica e cirúrgica</summary>
+            <p>Tratamentos, cirurgias, medicamentos e transporte, sem limite de capital e enquanto for clinicamente necessário.</p>
+          </details>
+          <details>
+            <summary>Indemnizações por incapacidade temporária</summary>
+            <p>Substituem parte do salário durante a baixa, calculadas sobre a retribuição declarada.</p>
+          </details>
+          <details>
+            <summary>Pensões por incapacidade permanente</summary>
+            <p>Quando fica sequela definitiva, apuradas por junta médica segundo tabela legal.</p>
+          </details>
+          <details>
+            <summary>Pensões por morte</summary>
+            <p>Para cônjuge, filhos e outros familiares a cargo, nos termos da lei.</p>
+          </details>
+          <details>
+            <summary>Despesas de funeral</summary>
+            <p>Comparticipação nas despesas, com valor definido legalmente.</p>
+          </details>
+          <details>
+            <summary>Reabilitação e readaptação</summary>
+            <p>Fisioterapia, próteses e apoio ao regresso à actividade profissional.</p>
+          </details>
+        </div>
       </div>
 
       <aside class="surge">
@@ -244,7 +262,9 @@
         <p>Uma leitura geral, para ter ideia clara antes da conversa. Cada apólice tem as suas condições — e é por isso que as lemos consigo, uma a uma.</p>
       </div>
 
-      <div class="balanco surge">
+      <details class="revelar surge">
+        <summary>Ver o que está e o que não está coberto <small>lista indicativa</small></summary>
+        <div class="balanco">
         <div class="balanco-coluna balanco-inclui">
           <h3><span class="sinal" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg></span> Normalmente coberto</h3>
           <ul>
@@ -267,10 +287,40 @@
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span><b>Coimas e sanções</b> aplicadas à empresa — nunca são seguráveis.</span></li>
           </ul>
         </div>
-      </div>
+        </div>
+      </details>
       <p class="nota" style="margin-top:24px">Lista indicativa e de carácter geral. As coberturas e exclusões concretas são as que constarem das condições gerais, especiais e particulares da apólice que vier a subscrever.</p>
     </div>
   </section>
+
+  <section class="secao" style="padding-block:0">
+    <div class="envelope">
+      <div class="tira surge" role="group" aria-label="Um acidente ao serviço, do princípio ao fim">
+        <figure>
+          <img src="../assets/img/vinheta-actrab-1-300.jpg"
+               srcset="../assets/img/vinheta-actrab-1-300.jpg 300w, ../assets/img/vinheta-actrab-1-600.jpg 600w"
+               sizes="200px"
+               alt="Um trabalhador sobe para uma cadeira de rodinhas para alcançar uma caixa numa prateleira alta, enquanto a colega o avisa e o escadote está encostado à parede" width="300" height="505" loading="lazy">
+          <figcaption>A cadeira de rodinhas não é escadote.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/vinheta-actrab-2-300.jpg"
+               srcset="../assets/img/vinheta-actrab-2-300.jpg 300w, ../assets/img/vinheta-actrab-2-600.jpg 600w"
+               sizes="200px"
+               alt="O mesmo trabalhador sentado no chão, com os papéis caídos à volta, enquanto a colega lhe aplica gelo no joelho" width="300" height="505" loading="lazy">
+          <figcaption>Cinco minutos depois, gelo no joelho.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/vinheta-actrab-3-300.jpg"
+               srcset="../assets/img/vinheta-actrab-3-300.jpg 300w, ../assets/img/vinheta-actrab-3-600.jpg 600w"
+               sizes="200px"
+               alt="O trabalhador arruma a caixa em cima do escadote, com a cadeira sinalizada por cones no chão" width="300" height="504" loading="lazy">
+          <figcaption>Participado — e o escadote passou a servir.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
 
   <section class="secao">
     <div class="envelope">

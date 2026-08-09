@@ -235,12 +235,25 @@
   <section class="hero claro">
     <!-- A ilustração do estuário passou de miniatura a fundo da página.
          O véu escuro está no CSS (.hero::before) e garante o contraste. -->
-    <img class="hero-fundo"
+    <!-- ✏️ EDITAR: para mudar as imagens que rodam, troque os ficheiros abaixo.
+         São de fundo, por isso levam alt vazio: quem usa leitor de ecrã ouve
+         o título e o parágrafo, não a descrição de cada ilustração. -->
+    <img class="hero-fundo actual"
          src="assets/img/estuario-tejo-1400.jpg"
          srcset="assets/img/estuario-tejo-800.jpg 800w, assets/img/estuario-tejo-1400.jpg 1400w"
-         sizes="100vw"
-         alt="Ilustração do estuário do Tejo visto de Alcochete: flamingos na água baixa, sapal em primeiro plano e a Ponte Vasco da Gama ao fundo"
-         width="1400" height="788" fetchpriority="high">
+         sizes="100vw" alt="" width="1400" height="788" fetchpriority="high">
+    <img class="hero-fundo"
+         src="assets/img/alcochete-marginal-1400.jpg"
+         srcset="assets/img/alcochete-marginal-800.jpg 800w, assets/img/alcochete-marginal-1400.jpg 1400w"
+         sizes="100vw" alt="" width="1400" height="788" fetchpriority="low">
+    <img class="hero-fundo"
+         src="assets/img/atendimento-1400.jpg"
+         srcset="assets/img/atendimento-800.jpg 800w, assets/img/atendimento-1400.jpg 1400w"
+         sizes="100vw" alt="" width="1400" height="788" fetchpriority="low">
+    <img class="hero-fundo"
+         src="assets/img/escritorio-alameda-1400.jpg"
+         srcset="assets/img/escritorio-alameda-800.jpg 800w, assets/img/escritorio-alameda-1400.jpg 1400w"
+         sizes="100vw" alt="" width="1400" height="788" fetchpriority="low">
 
     <div class="envelope hero-conteudo">
       <div class="surge">
@@ -255,6 +268,15 @@
         </div>
         <p class="nota" style="margin-top:22px">Resposta em 24 horas úteis · Sem compromisso · Sem insistências</p>
       </div>
+    </div>
+
+    <div class="hero-controlo" data-carrossel-controlo hidden>
+      <div class="hero-pontos" role="group" aria-label="Escolher a imagem do cabeçalho"></div>
+      <button class="hero-pausa" type="button" aria-pressed="false">
+        <span class="visualmente-oculto">Parar a rotação das imagens</span>
+        <svg class="icone-pausa" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="3" height="9" rx="1"/><rect x="7" y="1.5" width="3" height="9" rx="1"/></svg>
+        <svg class="icone-play" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M3 1.8v8.4L10 6z"/></svg>
+      </button>
     </div>
   </section>
 

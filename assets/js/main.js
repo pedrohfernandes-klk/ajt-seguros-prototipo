@@ -82,6 +82,68 @@
     });
   }
 
+  /* ---- 3b · Carrossel do cabeçalho ------------------------------------- */
+  /* As imagens estão todas no HTML; aqui só se troca qual delas está visível.
+     Sem JS, fica a primeira — o site não depende disto para funcionar. */
+  var hero = document.querySelector('.hero');
+  var imagens = hero ? hero.querySelectorAll('.hero-fundo') : [];
+  var controlo = document.querySelector('[data-carrossel-controlo]');
+
+  if (hero && imagens.length > 1 && controlo && !reduzirMovimento) {
+    var INTERVALO = 6500;
+    var actual = 0;
+    var relogio = null;
+    var pontos = controlo.querySelector('.hero-pontos');
+    var botaoPausa = controlo.querySelector('.hero-pausa');
+
+    hero.setAttribute('data-carrossel', 'pronto');
+    controlo.hidden = false;
+
+    function mostrar(i) {
+      imagens[actual].classList.remove('actual');
+      pontos.children[actual].setAttribute('aria-current', 'false');
+      actual = (i + imagens.length) % imagens.length;
+      imagens[actual].classList.add('actual');
+      pontos.children[actual].setAttribute('aria-current', 'true');
+    }
+
+    function arrancar() {
+      parar();
+      relogio = setInterval(function () { mostrar(actual + 1); }, INTERVALO);
+    }
+
+    function parar() {
+      if (relogio) { clearInterval(relogio); relogio = null; }
+    }
+
+    // um ponto por imagem
+    Array.prototype.forEach.call(imagens, function (img, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+      b.innerHTML = '<span class="visualmente-oculto">Imagem ' + (i + 1) + '</span>';
+      b.addEventListener('click', function () {
+        mostrar(i);
+        if (botaoPausa.getAttribute('aria-pressed') !== 'true') { arrancar(); }
+      });
+      pontos.appendChild(b);
+    });
+
+    botaoPausa.addEventListener('click', function () {
+      var parado = botaoPausa.getAttribute('aria-pressed') === 'true';
+      botaoPausa.setAttribute('aria-pressed', parado ? 'false' : 'true');
+      if (parado) { arrancar(); } else { parar(); }
+    });
+
+    // não gastar ciclos com o separador em segundo plano
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { parar(); }
+      else if (botaoPausa.getAttribute('aria-pressed') !== 'true') { arrancar(); }
+    });
+
+    arrancar();
+  }
+
   /* ---- 4 · Ano automático no rodapé ------------------------------------ */
   var anos = document.querySelectorAll('[data-ano]');
   Array.prototype.forEach.call(anos, function (el) {

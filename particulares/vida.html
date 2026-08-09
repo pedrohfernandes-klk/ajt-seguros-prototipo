@@ -209,13 +209,28 @@
         <p class="lede" style="margin:22px 0 34px">Há o seguro de vida <b>associado ao crédito à habitação</b>, exigido pelo banco para liquidar a dívida em caso de morte ou invalidez. E há o seguro de vida <b>de protecção familiar</b>, que deixa um capital a quem fica. São produtos diferentes, com lógicas diferentes, e é frequente ter-se um e faltar o outro.</p>
 
         <!-- ✏️ EDITAR: lista de coberturas -->
-        <ul class="coberturas">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Morte.</b> A cobertura base. Paga o capital aos beneficiários indicados ou liquida a dívida ao banco.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Invalidez absoluta e definitiva (IAD).</b> Aciona-se quando fica incapaz de exercer qualquer profissão. É a habitual nos seguros de crédito.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Invalidez total e permanente (ITP).</b> Grau de exigência menor do que a IAD, medido por percentagem de desvalorização. Cobre mais situações reais.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Doenças graves.</b> Antecipa parte do capital no diagnóstico de determinadas patologias, sem esperar pelo desfecho.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Isenção de prémio.</b> Em caso de incapacidade, a seguradora passa a pagar o próprio seguro. Pequeno detalhe, grande alívio.</span></li>
-        </ul>
+        <div class="expansiveis">
+          <details>
+            <summary>Morte</summary>
+            <p>A cobertura base. Paga o capital aos beneficiários indicados ou liquida a dívida ao banco.</p>
+          </details>
+          <details>
+            <summary>Invalidez absoluta e definitiva (IAD)</summary>
+            <p>Aciona-se quando fica incapaz de exercer qualquer profissão. É a habitual nos seguros de crédito.</p>
+          </details>
+          <details>
+            <summary>Invalidez total e permanente (ITP)</summary>
+            <p>Grau de exigência menor do que a IAD, medido por percentagem de desvalorização. Cobre mais situações reais.</p>
+          </details>
+          <details>
+            <summary>Doenças graves</summary>
+            <p>Antecipa parte do capital no diagnóstico de determinadas patologias, sem esperar pelo desfecho.</p>
+          </details>
+          <details>
+            <summary>Isenção de prémio</summary>
+            <p>Em caso de incapacidade, a seguradora passa a pagar o próprio seguro. Pequeno detalhe, grande alívio.</p>
+          </details>
+        </div>
       </div>
 
       <aside class="surge">
@@ -243,7 +258,9 @@
         <p>Uma leitura geral, para ter ideia clara antes da conversa. Cada apólice tem as suas condições — e é por isso que as lemos consigo, uma a uma.</p>
       </div>
 
-      <div class="balanco surge">
+      <details class="revelar surge">
+        <summary>Ver o que está e o que não está coberto <small>lista indicativa</small></summary>
+        <div class="balanco">
         <div class="balanco-coluna balanco-inclui">
           <h3><span class="sinal" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg></span> Normalmente coberto</h3>
           <ul>
@@ -265,7 +282,8 @@
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span><b>Guerra e terrorismo</b>, com o âmbito definido em cada contrato.</span></li>
           </ul>
         </div>
-      </div>
+        </div>
+      </details>
       <p class="nota" style="margin-top:24px">Lista indicativa e de carácter geral. As coberturas e exclusões concretas são as que constarem das condições gerais, especiais e particulares da apólice que vier a subscrever.</p>
     </div>
   </section>

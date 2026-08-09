@@ -209,14 +209,32 @@
         <p class="lede" style="margin:22px 0 34px">Ao contrário de outros benefícios, o seguro de saúde é usado — e nota-se. Numa empresa pequena, o custo por colaborador é significativamente inferior ao de um seguro individual equivalente, porque o risco é avaliado sobre o conjunto e não sobre cada pessoa.</p>
 
         <!-- ✏️ EDITAR: lista de coberturas -->
-        <ul class="coberturas">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Ambulatório.</b> Consultas, exames e tratamentos na rede convencionada, com coparticipação reduzida no acto.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Internamento e cirurgia.</b> A cobertura de capital mais elevado e a que sustenta todo o plano.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Estomatologia.</b> Habitualmente a cobertura mais usada em planos de empresa, e das mais valorizadas.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Extensão ao agregado familiar.</b> Cônjuge e filhos podem ser incluídos, com o custo suportado pela empresa ou pelo colaborador.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Adesão sem questionário clínico.</b> A partir de determinada dimensão do grupo, várias companhias dispensam a análise individual — o que muda tudo para quem tem patologias.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Carências reduzidas ou eliminadas.</b> Também função da dimensão do grupo. Num plano individual esperaria meses pelas mesmas coberturas.</span></li>
-        </ul>
+        <div class="expansiveis">
+          <details>
+            <summary>Ambulatório</summary>
+            <p>Consultas, exames e tratamentos na rede convencionada, com coparticipação reduzida no acto.</p>
+          </details>
+          <details>
+            <summary>Internamento e cirurgia</summary>
+            <p>A cobertura de capital mais elevado e a que sustenta todo o plano.</p>
+          </details>
+          <details>
+            <summary>Estomatologia</summary>
+            <p>Habitualmente a cobertura mais usada em planos de empresa, e das mais valorizadas.</p>
+          </details>
+          <details>
+            <summary>Extensão ao agregado familiar</summary>
+            <p>Cônjuge e filhos podem ser incluídos, com o custo suportado pela empresa ou pelo colaborador.</p>
+          </details>
+          <details>
+            <summary>Adesão sem questionário clínico</summary>
+            <p>A partir de determinada dimensão do grupo, várias companhias dispensam a análise individual — o que muda tudo para quem tem patologias.</p>
+          </details>
+          <details>
+            <summary>Carências reduzidas ou eliminadas</summary>
+            <p>Também função da dimensão do grupo. Num plano individual esperaria meses pelas mesmas coberturas.</p>
+          </details>
+        </div>
       </div>
 
       <aside class="surge">
@@ -244,7 +262,9 @@
         <p>Uma leitura geral, para ter ideia clara antes da conversa. Cada apólice tem as suas condições — e é por isso que as lemos consigo, uma a uma.</p>
       </div>
 
-      <div class="balanco surge">
+      <details class="revelar surge">
+        <summary>Ver o que está e o que não está coberto <small>lista indicativa</small></summary>
+        <div class="balanco">
         <div class="balanco-coluna balanco-inclui">
           <h3><span class="sinal" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg></span> Normalmente coberto</h3>
           <ul>
@@ -265,7 +285,8 @@
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span><b>Prestadores fora da rede</b>, salvo em regime de reembolso parcial.</span></li>
           </ul>
         </div>
-      </div>
+        </div>
+      </details>
       <p class="nota" style="margin-top:24px">Lista indicativa e de carácter geral. As coberturas e exclusões concretas são as que constarem das condições gerais, especiais e particulares da apólice que vier a subscrever.</p>
     </div>
   </section>

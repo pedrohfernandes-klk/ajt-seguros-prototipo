@@ -209,16 +209,40 @@
         <p class="lede" style="margin:22px 0 34px">Um multirriscos cobre duas coisas distintas: o <b>edifício</b> — paredes, telhado, canalizações, tudo o que fica se virar a casa ao contrário — e o <b>recheio</b>: mobília, electrodomésticos, roupa, computadores. Se tem crédito à habitação, o banco exige o primeiro. O segundo é escolha sua, e é o que costuma faltar.</p>
 
         <!-- ✏️ EDITAR: lista de coberturas -->
-        <ul class="coberturas">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Incêndio, raio e explosão.</b> A base de qualquer multirriscos e a cobertura que o banco exige no crédito à habitação.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Danos por água.</b> Roturas de canalização, infiltrações e os estragos que causam. É a participação mais frequente que vemos ao balcão.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Fenómenos da natureza.</b> Tempestades, cheias, granizo e queda de neve. Em zona ribeirinha como a nossa, não é detalhe.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Fenómenos sísmicos.</b> Cobertura habitualmente <b>facultativa</b> em Portugal — e é justamente por isso que tanta gente não a tem sem saber.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Responsabilidade civil.</b> Se uma rotura sua inundar o vizinho de baixo, é esta cobertura que responde.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Furto ou roubo do recheio.</b> Com ou sem arrombamento, consoante a apólice. Confirme os sublimites para objectos de valor.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Quebra de vidros e espelhos.</b> Vidraças, espelhos fixos, tampos de fogão e placas de indução. Barato de acrescentar, usado mais vezes do que se imagina.</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg><span><b>Assistência ao lar.</b> Canalizador, electricista, serralheiro. A cobertura que mais se usa e de que menos gente se lembra que tem.</span></li>
-        </ul>
+        <div class="expansiveis">
+          <details>
+            <summary>Incêndio, raio e explosão</summary>
+            <p>A base de qualquer multirriscos e a cobertura que o banco exige no crédito à habitação.</p>
+          </details>
+          <details>
+            <summary>Danos por água</summary>
+            <p>Roturas de canalização, infiltrações e os estragos que causam. É a participação mais frequente que vemos ao balcão.</p>
+          </details>
+          <details>
+            <summary>Fenómenos da natureza</summary>
+            <p>Tempestades, cheias, granizo e queda de neve. Em zona ribeirinha como a nossa, não é detalhe.</p>
+          </details>
+          <details>
+            <summary>Fenómenos sísmicos</summary>
+            <p>Cobertura habitualmente <b>facultativa</b> em Portugal — e é justamente por isso que tanta gente não a tem sem saber.</p>
+          </details>
+          <details>
+            <summary>Responsabilidade civil</summary>
+            <p>Se uma rotura sua inundar o vizinho de baixo, é esta cobertura que responde.</p>
+          </details>
+          <details>
+            <summary>Furto ou roubo do recheio</summary>
+            <p>Com ou sem arrombamento, consoante a apólice. Confirme os sublimites para objectos de valor.</p>
+          </details>
+          <details>
+            <summary>Quebra de vidros e espelhos</summary>
+            <p>Vidraças, espelhos fixos, tampos de fogão e placas de indução. Barato de acrescentar, usado mais vezes do que se imagina.</p>
+          </details>
+          <details>
+            <summary>Assistência ao lar</summary>
+            <p>Canalizador, electricista, serralheiro. A cobertura que mais se usa e de que menos gente se lembra que tem.</p>
+          </details>
+        </div>
       </div>
 
       <aside class="surge">
@@ -246,7 +270,9 @@
         <p>Uma leitura geral, para ter ideia clara antes da conversa. Cada apólice tem as suas condições — e é por isso que as lemos consigo, uma a uma.</p>
       </div>
 
-      <div class="balanco surge">
+      <details class="revelar surge">
+        <summary>Ver o que está e o que não está coberto <small>lista indicativa</small></summary>
+        <div class="balanco">
         <div class="balanco-coluna balanco-inclui">
           <h3><span class="sinal" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg></span> Normalmente coberto</h3>
           <ul>
@@ -269,7 +295,8 @@
             <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span><b>Danos estéticos</b> sem prejuízo funcional, na generalidade das apólices.</span></li>
           </ul>
         </div>
-      </div>
+        </div>
+      </details>
       <p class="nota" style="margin-top:24px">Lista indicativa e de carácter geral. As coberturas e exclusões concretas são as que constarem das condições gerais, especiais e particulares da apólice que vier a subscrever.</p>
     </div>
   </section>
