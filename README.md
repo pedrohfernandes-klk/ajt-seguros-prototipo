@@ -107,5 +107,5 @@ obrigatórios por preencher — nomeadamente o **número de registo na ASF** e a
 
 Protótipo. Construído como oferta ao proprietário da AJT Seguros.
 Os dados de contacto, moradas, NIF e data de constituição foram verificados
-em fontes públicas (Allianz, Generali Tranquilidade, Iberinform, Racius) e
+em fontes públicas (Generali Tranquilidade, Iberinform, Racius) e
 estão listados no fim do `DADOS-A-CONFIRMAR.md`.

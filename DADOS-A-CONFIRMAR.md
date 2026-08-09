@@ -46,10 +46,10 @@ Se não existir nenhuma — que é o caso mais comum — a frase correcta é:
 
 ## 🔴 3 · Duas empresas, dois registos
 
-O balcão da Alameda (Allianz) é da **A.J.T. — Sociedade de Mediação de
-Seguros, Lda** (NIF 505991888).
-O balcão da Rua Carlos Manuel (Generali Tranquilidade) surge registado como
-**AJT Mediação de Seguros Unipessoal, Lda**.
+O balcão da Alameda é da **A.J.T. — Sociedade de Mediação de Seguros, Lda**
+(NIF 505991888). O balcão da Rua Carlos Manuel surge registado como
+**AJT Mediação de Seguros Unipessoal, Lda**. Os dois representam agora a
+mesma companhia, a Generali Tranquilidade.
 
 **A confirmar com o proprietário:**
 - São mesmo duas entidades jurídicas distintas?
@@ -75,36 +75,38 @@ Se for outro, é preciso substituir em:
 
 ---
 
-## 🟢 5 · Ilustrações — resolvido
+## 🟠 5 · Imagens — reduzidas a seis
 
-As dez ilustrações originais estão integradas e optimizadas em duas larguras
-cada, para `srcset`:
+O site passou de doze ilustrações para seis. Muitas imagens espalhadas por
+todas as páginas diluíam-se umas às outras e davam ao site um ar de banco de
+imagens. Estas seis cobrem cinco momentos — as duas montras contam como um
+par, porque são as duas portas da mesma casa — e cada uma aparece onde faz
+falta:
 
-| Ilustração | Onde aparece |
-|---|---|
-| `estuario-tejo` | página inicial, no cartucho do cabeçalho |
-| `escritorio-alameda` | `sobre.html` e bloco "dois balcões" — montra do n.º 97 |
-| `escritorio-carlos-manuel` | bloco "dois balcões" — montra do n.º 229 |
-| `alcochete-marginal` | `contactos.html` |
-| `automovel` | `particulares/automovel.html`, `motociclo.html` e `sinistros.html` |
-| `habitacao` | `particulares/habitacao.html` |
-| `saude` | `particulares/saude.html` e `empresas/saude-grupo.html` |
-| `vida` | `particulares/vida.html` |
-| `acidentes-pessoais` | `particulares/acidentes-pessoais.html` |
-| `acidentes-trabalho` | `empresas/acidentes-trabalho.html` e `multirriscos.html` |
-| `responsabilidade-civil` | `empresas/responsabilidade-civil.html` |
-| `frotas` | `empresas/frotas.html` |
+| Ilustração | Onde aparece | Que trabalho faz |
+|---|---|---|
+| `estuario-tejo` | página inicial, fundo do cabeçalho | ancora a AJT em Alcochete |
+| `escritorio-alameda` | página inicial, bloco dos dois balcões | a porta do n.º 97 |
+| `escritorio-carlos-manuel` | página inicial, bloco dos dois balcões | a porta do n.º 229 |
+| `atendimento` | `sobre.html` | mostra o que a AJT faz: explicar antes de vender |
+| `peritagem-telhado` | `sinistros.html` | o momento em que o seguro conta |
+| `automovel-assistencia` | `particulares/automovel.html` | o ramo mais procurado |
 
-**Ainda por decidir:** as ilustrações foram criadas com base em fotografias
-encontradas na internet. As duas montras reproduzem fachadas reais e as
-insígnias da Allianz e da Generali Tranquilidade — vale a pena mostrá-las ao
-proprietário, porque é ele que tem a relação com as companhias e quem sabe
-que regras elas têm sobre o uso das marcas.
+As páginas de ramo deixaram de ter imagem. Em vez dela, cada uma abre com o
+símbolo do seu seguro no cabeçalho — dá identidade sem encher a página.
 
-**Ainda sem ilustração própria:** motociclo (usa a do automóvel) e
-multirriscos empresarial (usa a dos acidentes de trabalho).
+### 🟢 Montra da Alameda — resolvida
 
-**Também úteis, se houver:** fotografias reais da equipa. Fotografias de
+A ilustração antiga mostrava a fachada com a insígnia **Allianz** e foi
+substituída. A nova imagem mostra a montra do n.º 97 com a insígnia actual
+da Generali Tranquilidade, e foi retocada a partir de uma captura de rua —
+sem os elementos de interface do Street View.
+
+> ⚠️ Mesmo retocada, convém confirmar com o proprietário se prefere uma
+> fotografia própria da fachada. Uma foto tirada no local, num dia de sol,
+> não levanta nenhuma dúvida de origem.
+
+**Também útil, se houver:** fotografias reais da equipa. Fotografias de
 pessoas verdadeiras são dos elementos que mais aumentam a confiança num site
 de serviços locais — mais até do que boas ilustrações.
 
@@ -122,14 +124,14 @@ O logótipo fornecido está integrado, recortado a partir do original:
 ou `.svg`), substituir os PNG por SVG. Fica nítido em qualquer resolução e
 pesa menos.
 
-## 🟠 7 · Avaliações de clientes
+## 🟢 7 · Avaliações de clientes — resolvido por remoção
 
-A secção "O que dizem de nós" na página inicial tem **texto de marcação**,
-não avaliações reais.
+A secção "O que dizem de nós" tinha três testemunhos de marcação e foi
+**apagada** antes da publicação, para não haver texto inventado no ar.
 
-**Duas opções:**
-1. Recolher avaliações reais no Google e copiá-las para lá (ver `GUIA-DE-EDICAO.md`).
-2. Apagar a secção inteira até as haver.
+**Para a repor:** recolha avaliações reais no perfil do Google e peça que
+sejam copiadas tal como o cliente as escreveu. O componente `.avaliacoes`
+continua no CSS, pronto a usar — ver `GUIA-DE-EDICAO.md`.
 
 > ⚠️ **Nunca publicar testemunhos inventados.** Além de enganar o cliente, é
 > publicidade enganosa e pode dar origem a coima.
@@ -171,9 +173,13 @@ Se preferir receber os pedidos directamente na caixa de correio, ver a secção
       página do agente na Generali, se for o caso.
 - [ ] Ao sábado abre? Uma fonte indicava sábados de manhã, outra encerrado.
       O site diz **encerrado ao fim-de-semana**.
-- [ ] Há mais companhias representadas além da Allianz e da Generali
-      Tranquilidade? O site menciona apenas estas duas, por serem as únicas
-      confirmadas.
+- [ ] **A Generali Tranquilidade é agora a única companhia representada?**
+      O site foi reescrito nesse pressuposto, depois de a relação com a
+      Allianz ter terminado. Se houver outra, é preciso rever os textos.
+- [ ] **A Generali cobre saúde e saúde dental?** As páginas
+      `particulares/saude.html` e `empresas/saude-grupo.html` existem desde
+      o tempo em que esses ramos vinham da Allianz. Se a Generali não os
+      tiver, essas duas páginas prometem o que não se pode entregar.
 - [ ] O telemóvel 964 036 313 é para publicar?
 - [ ] A AJT quer aparecer também para Montijo, Samouco e São Francisco?
       (Já está assim nos dados estruturados.)
@@ -187,11 +193,10 @@ inventados:
 
 | Dado | Fonte |
 |---|---|
-| Morada, telefone, email e horário do balcão Allianz | [allianz.pt/mediador/ajtseguros](https://www.allianz.pt/mediador/ajtseguros.html) |
+| Morada, telefone, email e horário do balcão da Alameda | confirmar directamente com a AJT — a fonte anterior era a página de mediador da Allianz, que deixou de se aplicar |
 | Morada, telefones e email do balcão Generali Tranquilidade | [agentes.tranquilidade.pt](https://agentes.tranquilidade.pt/alcochete/largo-da-revolucao--1910--loja-1) |
 | NIF 505991888 e data de constituição (30/01/2002) | [Iberinform](https://www.iberinform.pt/empresa/21355973/a-j-t-sociedade-de-mediacao-de-seguros-lda) · [Racius](https://www.racius.com/a-j-t-sociedade-de-mediacao-de-seguros-lda/) |
-| Ramos do balcão Allianz — auto, casa, saúde, vida, acidentes pessoais, saúde dental | [allianz.pt/mediador/ajtseguros](https://www.allianz.pt/mediador/ajtseguros.html) |
-| Ramos do balcão Generali — auto, casa, acidentes pessoais, bicicleta, moto e três linhas de vida | [agentes.tranquilidade.pt](https://agentes.tranquilidade.pt/alcochete/largo-da-revolucao--1910--loja-1) |
+| Ramos representados — auto, casa, acidentes pessoais, bicicleta, moto e três linhas de vida | [agentes.tranquilidade.pt](https://agentes.tranquilidade.pt/alcochete/largo-da-revolucao--1910--loja-1) |
 
 > Nota: o endereço da página do agente Generali contém "largo-da-revolucao--1910--loja-1",
 > mas o corpo da página indica **Rua Carlos Manuel Rodrigues Francisco, 229**.
