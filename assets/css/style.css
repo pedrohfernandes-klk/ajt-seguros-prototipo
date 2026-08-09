@@ -1,6 +1,7 @@
 /* ==========================================================================
    AJT SEGUROS · Alcochete
-   Sistema visual "MARÉ" — azul-noite do Tejo + areia das salinas
+   Sistema visual "MARÉ" — azul-noite do Tejo + areia das salinas,
+   com o vermelho da Generali Tranquilidade como acento
    --------------------------------------------------------------------------
    ⚠️  NÃO é preciso mexer neste ficheiro para mudar textos.
        Todo o texto vive nos ficheiros .html, assinalado com  ✏️ EDITAR.
@@ -31,7 +32,7 @@
    01 · TOKENS
    ───────────────────────────────────────────────────────────────────────── */
 :root{
-  /* Cores — azul-noite do estuário, areia das salinas, cobre discreto */
+  /* Cores — azul-noite do estuário, areia das salinas, vermelho da companhia */
   --tinta:      #0d2233;   /* azul-noite, cor institucional principal */
   --tinta-90:   #16334a;
   --tinta-70:   #2b4a63;
@@ -39,7 +40,13 @@
   --mare-forte: #0a4f77;   /* estado premido / hover de superfícies azuis */
   --mare-claro: #7fb4cf;
   --mare-veu:   rgba(22,99,143,.10);  /* fundo de pílulas e selos */
-  --cobre:      #8f5527;   /* acento quente, usado com muita parcimónia */
+  /* Acento quente — o vermelho da companhia representada.
+     Substituiu o cobre quando os dois balcões passaram a Generali
+     Tranquilidade. Usado com parcimónia: o azul-noite continua a ser a cor
+     da AJT, e é isso que impede o site de se confundir com o da companhia.
+     5.8:1 sobre o papel, 5.3:1 sobre a areia — acima do mínimo AA. */
+  --tranquilidade:     #C21B17;
+  --tranquilidade-veu: rgba(194,27,23,.09);
   --sal:        #ffffff;
   --papel:      #fbf9f5;   /* fundo geral, quase-branco quente */
   --areia:      #ece3d3;   /* fundo de secção alternado */
@@ -185,6 +192,7 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
   background:rgba(251,249,245,.88);
   backdrop-filter:saturate(140%) blur(12px);
   border-bottom:1px solid var(--linha);
+  border-top:3px solid var(--tranquilidade);
 }
 .cabecalho-barra{
   min-height:76px; display:flex; align-items:center; gap:18px;
@@ -306,7 +314,7 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 }
 .nav-movel a[aria-current="page"]{ color:var(--mare); font-weight:600 }
 .nav-movel .nav-movel-titulo{
-  font-family:var(--f-titulo); font-style:italic; color:var(--cobre);
+  font-family:var(--f-titulo); font-style:italic; color:var(--tranquilidade);
   font-size:.9rem; padding:18px 4px 6px; border:0;
 }
 .nav-movel .sub{ padding-left:18px; font-size:.94rem; font-weight:400 }
@@ -534,7 +542,7 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
   color:var(--tinta); letter-spacing:-.015em; line-height:1.15;
 }
 .registo-titulo .marcador{
-  font-family:var(--f-titulo); font-style:italic; font-size:.9rem; color:var(--cobre);
+  font-family:var(--f-titulo); font-style:italic; font-size:.9rem; color:var(--tranquilidade);
   font-variation-settings:"WONK" 1;
 }
 .registo p{ font-size:.94rem; color:var(--texto-fraco); margin-top:7px; max-width:56ch }
@@ -577,7 +585,10 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 
 /* Caixa de destaque — avisos úteis e "bom saber" */
 .destaque{
-  background:var(--sal); border:1px solid var(--linha); border-left:3px solid var(--cobre);
+  /* filete azul: o destaque é "bom saber", não um aviso. O vermelho fica
+     reservado para onde nomeia a companhia, e para não colidir com o
+     --vermelho das exclusões no bloco "onde acaba a cobertura". */
+  background:var(--sal); border:1px solid var(--linha); border-left:3px solid var(--mare);
   border-radius:var(--raio); padding:24px 26px; box-shadow:var(--sombra-sub);
 }
 /* Só o <b> que é filho directo é o título da caixa; os <b> dentro dos
@@ -633,7 +644,7 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
   background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio);
   box-shadow:var(--sombra-sub); padding:clamp(26px, 3vw, 34px);
   display:grid; gap:10px; align-content:start;
-  border-top:4px solid var(--mare);
+  border-top:4px solid var(--tranquilidade);
 }
 .companhias b{
   font-family:var(--f-texto); font-weight:700; font-size:1.25rem; color:var(--tinta);
@@ -684,7 +695,7 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
   position:relative; z-index:1;
   font-family:var(--f-titulo); font-style:italic; font-size:.88rem;
   font-variation-settings:"SOFT" 30,"WONK" 1;
-  color:var(--cobre); background:var(--papel);
+  color:var(--tranquilidade); background:var(--papel);
   padding:6px 14px; border-radius:999px; white-space:nowrap;
 }
 .secao-areia .conjunto-elo span{ background:var(--areia-2) }
@@ -744,10 +755,12 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
   font-family:var(--f-texto); font-weight:700; font-size:1.2rem; color:var(--tinta);
   letter-spacing:-.015em;
 }
+/* O selo nomeia a companhia, por isso leva a cor dela — é o sítio onde o
+   vermelho da Tranquilidade faz mais sentido e menos ruído. */
 .balcao-selo{
   font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--mare); background:rgba(51,113,143,.09);
-  border:1px solid rgba(51,113,143,.22); border-radius:var(--raio);
+  color:var(--tranquilidade); background:var(--tranquilidade-veu);
+  border:1px solid rgba(194,27,23,.22); border-radius:var(--raio-p);
   padding:6px 11px; white-space:nowrap;
 }
 .balcao dl{ display:grid; gap:14px }
@@ -869,7 +882,7 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-3px) }
   padding:clamp(24px, 3vw, 30px); box-shadow:var(--sombra-sub);
   display:flex; flex-direction:column; gap:16px;
 }
-.avaliacao-estrelas{ display:flex; gap:3px; color:var(--cobre) }
+.avaliacao-estrelas{ display:flex; gap:3px; color:var(--tranquilidade) }
 .avaliacao-estrelas svg{ width:16px }
 .avaliacao blockquote{
   font-family:var(--f-titulo); font-size:1.05rem; line-height:1.5; color:var(--tinta);
