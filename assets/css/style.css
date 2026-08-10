@@ -934,6 +934,46 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
 .avaliacao figcaption b{ display:block; color:var(--tinta); font-weight:600; font-size:.92rem }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   15k · CATÁLOGO — o resto da oferta
+   Os ramos com página própria são os que a AJT trabalha todos os dias.
+   Estes existem na companhia, medeiam-se na mesma, e ainda não têm página
+   aqui: em vez de fingir que não existem, listam-se com o nome oficial e
+   ligação directa à fonte. Cada item sai do site — daí a seta.
+   ───────────────────────────────────────────────────────────────────────── */
+.catalogo{
+  display:grid; gap:0; grid-template-columns:1fr;
+  border-top:1px solid var(--linha);
+}
+.catalogo a{
+  display:grid; grid-template-columns:1fr auto; align-items:baseline; gap:6px 18px;
+  padding:16px 2px; text-decoration:none;
+  border-bottom:1px solid var(--linha);
+  transition:padding-left var(--transicao), background var(--transicao);
+}
+.catalogo a:hover{ padding-left:10px; background:var(--areia-2) }
+.catalogo b{
+  font-weight:600; font-size:.98rem; color:var(--tinta); line-height:1.3;
+  grid-column:1;
+}
+.catalogo span{
+  grid-column:1; font-size:.86rem; line-height:1.5; color:var(--texto-fraco);
+  max-width:52ch;
+}
+.catalogo a::after{
+  content:""; grid-column:2; grid-row:1 / span 2; align-self:center;
+  width:11px; height:11px; flex:none; opacity:.5;
+  background:var(--mare);
+  clip-path:polygon(30% 0, 100% 0, 100% 70%, 87% 70%, 87% 22%, 39% 70%,
+                    30% 61%, 78% 13%, 30% 13%);
+  transition:opacity var(--transicao);
+}
+.catalogo a:hover::after{ opacity:1 }
+
+@media (min-width:720px){
+  .catalogo{ grid-template-columns:1fr 1fr; column-gap:clamp(28px, 4vw, 56px) }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
    15j · FIGURA EDITORIAL
    Imagem 3:2 de largura contida, para acompanhar um bloco de texto sem
    competir com ele. Não é hero nem fundo: é uma nota à margem.
