@@ -951,6 +951,50 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
 .avaliacao figcaption b{ display:block; color:var(--tinta); font-weight:600; font-size:.92rem }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   15i · FONTE OFICIAL
+   A AJT explica; quem define coberturas, capitais e exclusões é a
+   companhia. Este bloco liga à página oficial do produto em cada página,
+   à vista e não escondido no rodapé — e vem antes da ressalva legal,
+   para que quem quiser confirmar tenha por onde.
+   ───────────────────────────────────────────────────────────────────────── */
+.oficial{
+  margin-top:clamp(30px, 4vw, 44px);
+  border:1px solid var(--linha); border-radius:var(--raio);
+  background:var(--sal); padding:clamp(22px, 2.6vw, 28px);
+  display:grid; gap:14px;
+}
+.oficial b{
+  font-weight:700; font-size:.95rem; color:var(--tinta);
+  display:flex; align-items:center; gap:9px;
+}
+.oficial b::before{
+  content:""; width:7px; height:7px; border-radius:50%;
+  background:var(--tranquilidade); flex:none;
+}
+.oficial p{ font-size:.9rem; color:var(--texto-fraco); line-height:1.6; max-width:64ch }
+.oficial-ligacoes{ display:flex; flex-wrap:wrap; gap:10px 22px }
+.oficial-ligacoes a{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.9rem; font-weight:600; color:var(--mare); text-decoration:none;
+  border-bottom:1.5px solid currentColor; padding-bottom:2px;
+  transition:color var(--transicao);
+}
+.oficial-ligacoes a:hover{ color:var(--mare-forte) }
+/* seta diagonal: sai do site */
+.oficial-ligacoes a::after{
+  content:""; width:10px; height:10px; flex:none; opacity:.7;
+  background:currentColor;
+  clip-path:polygon(30% 0, 100% 0, 100% 70%, 87% 70%, 87% 22%, 39% 70%,
+                    30% 61%, 78% 13%, 30% 13%);
+}
+.secao-tinta .oficial, .claro .oficial{
+  background:rgba(255,255,255,.05); border-color:var(--linha-esc);
+}
+.secao-tinta .oficial b, .claro .oficial b{ color:#fff }
+.secao-tinta .oficial p, .claro .oficial p{ color:var(--texto-claro) }
+.secao-tinta .oficial-ligacoes a, .claro .oficial-ligacoes a{ color:var(--mare-claro) }
+
+/* ─────────────────────────────────────────────────────────────────────────
    15h · INSTANTÂNEOS DO GUIA DE SINISTROS
    Aqui a imagem não conta uma história em três tempos como nos ramos:
    mostra uma coisa concreta a ser feita. Pequena, encostada ao topo do
