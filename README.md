@@ -61,7 +61,7 @@ Um site estático:
 - publica-se em GitHub Pages, Netlify, Cloudflare Pages ou em qualquer
   alojamento partilhado português, sem alterações.
 
-O custo é a duplicação do cabeçalho e do rodapé pelas 12 páginas. Para um
+O custo é a duplicação do cabeçalho e do rodapé pelas páginas estáticas. Para um
 site desta dimensão, é um preço baixo pela robustez que se ganha.
 
 **Sem cookies, sem rastreio.** O site não instala qualquer identificador.
@@ -105,7 +105,7 @@ obrigatórios por preencher — nomeadamente o **número de registo na ASF** e a
 
 ## Estado
 
-Protótipo. Construído como oferta ao proprietário da AJT Seguros.
+Protótipo editorial em revisão. A informação legal obrigatória continua pendente de validação pelo titular.
 Os dados de contacto, moradas, NIF e data de constituição foram verificados
 em fontes públicas (Generali Tranquilidade, Iberinform, Racius) e
 estão listados no fim do `DADOS-A-CONFIRMAR.md`.

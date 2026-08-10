@@ -165,17 +165,16 @@
 
   /* ---- 5 · Formulário de contacto -------------------------------------- */
   /* O formulário funciona de duas formas:
-     a) Se o atributo action apontar para um serviço (Formspree, Web3Forms,
-        Formsubmit...), o envio é feito por esse serviço.
-     b) Se o action ainda for o marcador "COLOCAR-AQUI-O-ENDERECO-DO-SERVICO",
-        abrimos o programa de email do visitante com a mensagem preenchida.
-        Assim o site funciona desde o primeiro dia, sem configuração. */
+     a) Se o atributo action apontar para um serviço de formulários, o envio
+        é tratado por esse serviço.
+     b) Se o action for um endereço mailto, abrimos o programa de email do
+        visitante com a mensagem preenchida. */
   var form = document.querySelector('form[data-formulario-contacto]');
 
   if (form) {
     form.addEventListener('submit', function (e) {
       var action = form.getAttribute('action') || '';
-      var porConfigurar = action.indexOf('COLOCAR-AQUI') !== -1 || action === '';
+      var porConfigurar = action === '' || action.indexOf('mailto:') === 0;
       if (!porConfigurar) return; // deixa o serviço tratar do envio
 
       e.preventDefault();
