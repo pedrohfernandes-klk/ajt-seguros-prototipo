@@ -429,7 +429,9 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 }
 .hero-conteudo{
   position:relative; z-index:1;
-  padding-block:clamp(64px, 11vw, 148px) clamp(96px, 12vw, 168px);
+  /* o espaço extra em baixo servia para acomodar o cartão de números que
+     subia por cima do herói; sem ele, o herói equilibra-se */
+  padding-block:clamp(72px, 11vw, 152px) clamp(76px, 11vw, 156px);
   max-width:none;
 }
 .hero-conteudo > div{ max-width:44rem }
@@ -442,25 +444,6 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 .hero .botao-secundario{ color:#fff; border-color:rgba(255,255,255,.45) }
 .hero .botao-secundario:hover{ background:#fff; color:var(--tinta); border-color:#fff }
 
-/* Cartão de provas — sobe por cima do herói e quebra o ritmo vertical */
-.provas{ position:relative; z-index:2; margin-top:clamp(-88px, -7vw, -56px) }
-.provas-cartao{
-  background:var(--sal); border:1px solid var(--linha); border-radius:var(--raio-g);
-  box-shadow:var(--sombra-alta);
-  display:grid; grid-template-columns:1fr; gap:0;
-  overflow:hidden;
-}
-.provas-cartao li{
-  padding:26px clamp(22px, 3vw, 34px);
-  border-bottom:1px solid var(--linha);
-  display:flex; flex-direction:column; gap:6px;
-}
-.provas-cartao li:last-child{ border-bottom:0 }
-.provas-cartao b{
-  font-family:var(--f-titulo); font-weight:600; font-size:2.4rem; line-height:1;
-  color:var(--mare); letter-spacing:-.03em;
-}
-.provas-cartao span{ font-size:.88rem; line-height:1.45; color:var(--texto-fraco) }
 
 /* Hero curto — páginas interiores */
 .hero-interior{
@@ -1271,10 +1254,6 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
    18 · RESPONSIVO
    ───────────────────────────────────────────────────────────────────────── */
 @media (min-width:600px){
-  .provas-cartao{ grid-template-columns:repeat(2, 1fr) }
-  .provas-cartao li{ border-right:1px solid var(--linha) }
-  .provas-cartao li:nth-child(2n){ border-right:0 }
-  .provas-cartao li:nth-last-child(-n+2){ border-bottom:0 }
   .ramos{ grid-template-columns:repeat(2, 1fr) }
   .campo-duplo{ grid-template-columns:1fr 1fr }
   .rodape-legal{ grid-template-columns:1fr auto; align-items:center }
@@ -1296,10 +1275,6 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   .menu-botao{ display:none }
   .nav-movel{ display:none !important }
   .ramos{ grid-template-columns:repeat(3, 1fr) }
-  .provas-cartao{ grid-template-columns:repeat(4, 1fr) }
-  .provas-cartao li{ border-bottom:0 }
-  .provas-cartao li:nth-child(2n){ border-right:1px solid var(--linha) }
-  .provas-cartao li:last-child{ border-right:0 }
   .duas-colunas{ grid-template-columns:1fr 1fr }
   .duas-colunas.pende-esquerda{ grid-template-columns:1.25fr .75fr }
   .duas-colunas.pende-direita{ grid-template-columns:.75fr 1.25fr }
