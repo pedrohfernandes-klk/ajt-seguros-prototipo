@@ -951,6 +951,21 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
 .avaliacao figcaption b{ display:block; color:var(--tinta); font-weight:600; font-size:.92rem }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   15j · FIGURA EDITORIAL
+   Imagem 3:2 de largura contida, para acompanhar um bloco de texto sem
+   competir com ele. Não é hero nem fundo: é uma nota à margem.
+   ───────────────────────────────────────────────────────────────────────── */
+.figura-editorial{ margin:0 0 clamp(24px, 3vw, 32px) }
+.figura-editorial img{
+  width:min(100%, 420px); aspect-ratio:3/2; object-fit:cover;
+  border-radius:var(--raio); border:1px solid var(--linha);
+}
+.figura-editorial figcaption{
+  margin-top:12px; max-width:420px;
+  font-size:.82rem; line-height:1.5; color:var(--texto-fraco);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
    15i · FONTE OFICIAL
    A AJT explica; quem define coberturas, capitais e exclusões é a
    companhia. Este bloco liga à página oficial do produto em cada página,
