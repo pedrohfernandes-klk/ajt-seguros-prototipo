@@ -33,13 +33,13 @@
    ───────────────────────────────────────────────────────────────────────── */
 :root{
   /* Cores — azul-noite do estuário, areia das salinas, vermelho da companhia */
-  --tinta:      #0d2233;   /* azul-noite, cor institucional principal */
-  --tinta-90:   #16334a;
-  --tinta-70:   #2b4a63;
-  --mare:       #16638f;   /* azul-maré — ligações e acentos frios */
-  --mare-forte: #0a4f77;   /* estado premido / hover de superfícies azuis */
-  --mare-claro: #7fb4cf;
-  --mare-veu:   rgba(22,99,143,.10);  /* fundo de pílulas e selos */
+  --tinta:      #173247;   /* azul-noite, cor institucional principal */
+  --tinta-90:   #20435b;
+  --tinta-70:   #3c5f73;
+  --mare:       #236987;   /* azul-maré — ligações e acentos frios */
+  --mare-forte: #185772;   /* estado premido / hover de superfícies azuis */
+  --mare-claro: #9bc6d8;
+  --mare-veu:   rgba(35,105,135,.09);  /* fundo de pílulas e selos */
   /* Acento quente — o vermelho da companhia representada.
      Substituiu o cobre quando os dois balcões passaram a Generali
      Tranquilidade. Usado com parcimónia: o azul-noite continua a ser a cor
@@ -51,18 +51,18 @@
   /* Neutros frios. O creme e a areia davam ao site um ar artesanal; para o
      registo que se quer — sóbrio, actual — o fundo tem de sair da frente e
      deixar a tipografia e a cor fazer o trabalho. */
-  --papel:      #fafafa;   /* fundo geral */
-  --areia:      #eceef1;   /* fundo de secção alternado, mais marcado */
-  --areia-2:    #f4f5f7;
-  --linha:      #e4e7eb;   /* hairline decorativa: presente, nunca ruidosa */
+  --papel:      #fdfdfc;   /* fundo geral */
+  --areia:      #edf2f4;   /* fundo de secção alternado, mais marcado */
+  --areia-2:    #f6f8f9;
+  --linha:      #dfe6e9;   /* hairline decorativa: presente, nunca ruidosa */
   /* Os limites de um campo não são decoração: se não se vêem, não se percebe
      onde se escreve. 3.3:1 sobre branco — acima do mínimo de 3:1 que a norma
      pede para contornos de controlos (WCAG 1.4.11). */
   --linha-campo:#868f9c;
   --linha-esc:  rgba(255,255,255,.14);
-  --texto:      #1a2330;   /* quase preto, azulado */
-  --texto-fraco:#5b6674;
-  --texto-claro:#b6c7d3;   /* sobre fundo escuro */
+  --texto:      #22313c;   /* quase preto, azulado */
+  --texto-fraco:#60717d;
+  --texto-claro:#c5d4dc;   /* sobre fundo escuro */
   --verde:      #2f6b4f;   /* "está coberto" */
   --vermelho:   #a33a32;   /* "não está coberto" */
 
@@ -84,9 +84,9 @@
   --secao-y:    clamp(76px, 10vw, 152px);   /* mais ar entre secções */
   /* Sombras contidas: a superfície define-se pelo espaço e pela hairline,
      não pela elevação. A sombra forte fica para o que flutua mesmo. */
-  --sombra:     0 12px 32px -14px rgba(16,26,40,.16);
+  --sombra:     0 14px 34px -18px rgba(23,50,71,.14);
   --sombra-sub: 0 1px 2px rgba(16,26,40,.04);
-  --sombra-alta:0 24px 56px -20px rgba(16,26,40,.22);
+  --sombra-alta:0 26px 60px -24px rgba(23,50,71,.18);
   --transicao:  .28s cubic-bezier(.2,.6,.3,1);
 }
 
