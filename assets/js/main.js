@@ -175,7 +175,7 @@
   if (form) {
     form.addEventListener('submit', function (e) {
       var action = form.getAttribute('action') || '';
-      var porConfigurar = action.indexOf('COLOCAR-AQUI') !== -1 || action === '';
+      var porConfigurar = action.indexOf('COLOCAR-AQUI') !== -1 || action === '' || action.indexOf('mailto:') === 0;
       if (!porConfigurar) return; // deixa o serviço tratar do envio
 
       e.preventDefault();
