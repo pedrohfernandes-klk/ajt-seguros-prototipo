@@ -951,6 +951,32 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
 .avaliacao figcaption b{ display:block; color:var(--tinta); font-weight:600; font-size:.92rem }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   15h · INSTANTÂNEOS DO GUIA DE SINISTROS
+   Aqui a imagem não conta uma história em três tempos como nos ramos:
+   mostra uma coisa concreta a ser feita. Pequena, encostada ao topo do
+   cartão e sem legenda — o título e o texto do cartão já dizem o que é.
+   ───────────────────────────────────────────────────────────────────────── */
+.cartao-instantaneo{ display:flex; flex-direction:column }
+.cartao-instantaneo > img{
+  width:min(100%, 220px); aspect-ratio:4/3; object-fit:cover;
+  border-radius:var(--raio-p); border:1px solid var(--linha);
+  margin-bottom:20px; background:var(--areia-2);
+}
+
+/* A peritagem acompanha o percurso do processo: é ao lado dos passos de
+   peritagem e de decisão que ela explica alguma coisa, em vez de ser um
+   intervalo decorativo antes das instruções começarem. */
+.percurso-figura{ margin:clamp(28px, 3.5vw, 40px) 0 0 }
+.percurso-figura img{
+  width:min(100%, 380px); border-radius:var(--raio-p);
+  border:1px solid var(--linha-esc);
+}
+.percurso-figura figcaption{
+  margin-top:12px; max-width:380px;
+  font-size:.8rem; line-height:1.5; color:var(--texto-claro);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
    15g · LISTA EXPANSÍVEL
    O nome da cobertura fica à vista; a explicação abre a pedido. Quem
    procura uma cobertura encontra-a de relance; quem quer perceber lê.
