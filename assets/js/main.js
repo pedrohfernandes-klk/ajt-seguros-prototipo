@@ -34,9 +34,25 @@
     var botao = grupo.querySelector('button');
     if (!botao) return;
 
+    var adiar = null;
+
     function fechar() {
+      if (adiar) { clearTimeout(adiar); adiar = null; }
       grupo.setAttribute('data-aberto', 'false');
       botao.setAttribute('aria-expanded', 'false');
+    }
+
+    function abrir() {
+      if (adiar) { clearTimeout(adiar); adiar = null; }
+      grupo.setAttribute('data-aberto', 'true');
+      botao.setAttribute('aria-expanded', 'true');
+    }
+
+    /* Fechar com atraso: dá tempo a que o rato atravesse um canto ou volte
+       atrás sem perder o menu. Se voltar a entrar, o fecho é cancelado. */
+    function fecharComCalma() {
+      if (adiar) clearTimeout(adiar);
+      adiar = setTimeout(fechar, 240);
     }
 
     function alternar() {
@@ -46,11 +62,8 @@
     }
 
     botao.addEventListener('click', alternar);
-    grupo.addEventListener('mouseenter', function () {
-      grupo.setAttribute('data-aberto', 'true');
-      botao.setAttribute('aria-expanded', 'true');
-    });
-    grupo.addEventListener('mouseleave', fechar);
+    grupo.addEventListener('mouseenter', abrir);
+    grupo.addEventListener('mouseleave', fecharComCalma);
     grupo.addEventListener('focusout', function (e) {
       if (!grupo.contains(e.relatedTarget)) fechar();
     });
