@@ -1015,11 +1015,17 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
    mostra uma coisa concreta a ser feita. Pequena, encostada ao topo do
    cartão e sem legenda — o título e o texto do cartão já dizem o que é.
    ───────────────────────────────────────────────────────────────────────── */
-.cartao-instantaneo{ display:flex; flex-direction:column }
+.cartao-instantaneo{ display:flex; flex-direction:column; overflow:hidden }
+/* A imagem sangra até às bordas do cartão. Encostada a um canto e com
+   espaço vazio ao lado ficava a olhar para o nada; à largura toda lê-se
+   como parte do cartão. A proporção do ficheiro é a mesma do contentor,
+   por isso o object-fit não corta nada. */
 .cartao-instantaneo > img{
-  width:min(100%, 220px); aspect-ratio:4/3; object-fit:cover;
-  border-radius:var(--raio-p); border:1px solid var(--linha);
-  margin-bottom:20px; background:var(--areia-2);
+  width:calc(100% + clamp(56px, 6vw, 60px));
+  max-width:none;
+  margin:clamp(-30px, -3vw, -30px) clamp(-30px, -3vw, -30px) clamp(22px, 2.4vw, 26px);
+  aspect-ratio:4/3; object-fit:cover; object-position:center;
+  border-bottom:1px solid var(--linha); background:var(--areia-2);
 }
 
 /* A peritagem acompanha o percurso do processo: é ao lado dos passos de
