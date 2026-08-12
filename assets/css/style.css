@@ -42,14 +42,17 @@
   --mare-veu:   rgba(35,105,135,.09);  /* fundo de pílulas e selos */
   /* Acento quente — o vermelho da companhia representada.
      Substituiu o cobre quando os dois balcões passaram a Generali
-     Tranquilidade. Usado com parcimónia: o azul-noite continua a ser a cor
-     da AJT, e é isso que impede o site de se confundir com o da companhia.
-     5.8:1 sobre o papel, 5.3:1 sobre a areia — acima do mínimo AA. */
-  --tranquilidade:     #C21B17;
+     Tranquilidade. Marca o que é acção — botão principal, telefone do
+     cabeçalho, etiqueta de secção, símbolo de página. O azul-noite continua
+     a ser a cor da casa, e as ligações de texto ficam no azul-maré: em
+     vermelho seriam ruído.
+     6.1:1 com branco por cima, 5.8:1 sobre o papel — acima do mínimo AA. */
+  --tranquilidade:       #C21B17;   /* vermelho Generali */
+  --tranquilidade-forte: #9c1512;
   --tranquilidade-veu: rgba(194,27,23,.09);
   --sal:        #ffffff;
   /* Neutros frios. O creme e a areia davam ao site um ar artesanal; para o
-     registo que se quer — sóbrio, actual — o fundo tem de sair da frente e
+     registo que se quer — sóbrio, atual — o fundo tem de sair da frente e
      deixar a tipografia e a cor fazer o trabalho. */
   --papel:      #fdfdfc;   /* fundo geral */
   --areia:      #edf2f4;   /* fundo de secção alternado, mais marcado */
@@ -69,9 +72,12 @@
   /* Todas as combinações de cor deste ficheiro foram medidas e cumprem o
      rácio de contraste 4.5:1 exigido pela norma WCAG 2.1 nível AA. */
 
-  /* Tipografia — Fraunces (serifa editorial) + Public Sans (institucional) */
-  --f-titulo: "Fraunces", Georgia, "Times New Roman", serif;
-  --f-texto:  "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Tipografia — Newsreader (serifa de leitura, com itálico próprio)
+     + Instrument Sans (grotesco de aberturas largas).
+     A escolha é pela legibilidade nos tamanhos pequenos: é aí que se
+     lê uma apólice explicada, não nos títulos. */
+  --f-titulo: "Newsreader", Georgia, "Times New Roman", serif;
+  --f-texto:  "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Medidas */
   --max:        1180px;
@@ -165,9 +171,9 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
   font-family:var(--f-texto); font-style:normal;
   font-size:.74rem; font-weight:700;
   letter-spacing:.1em; text-transform:uppercase;
-  color:var(--mare);
-  background:var(--mare-veu);
-  border:1px solid rgba(22,99,143,.18);
+  color:var(--tranquilidade);
+  background:var(--tranquilidade-veu);
+  border:1px solid rgba(194,27,23,.20);
   border-radius:var(--raio-pilula); padding:6px 14px;
   margin-bottom:24px;
 }
@@ -291,19 +297,17 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 }
 .nav-grupo > button{ position:relative }
 
-/* Telefone no cabeçalho — a acção mais provável num site de seguros */
-/* O telefone e a accao principal de um mediador local: quem chega ao
-   site quer, quase sempre, falar com alguem. Deixa de ser um contorno
-   discreto e passa a ler-se como botao. */
+/* Telefone no cabeçalho — a acção mais provável num site de seguros.
+   Quem chega quer, quase sempre, falar com alguém: por isso lê-se como
+   botão, e no vermelho da companhia. */
 .cabecalho-tel{
   display:none; align-items:center; gap:9px; text-decoration:none;
   font-weight:600; font-size:.92rem; color:#fff;
   padding:11px 20px; border:1px solid transparent; border-radius:var(--raio-pilula);
-  background:var(--mare); box-shadow:var(--sombra-sub);
+  background:var(--tranquilidade); box-shadow:var(--sombra-sub);
   transition:background var(--transicao), transform var(--transicao);
 }
-.cabecalho-tel:hover{ background:var(--mare-forte); transform:translateY(-1px) }
-.cabecalho-tel svg{ width:15px; flex:none }
+.cabecalho-tel:hover{ background:var(--tranquilidade-forte); transform:translateY(-1px) }
 .cabecalho-tel svg{ width:15px; flex:none }
 
 /* Botão de menu — mobile */
@@ -354,8 +358,8 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 }
 .botao svg{ width:14px; flex:none; transition:transform var(--transicao) }
 .botao:hover svg{ transform:translateX(3px) }
-.botao-primario{ background:var(--mare); color:#fff; box-shadow:var(--sombra-sub) }
-.botao-primario:hover{ background:var(--mare-forte); transform:translateY(-2px); box-shadow:var(--sombra) }
+.botao-primario{ background:var(--tranquilidade); color:#fff; box-shadow:var(--sombra-sub) }
+.botao-primario:hover{ background:var(--tranquilidade-forte); transform:translateY(-2px); box-shadow:var(--sombra) }
 .botao-secundario{ background:transparent; color:var(--tinta); border-color:var(--tinta) }
 .botao-secundario:hover{ background:var(--tinta); color:#fff }
 .claro .botao-primario{ background:var(--sal); color:var(--tinta) }
@@ -472,7 +476,7 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 .hero-simbolo{
   width:clamp(52px, 6vw, 64px); height:clamp(52px, 6vw, 64px);
   border-radius:var(--raio); margin-bottom:clamp(20px, 2.5vw, 26px);
-  background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22);
+  background:var(--tranquilidade); border:1px solid var(--tranquilidade);
   color:#fff; display:grid; place-items:center;
 }
 .hero-simbolo svg{ width:52% }
