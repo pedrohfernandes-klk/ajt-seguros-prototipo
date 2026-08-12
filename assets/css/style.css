@@ -724,8 +724,8 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   border-bottom:1px solid var(--linha);
 }
 .conjunto-lado h3{
-  font-family:var(--f-texto); font-weight:700; font-size:1.2rem; color:var(--tinta);
-  letter-spacing:-.015em; margin:0;
+  font-family:var(--f-texto); font-weight:700; font-size:1.12rem; color:var(--tinta);
+  letter-spacing:-.015em; line-height:1.3; text-wrap:balance; margin:0;
 }
 .conjunto-morada{ font-size:.85rem; color:var(--texto-fraco); margin:0 }
 .conjunto-lado > p:not(.conjunto-morada){ font-size:.95rem; color:var(--texto-fraco); line-height:1.62 }
@@ -803,8 +803,8 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   padding-bottom:16px; border-bottom:1px solid var(--linha);
 }
 .balcao-topo h3{
-  font-family:var(--f-texto); font-weight:700; font-size:1.2rem; color:var(--tinta);
-  letter-spacing:-.015em;
+  font-family:var(--f-texto); font-weight:700; font-size:1.12rem; color:var(--tinta);
+  letter-spacing:-.015em; line-height:1.3; text-wrap:balance;
 }
 /* O selo nomeia a companhia, por isso leva a cor dela — é o sítio onde o
    vermelho da Tranquilidade faz mais sentido e menos ruído. */
@@ -1004,6 +1004,12 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   margin-top:12px; max-width:420px;
   font-size:.82rem; line-height:1.5; color:var(--texto-fraco);
 }
+
+/* Variante larga: para a fotografia que abre uma seccao inteira, e nao
+   a que acompanha um paragrafo. */
+.figura-larga{ margin-bottom:clamp(30px, 4vw, 44px) }
+.figura-larga img{ width:min(100%, 560px) }
+.figura-larga figcaption{ max-width:560px }
 
 /* ─────────────────────────────────────────────────────────────────────────
    15i · FONTE OFICIAL
