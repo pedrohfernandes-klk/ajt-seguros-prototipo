@@ -292,13 +292,18 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 .nav-grupo > button{ position:relative }
 
 /* Telefone no cabeçalho — a acção mais provável num site de seguros */
+/* O telefone e a accao principal de um mediador local: quem chega ao
+   site quer, quase sempre, falar com alguem. Deixa de ser um contorno
+   discreto e passa a ler-se como botao. */
 .cabecalho-tel{
-  display:none; align-items:center; gap:8px; text-decoration:none;
-  font-weight:600; font-size:.92rem; color:var(--tinta);
-  padding:10px 14px; border:1px solid var(--linha); border-radius:var(--raio);
-  background:var(--sal); transition:border-color var(--transicao), color var(--transicao);
+  display:none; align-items:center; gap:9px; text-decoration:none;
+  font-weight:600; font-size:.92rem; color:#fff;
+  padding:11px 20px; border:1px solid transparent; border-radius:var(--raio-pilula);
+  background:var(--mare); box-shadow:var(--sombra-sub);
+  transition:background var(--transicao), transform var(--transicao);
 }
-.cabecalho-tel:hover{ border-color:var(--mare); color:var(--mare) }
+.cabecalho-tel:hover{ background:var(--mare-forte); transform:translateY(-1px) }
+.cabecalho-tel svg{ width:15px; flex:none }
 .cabecalho-tel svg{ width:15px; flex:none }
 
 /* Botão de menu — mobile */
@@ -471,6 +476,13 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
   color:#fff; display:grid; place-items:center;
 }
 .hero-simbolo svg{ width:52% }
+
+/* Accoes no cabecalho interior — o telefone a vista, sem ter de descer */
+.hero-accoes{
+  display:flex; flex-wrap:wrap; gap:14px; align-items:center;
+  margin-top:clamp(26px, 3vw, 34px);
+}
+.hero-accoes .nota{ margin:0; flex-basis:100% }
 
 /* Migalhas */
 .migalhas{
@@ -820,6 +832,11 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   border-radius:var(--raio); transition:border-color var(--transicao), transform var(--transicao);
 }
 .contacto-directo a:hover{ border-color:var(--mare); transform:translateY(-2px) }
+
+/* Dois numeros lado a lado quando ha espaco, e a vista logo no cabecalho
+   da pagina: o telefone e a accao principal. */
+@media (min-width:700px){ .contacto-directo{ grid-template-columns:1fr 1fr } }
+.hero-interior .contacto-directo{ margin-top:clamp(26px, 3vw, 34px); max-width:720px }
 .contacto-directo svg{ width:22px; color:var(--mare); flex:none }
 .contacto-directo span{ display:block; font-size:.76rem; color:var(--texto-fraco); margin-bottom:2px }
 .contacto-directo b{
