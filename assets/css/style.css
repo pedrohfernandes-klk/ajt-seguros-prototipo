@@ -32,10 +32,14 @@
    01 · TOKENS
    ───────────────────────────────────────────────────────────────────────── */
 :root{
-  /* Cores — azul-noite do estuário, areia das salinas, vermelho da companhia */
-  --tinta:      #173247;   /* azul-noite, cor institucional principal */
-  --tinta-90:   #20435b;
-  --tinta-70:   #3c5f73;
+  /* Cores — azul do estuário, areia das salinas, vermelho da companhia */
+  /* O azul-noite era escuro a ponto de fechar a página: as secções em fundo
+     cheio pesavam como um bloco. Este abre um tom e meio e ganha luz sem
+     perder a gravidade — 8.5:1 sobre o papel, 8.7:1 com branco por cima,
+     muito acima do mínimo AA. */
+  --tinta:      #21506c;   /* azul do estuário, cor institucional principal */
+  --tinta-90:   #2b607f;
+  --tinta-70:   #4a7891;
   --mare:       #236987;   /* azul-maré — ligações e acentos frios */
   --mare-forte: #185772;   /* estado premido / hover de superfícies azuis */
   --mare-claro: #9bc6d8;
@@ -46,10 +50,13 @@
      cabeçalho, etiqueta de secção, símbolo de página. O azul-noite continua
      a ser a cor da casa, e as ligações de texto ficam no azul-maré: em
      vermelho seriam ruído.
-     6.1:1 com branco por cima, 5.8:1 sobre o papel — acima do mínimo AA. */
-  --tranquilidade:       #C21B17;   /* vermelho Generali */
-  --tranquilidade-forte: #9c1512;
-  --tranquilidade-veu: rgba(194,27,23,.09);
+     A cheio, ao alto de todas as páginas, o vermelho da companhia gritava.
+     Fica um tom mais fundo — menos fluorescente, mesma família — e sobretudo
+     deixa de cobrir superfícies grandes: marca, não domina.
+     6.8:1 com branco por cima, 6.7:1 sobre o papel. */
+  --tranquilidade:       #b0201c;   /* vermelho Generali, um tom mais fundo */
+  --tranquilidade-forte: #8e1916;
+  --tranquilidade-veu: rgba(176,32,28,.08);
   --sal:        #ffffff;
   /* Neutros frios. O creme e a areia davam ao site um ar artesanal; para o
      registo que se quer — sóbrio, atual — o fundo tem de sair da frente e
@@ -301,15 +308,16 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 
 /* Telefone no cabeçalho — a acção mais provável num site de seguros.
    Quem chega quer, quase sempre, falar com alguém: por isso lê-se como
-   botão, e no vermelho da companhia. */
+   botão. Em azul, não em vermelho — ao alto de todas as páginas, a cheio,
+   o vermelho era a primeira coisa que se via e a que mais gritava. */
 .cabecalho-tel{
   display:none; align-items:center; gap:9px; text-decoration:none;
   font-weight:600; font-size:.92rem; color:#fff;
   padding:11px 20px; border:1px solid transparent; border-radius:var(--raio-pilula);
-  background:var(--tranquilidade); box-shadow:var(--sombra-sub);
+  background:var(--tinta); box-shadow:var(--sombra-sub);
   transition:background var(--transicao), transform var(--transicao);
 }
-.cabecalho-tel:hover{ background:var(--tranquilidade-forte); transform:translateY(-1px) }
+.cabecalho-tel:hover{ background:var(--tinta-90); transform:translateY(-1px) }
 .cabecalho-tel svg{ width:15px; flex:none }
 .cabecalho-tel{ white-space:nowrap }
 
