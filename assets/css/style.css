@@ -1339,9 +1339,12 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   .companhias{ grid-template-columns:repeat(2, 1fr) }
 }
 
+/* O telefone e a accao principal: nao espera pela barra de navegacao,
+   aparece assim que ha espaco ao lado do botao do menu. */
+@media (min-width:600px){ .cabecalho-tel{ display:inline-flex } }
+
 @media (min-width:1040px){
   .nav-principal{ display:flex }
-  .cabecalho-tel{ display:inline-flex }
   .menu-botao{ display:none }
   .nav-movel{ display:none !important }
   .ramos{ grid-template-columns:repeat(3, 1fr) }
