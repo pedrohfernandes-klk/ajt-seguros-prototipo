@@ -487,8 +487,8 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 .hero-simbolo{
   width:clamp(52px, 6vw, 64px); height:clamp(52px, 6vw, 64px);
   border-radius:var(--raio); margin-bottom:clamp(20px, 2.5vw, 26px);
-  background:var(--tranquilidade); border:1px solid var(--tranquilidade);
-  color:#fff; display:grid; place-items:center;
+  background:var(--sal); border:1px solid var(--sal);
+  color:var(--tranquilidade); display:grid; place-items:center;
 }
 .hero-simbolo svg{ width:52% }
 
