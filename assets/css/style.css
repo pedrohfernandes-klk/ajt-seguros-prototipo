@@ -229,12 +229,14 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
   color:var(--tinta); letter-spacing:-.01em;
 }
 .marca-nome small{
-  font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--texto-fraco); font-weight:600;
+  font-size:.66rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--texto-fraco); font-weight:600; white-space:nowrap;
 }
 
 /* Navegação — desktop */
 .nav-principal{ display:none; align-items:center; gap:4px }
+.nav-principal > .nav-grupo > button,
+.nav-principal > a{ white-space:nowrap }
 .nav-principal a{
   position:relative; text-decoration:none; padding:9px 13px; border-radius:var(--raio);
   font-size:.92rem; font-weight:500; color:var(--texto);
@@ -309,6 +311,7 @@ hr{ border:0; border-top:1px solid var(--linha); margin:0 }
 }
 .cabecalho-tel:hover{ background:var(--tranquilidade-forte); transform:translateY(-1px) }
 .cabecalho-tel svg{ width:15px; flex:none }
+.cabecalho-tel{ white-space:nowrap }
 
 /* Botão de menu — mobile */
 .menu-botao{
@@ -1336,7 +1339,7 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   .companhias{ grid-template-columns:repeat(2, 1fr) }
 }
 
-@media (min-width:940px){
+@media (min-width:1040px){
   .nav-principal{ display:flex }
   .cabecalho-tel{ display:inline-flex }
   .menu-botao{ display:none }
