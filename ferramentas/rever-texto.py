@@ -44,6 +44,9 @@ REPROVADAS = [
     ("parceiro de confiança", "chavão comercial"),
     ("tranquilidade que merece", "chavão comercial"),
     ("na vanguarda",    "chavão comercial"),
+    ("tranquilidade real", "chavão — e trocadilho involuntário com a companhia"),
+    ("à sua medida",    "chavão comercial"),
+    ("um mundo para",   "slogan abstracto; diga antes o que faz"),
     ("gama completa",   "chavão comercial"),
 ]
 EXCEPCOES = {"a gente": ["toda a gente", "muita gente", "pouca gente",
@@ -111,6 +114,64 @@ def regras():
     return avisos
 
 
+# ── 4 · verificacoes de estrutura ─────────────────────────────────────────
+# Nasceram de erros reais. A comparacao com 24 sites portugueses do sector
+# -- Generali, Fidelidade, Ageas, Allianz, Lusitania, Mapfre, Medis,
+# Multicare, Victoria, Prevoir, Real Vida, Caravela, Seguro Directo, Sosel,
+# R2, Credimedia, Publisegur, SegurVida, ActivoBank, Moey, DECO, ASF,
+# Comparamais, Lusitania Vida -- mostrou tres regras que o mercado inteiro
+# cumpre e que este site tinha quebrado.
+
+PARAGENS = set("""a o as os um uma de do da dos das em no na nos nas para por
+com e ou que se seu sua seus suas ao aos as e é são meu minha só mais""".split())
+
+_pal = lambda t: {w for w in re.findall(r"[^\W\d_]+", limpa(t).lower(), re.UNICODE)
+                  if w not in PARAGENS and len(w) > 3}
+
+
+def estrutura():
+    avisos = []
+    for f in ficheiros():
+        if f in ("404.html", "sobre.html", "informacao-legal.html"):
+            continue
+        html = open(f, encoding="utf-8").read()
+        # so as paginas de produto: os indices, o sobre nos, os sinistros e
+        # o simulador nao vendem um produto e o mercado da-lhes titulo livre
+        de_produto = ("particulares" in f or "empresas" in f) and "index" not in f
+
+        # (1) O titulo tem de dizer o nome do produto. Nenhum dos 24 sites
+        #     poe a frase bonita no <h1> e esconde o produto: a frase
+        #     bonita vive na linha de baixo.
+        h1 = re.search(r"<h1[^>]*>((?:(?!</h1>).)*)</h1>", html, re.S)
+        mig = re.findall(r'<span aria-current="page">([^<]+)</span>', html)
+        if de_produto and h1 and mig and _pal(h1.group(1)) and _pal(mig[0]):
+            if not (_pal(h1.group(1)) & _pal(mig[0])):
+                avisos.append((f, "título", "«%s» não repete nada de «%s» — quem vem do menu perde o fio"
+                               % (limpa(h1.group(1)), mig[0].strip()), ""))
+
+        # (2) Titulos repetidos dentro da MESMA pagina. Entre paginas e
+        #     consistencia; dentro de uma so, e descuido.
+        vistos = {}
+        for t in re.findall(r'<h2[^>]*class="titulo[^"]*"[^>]*>((?:(?!</h2>).)*)</h2>', html, re.S):
+            t = limpa(t)
+            k = " ".join(t.split()[:3]).lower()
+            if k in vistos:
+                avisos.append((f, "repetição", "«%s» e «%s» começam igual, na mesma página"
+                               % (vistos[k], t), ""))
+            vistos[k] = t
+
+        # (3) A quebra de linha tem de deixar peso no italico: duas
+        #     palavras abertas por preposicao poem a enfase em cima de nada.
+        for m in re.finditer(r"<(h1|h2)[^>]*>((?:(?!</>).)*)</>", html, re.S):
+            partes = m.group(2).split("<br>")
+            if len(partes) == 2:
+                seg = limpa(partes[1]).split()
+                if seg and len(seg) < 3 and seg[0].lower().strip(".,?") in PARAGENS:
+                    avisos.append((f, "quebra", "«%s / %s» — o itálico fica sem peso"
+                                   % (limpa(partes[0]), limpa(partes[1])), ""))
+    return avisos
+
+
 def frases():
     saida, vistas = [], set()
     for f in ficheiros():
@@ -163,7 +224,7 @@ if "--frases" in sys.argv:
         bloco(fh, b)
     print("FRASES-A-LER.md — %d inventadas, %d descritivas" % (len(a), len(b)))
 else:
-    av = regras()
+    av = regras() + estrutura()
     for f, cat, o_que, volta in av:
         print("%-40s %-11s %s" % (f, cat, o_que))
         if volta:

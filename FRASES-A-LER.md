@@ -39,9 +39,9 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 
 ### empresas/acidentes-pessoais.html
 
-- *título de página* — O que acontece fora do horário.
+- *título de página* — Acidentes pessoais para empresas.
 - *título de secção* — Não é o mesmo que acidentes de trabalho.
-- *título de secção* — O que deve confirmar.
+- *título de secção* — O que convém perguntar.
 - *título de secção* — Vai organizar alguma coisa? Fale connosco antes.
 - *etiqueta* — O que pode incluir
 - *etiqueta* — Antes de assinar
@@ -55,14 +55,14 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 
 - *título de página* — Acidentes de trabalho
 - *título de secção* — O seguro que a lei não deixa escolher.
-- *título de secção* — Onde acaba a cobertura.
+- *título de secção* — Onde a cobertura acaba.
 - *título de secção* — O que nos perguntam ao balcão.
 - *título de secção* — Comece pelo que a lei obriga. O resto vem depois.
 - *etiqueta* — Sem letra pequena
 - *etiqueta* — Perguntas frequentes
 - *legenda* — A cadeira de rodinhas não é escadote.
 - *legenda* — Cinco minutos depois, gelo no joelho.
-- *legenda* — Participado — e o escadote passou a servir.
+- *legenda* — Participado. E o escadote passou a ser escadote.
 - *destaque* — trabalhadores independentes
 - *destaque* — Não ter seguro sai muito caro
 - *destaque* — Declare a massa salarial certa
@@ -86,7 +86,7 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 - *título de secção* — Traga a lista de viaturas. Fazemos as contas.
 - *legenda* — A volta começa como sempre.
 - *legenda* — Avaria a meio da rota.
-- *legenda* — A entrega não falha.
+- *legenda* — A entrega chega à mesma.
 - *destaque* — O prémio deixa de ser por carro
 - *destaque* — O condutor não é o dono
 - *destaque* — Responsabilidade civil
@@ -104,9 +104,9 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 ### empresas/index.html
 
 - *título de página* — Seguros para o seu negócio
-- *título de secção* — O obrigatório tratado. O resto dimensionado.
+- *título de secção* — Primeiro o obrigatório. Depois o que falta.
 - *título de secção* — Um mediador não é um ponto de venda.
-- *título de secção* — Também tratamos destes.
+- *título de secção* — O resto da oferta trata-se aqui na mesma.
 - *título de secção* — Uma revisão completa dos seguros da empresa.
 - *etiqueta* — Empresas
 - *etiqueta* — Porquê através de um mediador
@@ -125,7 +125,7 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 - *título de secção* — Uma revisão completa do património do negócio.
 - *legenda* — Uma noite de chuva.
 - *legenda* — O teto cede de madrugada.
-- *legenda* — Aberta ao balcão no dia seguinte.
+- *legenda* — A participação, aberta ao balcão no dia seguinte.
 - *destaque* — perdas de exploração
 - *destaque* — A cobertura que mantém a empresa viva
 - *destaque* — Existências variam ao longo do ano
@@ -167,9 +167,9 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 ### empresas/saude-grupo.html
 
 - *título de página* — Saúde Empresas
-- *título de secção* — Um benefício que as pessoas usam mesmo.
-- *título de secção* — Um benefício que se usa e que se nota.
-- *legenda* — A dor que não passa.
+- *título de secção* — Um benefício que não fica na gaveta.
+- *título de secção* — Vale mais do que um aumento equivalente.
+- *legenda* — A dor que não passa sozinha.
 - *legenda* — Fisioterapia na rede, sem espera.
 - *legenda* — De volta, e sem perder semanas.
 - *destaque* — Enquadramento fiscal em IRC
@@ -188,9 +188,9 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 
 ### empresas/vida.html
 
-- *título de página* — O que acontece se faltar uma pessoa.
+- *título de página* — Vida para empresas.
 - *título de secção* — Proteger a empresa, não só a família.
-- *título de secção* — Quanto vale a sua empresa sem si?
+- *título de secção* — A empresa continua sem uma das pessoas?
 
 ### index.html
 
@@ -245,7 +245,7 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 ### particulares/automovel.html
 
 - *título de página* — Seguro automóvel
-- *título de secção* — Da obrigação legal à tranquilidade real.
+- *título de secção* — Cumprir a lei é só o princípio.
 - *título de secção* — Traga a sua apólice atual. Dizemos-lhe o que falta.
 - *legenda* — Um parafuso que ninguém viu.
 - *legenda* — Triângulo posto, uma chamada.
@@ -325,9 +325,9 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 
 ### particulares/responsabilidade-civil.html
 
-- *título de página* — Quando o estrago é em casa de outra pessoa.
+- *título de página* — Responsabilidade civil familiar.
 - *título de secção* — Responder pelo que não estava previsto.
-- *título de secção* — Já tem esta cobertura e não sabe?
+- *título de secção* — Talvez já tenha esta cobertura.
 - *legenda* — Um remate mal medido.
 - *legenda* — Trocam-se contactos, não acusações.
 - *legenda* — O vidro é pago pelo seguro, não pelo bolso.
@@ -339,7 +339,7 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 - *título de secção* — Compare planos com quem lhos explica.
 - *legenda* — Dores de cabeça ao fim do dia.
 - *legenda* — Consulta e exame sem meses de espera.
-- *legenda* — E o mistério das meias resolvido.
+- *legenda* — E a máquina de lavar de volta ao sítio.
 - *destaque* — rede
 - *destaque* — carências
 - *destaque* — exclusões
@@ -358,7 +358,7 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 
 - *título de página* — Seguro de vida
 - *título de secção* — Duas finalidades muito diferentes.
-- *título de secção* — Está a pagar o seguro de vida do banco?
+- *título de secção* — O seguro de vida do banco é mesmo obrigatório?
 - *legenda* — O primeiro filho.
 - *legenda* — A casa, e o crédito que vem com ela.
 - *legenda* — Os anos que se seguem.
@@ -479,8 +479,8 @@ mas ficam aqui para leitura completa.
 - *pergunta* — Tenho um só funcionário. Preciso mesmo?
 - *pergunta* — Sou trabalhador independente sem funcionários. E eu?
 - *pergunta* — Como é calculado o prémio?
-- *pergunta* — E se contratar alguém a meio do mês?
-- *pergunta* — Como se participa um acidente?
+- *pergunta* — Contratei alguém a meio do mês. E agora?
+- *pergunta* — Como participo um acidente?
 
 ### empresas/frotas.html
 
@@ -494,10 +494,10 @@ mas ficam aqui para leitura completa.
 - *pergunta* — Distribuição e entregas
 - *pergunta* — Serviços técnicos ao domicílio
 - *pergunta* — Frota mista
-- *pergunta* — A partir de quantos veículos é possível uma frota?
+- *pergunta* — A partir de quantos veículos posso ter uma frota?
 - *pergunta* — Posso ter coberturas diferentes em cada viatura?
-- *pergunta* — Como funciona quando compro ou vendo um carro?
-- *pergunta* — Qualquer funcionário pode conduzir?
+- *pergunta* — Comprei ou vendi um carro. O que muda?
+- *pergunta* — Qualquer funcionário meu pode conduzir?
 - *pergunta* — A mercadoria que transporto está coberta?
 
 ### empresas/index.html
@@ -530,8 +530,8 @@ mas ficam aqui para leitura completa.
 - *pergunta* — O que são perdas de exploração?
 - *pergunta* — Sou arrendatário. Tenho de segurar o edifício?
 - *pergunta* — Como declaro o valor das existências?
-- *pergunta* — A avaria de máquinas está incluída?
-- *pergunta* — O que acontece se declarar capital a menos?
+- *pergunta* — As minhas máquinas estão cobertas se avariarem?
+- *pergunta* — E se eu declarar capital a menos?
 
 ### empresas/responsabilidade-civil.html
 
@@ -561,11 +561,11 @@ mas ficam aqui para leitura completa.
 - *pergunta* — Empresa pequena
 - *pergunta* — Dificuldade em reter pessoas
 - *pergunta* — Equipa com idades muito diferentes
-- *pergunta* — A partir de quantos colaboradores é possível?
-- *pergunta* — O gasto é dedutível em IRC?
+- *pergunta* — A partir de quantos colaboradores posso ter um plano?
+- *pergunta* — Posso deduzir o gasto em IRC?
 - *pergunta* — Tenho de incluir toda a gente?
-- *pergunta* — Um colaborador pode recusar?
-- *pergunta* — O que acontece quando alguém sai da empresa?
+- *pergunta* — E se um colaborador meu recusar?
+- *pergunta* — O que acontece quando um colaborador sai?
 
 ### empresas/vida.html
 
@@ -611,9 +611,9 @@ mas ficam aqui para leitura completa.
 - *pergunta* — Reformados e maiores de 65
 - *pergunta* — Qual é a diferença para o seguro de saúde?
 - *pergunta* — O seguro do clube do meu filho não chega?
-- *pergunta* — Cobre acidentes no estrangeiro?
+- *pergunta* — Cobre-me no estrangeiro?
 - *pergunta* — Como se calcula a indemnização por invalidez?
-- *pergunta* — Há limite de idade?
+- *pergunta* — Há limite de idade para me candidatar?
 
 ### particulares/automovel.html
 
@@ -625,7 +625,7 @@ mas ficam aqui para leitura completa.
 - *pergunta* — Carro em segunda mão
 - *pergunta* — Carro de fim-de-semana
 - *pergunta* — Posso mudar de seguradora a meio do ano?
-- *pergunta* — Vale a pena ter danos próprios num carro antigo?
+- *pergunta* — O meu carro é antigo. Vale a pena ter danos próprios?
 - *pergunta* — O que é exatamente a franquia?
 - *pergunta* — Fui o culpado. O seguro paga o meu carro?
 - *pergunta* — Tenho de preencher a declaração amigável?
@@ -641,8 +641,8 @@ mas ficam aqui para leitura completa.
 - *pergunta* — Vive em casa arrendada
 - *pergunta* — Tem casa para arrendar
 - *pergunta* — Sou obrigado a fazer o seguro no banco onde tenho o crédito?
-- *pergunta* — O seguro cobre sismos?
-- *pergunta* — O que acontece se segurar a casa por menos do que vale?
+- *pergunta* — O meu seguro cobre sismos?
+- *pergunta* — E se eu segurar a casa por menos do que vale?
 - *pergunta* — Tenho de declarar as obras que fiz?
 - *pergunta* — Sou inquilino. Preciso mesmo de seguro?
 
@@ -657,11 +657,11 @@ mas ficam aqui para leitura completa.
 - *pergunta* — Scooter para a cidade
 - *pergunta* — Mota de estrada ao fim-de-semana
 - *pergunta* — Ciclomotor até 50 cm³
-- *pergunta* — O seguro da mota cobre o passageiro?
+- *pergunta* — O seguro da minha mota cobre o passageiro?
 - *pergunta* — Posso suspender o seguro no Inverno?
-- *pergunta* — O capacete está mesmo coberto?
+- *pergunta* — O meu capacete está mesmo coberto?
 - *pergunta* — Tenho carta A2. Posso segurar qualquer mota?
-- *pergunta* — Vale a pena danos próprios numa mota?
+- *pergunta* — Vale a pena ter danos próprios na minha mota?
 
 ### particulares/responsabilidade-civil.html
 
@@ -688,7 +688,7 @@ mas ficam aqui para leitura completa.
 - *pergunta* — O seguro de saúde substitui o SNS?
 - *pergunta* — O que é a rede convencionada?
 - *pergunta* — Tenho uma doença crónica. Posso fazer seguro?
-- *pergunta* — O prémio sobe com a idade?
+- *pergunta* — O meu prémio sobe com a idade?
 - *pergunta* — Posso incluir a família na mesma apólice?
 
 ### particulares/vida.html
@@ -719,11 +719,11 @@ mas ficam aqui para leitura completa.
 - *subtítulo* — Decisão de responsabilidade
 - *subtítulo* — Reparação ou indemnização
 - *pergunta* — Participar um sinistro faz o meu seguro subir?
-- *pergunta* — O outro condutor não quis assinar a declaração amigável.
-- *pergunta* — Quanto tempo demora até receber?
+- *pergunta* — O outro condutor não quis assinar a declaração amigável. E agora?
+- *pergunta* — Quanto tempo demoro a receber?
 - *pergunta* — A companhia recusou o meu sinistro. E agora?
 - *pergunta* — Posso escolher a oficina?
-- *pergunta* — Um acidente de trabalho participa-se da mesma forma?
+- *pergunta* — Participo um acidente de trabalho da mesma forma?
 - *botão* — Escrever um email
 
 ### sobre.html
