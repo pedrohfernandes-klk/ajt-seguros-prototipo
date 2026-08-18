@@ -1213,10 +1213,10 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
 /* Quarta imagem do produto: separada da história em três tempos e colocada
    mais abaixo na página, como a imagem de peritagem em Habitação. */
 .imagem-produto{
-  width:min(100%, 420px); margin:0 auto;
+  width:min(100%, 800px); margin:0 auto;
 }
 .imagem-produto img{
-  display:block; width:100%; height:auto; aspect-ratio:3/5; object-fit:cover;
+  display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover;
 }
 .secao-imagem-produto{ padding-top:clamp(36px, 5vw, 64px); padding-bottom:clamp(36px, 5vw, 64px) }
 
