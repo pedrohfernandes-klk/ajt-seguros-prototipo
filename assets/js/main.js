@@ -81,6 +81,9 @@
       el.classList.add('visivel');
     });
   } else {
+    /* Só a partir daqui é que o script esconde o que vai revelar. */
+    document.documentElement.classList.add('anima');
+
     var observador = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {
         if (entrada.isIntersecting) {
@@ -93,6 +96,26 @@
     Array.prototype.forEach.call(animaveis, function (el) {
       observador.observe(el);
     });
+
+    /* E uma rede por baixo, para o caso de o observador nunca disparar:
+       ao rolar a página, o que estiver à vista revela-se na mesma. */
+    var porResgatar = true;
+    function resgatarSurge() {
+      var faltam = document.querySelectorAll('.surge:not(.visivel)');
+      if (!faltam.length) {
+        porResgatar = false;
+        window.removeEventListener('scroll', resgatarSurge);
+        return;
+      }
+      Array.prototype.forEach.call(faltam, function (el) {
+        var c = el.getBoundingClientRect();
+        if (c.top < window.innerHeight * 1.15 && c.bottom > -150) {
+          el.classList.add('visivel');
+        }
+      });
+    }
+    window.addEventListener('scroll', resgatarSurge, { passive: true });
+    setTimeout(resgatarSurge, 1500);
   }
 
   /* ---- 3b · Carrossel do cabeçalho ------------------------------------- */

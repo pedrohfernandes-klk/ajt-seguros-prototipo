@@ -1340,8 +1340,13 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 /* ─────────────────────────────────────────────────────────────────────────
    17 · MOVIMENTO
    ───────────────────────────────────────────────────────────────────────── */
-.surge{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease }
-.surge.visivel{ opacity:1; transform:none }
+/* Mesma regra de ouro das vinhetas: nada se esconde à espera do
+   JavaScript. O .surge só passa a invisível depois de o script assumir
+   que o vai revelar — e essa classe é escrita pelo próprio script. Se
+   ele falhar, não carregar, ou o observador não disparar, tudo fica
+   simplesmente visível. Esta era a fragilidade mais antiga do site. */
+.anima .surge{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease }
+.anima .surge.visivel{ opacity:1; transform:none }
 
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto }
@@ -1349,7 +1354,7 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
     animation-duration:.01ms !important; animation-iteration-count:1 !important;
     transition-duration:.01ms !important; scroll-behavior:auto !important;
   }
-  .surge{ opacity:1; transform:none }
+  .anima .surge{ opacity:1; transform:none }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -1768,7 +1773,8 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 .tira.entra > figure{ opacity:1 !important; transform:none !important; animation:none !important }
 
 
-/* ── A tira entra a direito ─────────────────────────────────────────────────
+/* ── A tira não entra em 3D. Ponto. ────────────────────────────────────────
+   Ficou escrito o que se aprendeu, para não se repetir a experiência.
    A entrada geral roda 12 graus no eixo X, com perspetiva. Num bloco
    qualquer isso é um efeito; numa tira é um defeito, porque o elemento
    rodado projeta os filhos em 3D — e as três vinhetas deixam de ter a
@@ -1790,3 +1796,12 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   .anima .tira.entra{ opacity:1; transform:none }
   .anima .tira.entra.dentro{ animation:none }
 }
+
+
+/* A tira usa o sistema de revelação simples (.surge): opacidade e um
+   empurrão vertical. Foi tentada uma entrada em 3D e o resultado foi mau
+   de duas maneiras — a rotação em perspetiva deformava as três vinhetas
+   (as das pontas 5px mais largas, a do meio 10px mais estreita), e se o
+   observador não disparasse a tira ficava invisível. Numa imagem, um
+   efeito que pode falhar não compensa o efeito. */
+.tira.surge{ transition-duration:.6s }
