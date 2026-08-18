@@ -1817,15 +1817,24 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   margin-bottom:clamp(30px, 4vw, 44px);
 }
 @media (min-width:820px){
-  .cabeca-com-figura{ grid-template-columns:minmax(0,1fr) 240px }
+  .cabeca-com-figura{ grid-template-columns:minmax(0,1fr) 340px }
 }
-.figura-lado{ margin:0; width:min(100%, 240px) }
+.figura-lado{ margin:0; width:min(100%, 340px) }
 .figura-lado img{ display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover }
-.figura-lado figcaption{
-  padding:10px 12px; font-size:.74rem; font-weight:600; line-height:1.35;
-  color:var(--china); background:var(--sol); border-top:2.5px solid var(--china);
+/* A legenda sai de dentro do quadrado. O cartucho amarelo é da tira, onde
+   a legenda é a narrativa e tem de estar lá dentro; aqui é uma nota de
+   rodapé da imagem, e a comer um terço do desenho não servia ninguém. */
+.figura-lado{ border:0; box-shadow:none; background:none; overflow:visible }
+.figura-lado img{
+  border:2.5px solid var(--china); border-radius:3px;
+  box-shadow:var(--sombra-bd);
 }
-@media (max-width:819px){ .figura-lado{ margin-inline:auto; width:min(100%, 300px) } }
+.figura-lado figcaption{
+  margin-top:11px; padding:0;
+  font-size:.79rem; font-weight:400; line-height:1.5;
+  color:var(--texto-fraco); background:none; border:0;
+}
+@media (max-width:819px){ .figura-lado{ margin-inline:auto; width:min(100%, 380px) } }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    22 · A LUPA — ver a vinheta ao tamanho do desenho
@@ -1961,4 +1970,4 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
    — uma folha em cache, uma classe que não bate certo — nenhuma figura de
    acompanhamento passa daqui. Uma imagem grande de mais estraga a página;
    uma imagem pequena de mais, não. */
-figure.figura-lado{ max-width:300px }
+figure.figura-lado{ max-width:380px }
