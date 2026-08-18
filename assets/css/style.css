@@ -2281,3 +2281,27 @@ figure.figura-lado{ max-width:380px }
      legibilidade */
   .hero-interior{ background:var(--veu) }
 }
+
+/* ── Nenhum tom se repete de seguida ────────────────────────────────────────
+   O ritmo só existe se houver alternância. Estas regras corrigem os casos
+   em que duas secções do mesmo tom ficariam encostadas — e são poucas,
+   porque a ordem das secções varia de página para página e não se pode
+   contar com ela.
+
+   Lê-se de cima para baixo: quem vem a seguir cede o tom. */
+
+/* Depois do cabeçalho, a página respira em branco. */
+.hero-interior + .secao{ background:var(--sal) }
+.hero-interior + .secao:has(.tira){ background:var(--sal) }
+
+/* Duas areias seguidas são um bloco de 1800px, não duas secções. */
+.secao-areia + .secao-areia{ background:var(--sal) }
+.secao-areia + .secao-areia + .secao-areia{ background:var(--areia) }
+
+/* E o mesmo para o véu das vinhetas. */
+.secao:has(.tira) + .secao:has(.tira){ background:var(--sal) }
+
+/* Onde a cor já separa, o filete de tinta é ruído. */
+.secao-areia + .secao::before,
+.secao + .secao-areia::before,
+.hero-interior + .secao::before{ display:none }
