@@ -1220,6 +1220,14 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   .tira figure:last-child img{ aspect-ratio:16/10 }
 }
 
+/* Variante de quatro momentos; as tiras de três mantêm a composição original. */
+.tira-quatro{ grid-template-columns:repeat(4, 1fr); max-width:900px }
+@media (max-width:520px){
+  .tira-quatro{ grid-template-columns:1fr 1fr; max-width:none }
+  .tira-quatro figure:last-child{ grid-column:auto }
+  .tira-quatro figure:last-child img{ aspect-ratio:3/5 }
+}
+
 /* ─────────────────────────────────────────────────────────────────────────
    15e · SIMULADORES DAS COMPANHIAS
    Azulejos que saem do site para o simulador da seguradora. Como levam o
