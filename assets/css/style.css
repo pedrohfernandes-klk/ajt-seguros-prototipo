@@ -1540,7 +1540,12 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   animation-delay:var(--atraso, 0ms);
 }
 @keyframes assenta{
-  to{ opacity:1; transform:perspective(900px) rotateX(0) translateY(0) scale(1) }
+  /* O estado final tem de ser transform:none, e não uma identidade escrita
+     à mão. Um perspective(900px) que fica aplicado — ainda que com rotação
+     zero — continua a projectar os filhos em 3D: as vinhetas das pontas
+     ficavam 5px mais largas e a do meio 10px mais estreita. Foi isto que
+     desalinhava as tiras depois de entrarem. */
+  to{ opacity:1; transform:none }
 }
 
 /* ── Parallax de camadas ────────────────────────────────────────────────────
