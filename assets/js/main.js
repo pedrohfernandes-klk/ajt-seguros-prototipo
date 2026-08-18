@@ -281,16 +281,35 @@
        vinhetas estavam à vista — e é assim que ficam se algo falhar acima. */
     document.documentElement.classList.add('anima');
 
-    /* Rede de segurança: se ao fim de dois segundos alguma vinheta ainda
-       não entrou -- observador que não disparou, separador aberto em
-       segundo plano, o que for -- mostra-se na mesma. Uma imagem que não
-       aparece é um defeito; uma imagem que aparece sem animação, não. */
-    setTimeout(function () {
-      document.querySelectorAll('.entra:not(.dentro)').forEach(function (a) {
+    /* Rede de segurança, e não uma só. O observador pode nunca disparar --
+       separador em segundo plano, motor sem composição, extensão a
+       interferir. Uma verificação única aos dois segundos só salva o que
+       estivesse à vista nesse instante; tudo o resto ficaria invisível
+       para sempre. Por isso a rede também corre ao rolar a página, e
+       desliga-se quando já não há nada por mostrar. */
+    function resgatar() {
+      var restantes = document.querySelectorAll('.entra:not(.dentro)');
+      if (!restantes.length) {
+        window.removeEventListener('scroll', agendarResgate);
+        return;
+      }
+      restantes.forEach(function (a) {
         var c = a.getBoundingClientRect();
-        if (c.top < window.innerHeight && c.bottom > 0) { a.classList.add('dentro'); }
+        if (c.top < window.innerHeight * 1.2 && c.bottom > -200) {
+          a.classList.add('dentro');
+        }
       });
-    }, 2000);
+    }
+
+    var resgatePendente = false;
+    function agendarResgate() {
+      if (resgatePendente) return;
+      resgatePendente = true;
+      requestAnimationFrame(function () { resgatePendente = false; resgatar(); });
+    }
+
+    window.addEventListener('scroll', agendarResgate, { passive: true });
+    setTimeout(resgatar, 1500);
 
     var observador = new IntersectionObserver(function (entradas) {
       var n = 0;

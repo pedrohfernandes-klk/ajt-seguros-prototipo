@@ -1766,3 +1766,27 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
    Agora entra o bloco, de uma vez, e as vinhetas nunca se desencontram. */
 .tira.entra{ transform-origin:50% 100% }
 .tira.entra > figure{ opacity:1 !important; transform:none !important; animation:none !important }
+
+
+/* ── A tira entra a direito ─────────────────────────────────────────────────
+   A entrada geral roda 12 graus no eixo X, com perspetiva. Num bloco
+   qualquer isso é um efeito; numa tira é um defeito, porque o elemento
+   rodado projeta os filhos em 3D — e as três vinhetas deixam de ter a
+   mesma largura: as das pontas ganham 5px, a do meio perde 10px. Não se
+   nota como perspetiva, nota-se como desalinhamento.
+
+   A tira entra portanto a direito: só opacidade e um empurrão vertical.
+   Nenhuma rotação, nenhuma perspetiva, nenhuma deformação. */
+.anima .tira.entra{
+  opacity:0;
+  transform:translateY(20px);
+}
+.anima .tira.entra.dentro{
+  animation:assenta-plano .6s cubic-bezier(.2,.8,.25,1) forwards;
+  animation-delay:var(--atraso, 0ms);
+}
+@keyframes assenta-plano{ to{ opacity:1; transform:none } }
+@media (prefers-reduced-motion:reduce){
+  .anima .tira.entra{ opacity:1; transform:none }
+  .anima .tira.entra.dentro{ animation:none }
+}
