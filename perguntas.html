@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=d0e14814">
+<link rel="stylesheet" href="assets/css/style.css?v=abd46ba2">
 
 <script type="application/ld+json">
 {
@@ -82,7 +82,7 @@
     {
       "@type": "Question",
       "name": "Quanto tempo demora a ter uma proposta?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Nos ramos com simulador, minutos. Nos que se cotam caso a caso — acidentes de trabalho, frotas, multirriscos de empresa, responsabilidade civil — damos resposta em 24 horas úteis." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Nos ramos com simulador, é imediato. Nos que se cotam caso a caso — acidentes de trabalho, frotas, multirriscos de empresa, responsabilidade civil — depende da companhia, e dizemos-lhe o ponto em que está." }
     },
     {
       "@type": "Question",
@@ -199,6 +199,8 @@
 </script>
 </head>
 <body>
+<div class="fio-leitura" aria-hidden="true"></div>
+
 <a class="saltar" href="#conteudo">Saltar para o conteúdo</a>
 
 <header class="cabecalho">
@@ -314,7 +316,7 @@
       <p class="lede">Não foram inventadas para encher a página: são as que nos fazem há mais de vinte anos. As respostas são as mesmas que damos ao telefone.</p>
 
       <div class="canais" style="margin-top:clamp(28px,3vw,36px)">
-        <a class="canal canal-whatsapp" href="https://wa.me/351964036313?text=Ol%C3%A1.%20Tenho%20uma%20d%C3%BAvida%20sobre%20seguros." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4 0-.6.3a2.6 2.6 0 0 0-.8 1.9c0 1.1.8 2.2.9 2.4a9.2 9.2 0 0 0 3.6 3.2c1.3.5 1.8.6 2.4.5.4 0 1.2-.5 1.4-1 .2-.5.2-.9.1-1l-.3-.1Z"/></svg><span><b>WhatsApp</b><span>Resposta no mesmo dia útil</span></span></a>
+        <a class="canal canal-whatsapp" href="https://wa.me/351964036313?text=Ol%C3%A1.%20Tenho%20uma%20d%C3%BAvida%20sobre%20seguros." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4 0-.6.3a2.6 2.6 0 0 0-.8 1.9c0 1.1.8 2.2.9 2.4a9.2 9.2 0 0 0 3.6 3.2c1.3.5 1.8.6 2.4.5.4 0 1.2-.5 1.4-1 .2-.5.2-.9.1-1l-.3-.1Z"/></svg><span><b>WhatsApp</b><span>Dias úteis, das 9h às 18h</span></span></a>
         <a class="canal canal-telefone" href="tel:+351212348047"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.5 14.2v2.3a1.5 1.5 0 0 1-1.6 1.5A14.8 14.8 0 0 1 2 3.6 1.5 1.5 0 0 1 3.5 2h2.3a1.5 1.5 0 0 1 1.5 1.3c.1.9.3 1.7.6 2.5a1.5 1.5 0 0 1-.3 1.6L6.6 8.4a12 12 0 0 0 5 5l1-1a1.5 1.5 0 0 1 1.6-.3c.8.3 1.6.5 2.5.6a1.5 1.5 0 0 1 1.3 1.5Z"/></svg><span><b>212 348 047</b><span>Segunda a sexta, 9h–18h</span></span></a>
         <a class="canal canal-email" href="mailto:geral@ajtseguros.pt"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2.5 5.5h15v10h-15z"/><path d="m2.5 6 7.5 5 7.5-5"/></svg><span><b>Escrever-nos</b><span>geral@ajtseguros.pt</span></span></a>
       </div>
@@ -452,7 +454,7 @@
         <details class="pergunta">
           <summary><span class="pergunta-n">11</span>Quanto tempo demora a ter uma proposta?</summary>
           <div class="pergunta-corpo">
-            <p>Nos ramos com simulador, minutos. Nos que se cotam caso a caso — acidentes de trabalho, frotas, multirriscos de empresa, responsabilidade civil — damos resposta em 24 horas úteis.</p>
+            <p>Nos ramos com simulador, é imediato. Nos que se cotam caso a caso — acidentes de trabalho, frotas, multirriscos de empresa, responsabilidade civil — depende da companhia, e dizemos-lhe o ponto em que está.</p>
           <div class="resposta-canais">
             <span>Falar sobre esta:</span>
             <a class="rc rc-wa" href="https://wa.me/351964036313?text=Ol%C3%A1.%20Vi%20no%20site%20a%20pergunta%20%C2%ABQuanto%20tempo%20demora%20a%20ter%20uma%20proposta%3F%C2%BB%20e%20queria%20falar%20sobre%20isso." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4 0-.6.3a2.6 2.6 0 0 0-.8 1.9c0 1.1.8 2.2.9 2.4a9.2 9.2 0 0 0 3.6 3.2c1.3.5 1.8.6 2.4.5.4 0 1.2-.5 1.4-1 .2-.5.2-.9.1-1l-.3-.1Z"/></svg> WhatsApp</a>

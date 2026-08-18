@@ -46,11 +46,17 @@
      o resultado é que as imagens pareciam coladas por cima de outra coisa.
      Estes quatro tons são de prancha: chapados, saturados, sem gradiente.
      O tinta-china é a linha; o céu, o sol e o carmim são o preenchimento. */
+  --sal:        #ffffff;   /* branco de superfície */
   --china:      #10202c;   /* linha de contorno — quase preto, azulado */
   --china-veu:  rgba(16,32,44,.14);
-  --ceu:        #1d8fd1;   /* azul de céu de vinheta */
+  /* O «céu» era um segundo azul de acento a fazer o mesmo trabalho do
+     maré, meio tom mais claro — o que dava ao site dois azuis quase
+     iguais e nenhum deles decidido. Passa a ser o mesmo. O tom claro
+     fica só para o que é ilustração, nunca para texto: 3.6:1 sobre
+     branco não chega para se ler. */
+  --ceu:        var(--mare);
   --ceu-claro:  #7fc7ee;
-  --ceu-veu:    rgba(29,143,209,.12);
+  --ceu-veu:    rgba(23,115,158,.10);
   --sol:        #f0a92c;   /* ocre quente — o que salta da página */
   --sol-forte:  #d08c14;
   --sol-veu:    rgba(240,169,44,.16);
@@ -60,10 +66,10 @@
      de papel recortado e pousado por cima da página. */
   --sombra-bd:   4px 4px 0 var(--china);
   --sombra-bd-g: 8px 8px 0 var(--china);
-  --mare:       #236987;   /* azul-maré — ligações e acentos frios */
-  --mare-forte: #185772;   /* estado premido / hover de superfícies azuis */
+  --mare:       #17739e;   /* azul de acento — ligações, filetes, estados */
+  --mare-forte: #115c81;   /* estado premido */
   --mare-claro: #9bc6d8;
-  --mare-veu:   rgba(35,105,135,.09);  /* fundo de pílulas e selos */
+  --mare-veu:   rgba(23,115,158,.09);  /* fundo de pílulas e selos */
   /* Acento quente — o vermelho da companhia representada.
      Substituiu o cobre quando os dois balcões passaram a Generali
      Tranquilidade. Marca o que é acção — botão principal, telefone do
@@ -77,13 +83,15 @@
   --tranquilidade:       #b0201c;   /* vermelho Generali, um tom mais fundo */
   --tranquilidade-forte: #8e1916;
   --tranquilidade-veu: rgba(176,32,28,.08);
-  --sal:        #ffffff;
   /* Neutros frios. O creme e a areia davam ao site um ar artesanal; para o
      registo que se quer — sóbrio, atual — o fundo tem de sair da frente e
      deixar a tipografia e a cor fazer o trabalho. */
-  --papel:      #fdfdfc;   /* fundo geral */
+  /* Havia quatro quase-brancos — #fff, #fdfdfc, #f6f8f9, #edf2f4 — e os
+     dois primeiros diferiam em dois pontos, que ninguém vê. Ficam dois:
+     o branco das superfícies e a areia das secções alternadas. */
+  --papel:      var(--sal);   /* fundo geral */
   --areia:      #edf2f4;   /* fundo de secção alternado, mais marcado */
-  --areia-2:    #f6f8f9;
+  --areia-2:    var(--areia);
   --linha:      #dfe6e9;   /* hairline decorativa: presente, nunca ruidosa */
   /* Os limites de um campo não são decoração: se não se vêem, não se percebe
      onde se escreve. 3.3:1 sobre branco — acima do mínimo de 3:1 que a norma
@@ -2069,4 +2077,72 @@ figure.figura-lado{ max-width:380px }
   .vinheta img{ transform:none; transition:none }
   .tira:hover > figure:not(:hover){ transform:none; filter:none; opacity:1 }
   .figura-lado, .imagem-produto, .cartao-instantaneo{ animation:none }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   24 · REMATE — os detalhes que se sentem antes de se verem
+   ═══════════════════════════════════════════════════════════════════════════
+   Três coisas pequenas. Nenhuma esconde conteúdo, nenhuma precisa de
+   JavaScript, e todas desaparecem sem estrago onde não houver suporte.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* ── 1 · O fio de leitura ───────────────────────────────────────────────────
+   Um filete de dois pixéis no topo que avança com a página. Diz duas coisas
+   ao mesmo tempo — quanto falta, e que a página responde — sem ocupar nada.
+   Feito com `animation-timeline: scroll()`: é o browser que calcula a
+   posição, não um listener a correr a cada pixel. */
+.fio-leitura{
+  position:fixed; top:0; left:0; right:0; height:2px; z-index:120;
+  background:var(--mare); transform-origin:0 50%; transform:scaleX(0);
+  pointer-events:none;
+}
+@supports (animation-timeline: scroll()){
+  .fio-leitura{
+    animation:fio linear;
+    animation-timeline:scroll(root block);
+  }
+  @keyframes fio{ to{ transform:scaleX(1) } }
+}
+/* Sem suporte, não aparece de todo — em vez de ficar um risco parado. */
+@supports not (animation-timeline: scroll()){ .fio-leitura{ display:none } }
+@media (prefers-reduced-motion:reduce){ .fio-leitura{ display:none } }
+@media print{ .fio-leitura{ display:none } }
+
+/* ── 2 · Títulos que quebram onde devem ─────────────────────────────────────
+   `text-wrap: balance` reparte as linhas de um título para ficarem com
+   comprimentos parecidos, em vez de deixar uma palavra órfã na última.
+   É uma linha de CSS a fazer o que antes se fazia à mão com <br>. */
+.titulo, .tema-titulo, .registo-titulo h3, .balao{ text-wrap:balance }
+/* Nos parágrafos, `pretty` só evita a órfã — equilibrar texto corrido
+   deixaria as linhas irregulares de mais. */
+.lede, .prosa p, .pergunta-corpo p, figcaption{ text-wrap:pretty }
+
+/* ── 3 · O filete que se desenha ────────────────────────────────────────────
+   A linha que separa as secções deixa de estar lá desde o início: cresce da
+   esquerda à medida que a secção entra. É um gesto de caneta, e é a única
+   coisa do site que se move sem o ponteiro pedir. */
+.secao + .secao::before{
+  content:""; position:absolute; top:0; left:var(--gutter); right:var(--gutter);
+  height:1px; background:var(--linha); transform:scaleX(0); transform-origin:0 50%;
+}
+.secao{ position:relative }
+/* Onde há fundo cheio, o filete estorva — a mudança de cor já separa. */
+.secao-tinta + .secao::before, .secao + .secao-tinta::before,
+.secao-areia + .secao::before, .secao + .secao-areia::before{ display:none }
+
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .secao + .secao::before{
+      animation:filete linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 60%;
+    }
+    @keyframes filete{ to{ transform:scaleX(1) } }
+  }
+}
+@supports not (animation-timeline: view()){
+  .secao + .secao::before{ transform:scaleX(1) }
+}
+@media (prefers-reduced-motion:reduce){
+  .secao + .secao::before{ transform:scaleX(1); animation:none }
 }

@@ -58,9 +58,19 @@ REPROVADAS = [
     ("vir ter connosco", "registo de aldeia"),
     ("cá estamos",      "registo de aldeia"),
     ("o dia mau",       "eufemismo folclórico; diga o que acontece"),
+    # ── promessas que a AJT nao controla ────────────────────────────────
+    ("24 horas úteis",  "prazo de resposta prometido — não depende só da AJT"),
+    ("no mesmo dia útil", "prazo de resposta prometido"),
+    ("na manhã seguinte", "prazo de resposta prometido"),
+    ("do princípio ao fim", "promete a mesma pessoa; ninguém controla férias e baixas"),
+    ("até ao fim",      "promete acompanhamento que pode não se cumprir"),
+    ("garantimos",      "num mediador, garantir é da companhia"),
+    ("avisamos sempre", "«sempre» é uma palavra que uma semana má desmente"),
 ]
 EXCEPCOES = {"a gente": ["toda a gente", "muita gente", "pouca gente",
-                          "tanta gente", "que gente"]}
+                          "tanta gente", "que gente"],
+             # ler ate ao fim nao e prometer acompanhar ate ao fim
+             "até ao fim": ["leu até ao fim", "ler até ao fim", "lê até ao fim"]}
 
 # ── 2 · ortografia ────────────────────────────────────────────────────────
 # Palavras que o Acordo de 1990 mudou e que reaparecem por distraccao.
