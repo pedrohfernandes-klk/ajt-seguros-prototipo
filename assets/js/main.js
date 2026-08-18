@@ -277,6 +277,21 @@
       return;
     }
 
+    /* Só agora se assume o controlo do que está visível. Até esta linha, as
+       vinhetas estavam à vista — e é assim que ficam se algo falhar acima. */
+    document.documentElement.classList.add('anima');
+
+    /* Rede de segurança: se ao fim de dois segundos alguma vinheta ainda
+       não entrou -- observador que não disparou, separador aberto em
+       segundo plano, o que for -- mostra-se na mesma. Uma imagem que não
+       aparece é um defeito; uma imagem que aparece sem animação, não. */
+    setTimeout(function () {
+      document.querySelectorAll('.entra:not(.dentro)').forEach(function (a) {
+        var c = a.getBoundingClientRect();
+        if (c.top < window.innerHeight && c.bottom > 0) { a.classList.add('dentro'); }
+      });
+    }, 2000);
+
     var observador = new IntersectionObserver(function (entradas) {
       var n = 0;
       entradas.forEach(function (entrada) {

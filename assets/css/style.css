@@ -1522,11 +1522,16 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 /* ── Entrada de vinheta ─────────────────────────────────────────────────────
    Cada quadrado entra como quem vira a página: roda ligeiramente sobre o
    seu eixo e assenta. O atraso é dado pelo JS, para entrarem em cascata. */
-.entra{
+/* Regra de ouro: o conteúdo nunca depende do JavaScript para se ver.
+   A vinheta só se esconde depois de o JS assumir que a vai mostrar — a
+   classe .anima é escrita pelo próprio script, na primeira linha que corre.
+   Se o script falhar, não carregar, ou o observador não disparar, as
+   vinhetas ficam simplesmente visíveis. */
+.anima .entra{
   opacity:0;
   transform:perspective(900px) rotateX(12deg) translateY(26px) scale(.97);
 }
-.entra.dentro{
+.anima .entra.dentro{
   animation:assenta .72s cubic-bezier(.2,.8,.25,1) forwards;
   animation-delay:var(--atraso, 0ms);
 }
@@ -1563,8 +1568,8 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
    Não é uma versão degradada: é a mesma composição, parada. */
 @media (prefers-reduced-motion:reduce){
   .inclina, .camada{ transform:none !important; transition:none }
-  .entra{ opacity:1; transform:none }
-  .entra.dentro{ animation:none }
+  .anima .entra{ opacity:1; transform:none }
+  .anima .entra.dentro{ animation:none }
   .onomatopeia{ display:none }
   .vinheta-brilho{ display:none }
 }
