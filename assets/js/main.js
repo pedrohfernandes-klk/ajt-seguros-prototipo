@@ -381,3 +381,138 @@
     arrancar();
   }
 })();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   A LUPA — clicar numa vinheta para a ver ao tamanho do desenho
+   ═══════════════════════════════════════════════════════════════════════════
+   As vinhetas são pequenas de propósito: ilustram sem ocupar a página. Mas
+   as ilustrações têm detalhe a mais para 200px, e quem quiser ver merece
+   poder ver. Um clique abre a vinheta grande; dentro de uma tira, as setas
+   passam de uma para a seguinte, porque uma tira lê-se em três tempos.
+
+   Se isto não correr, as vinhetas continuam vinhetas. Nada se perde.
+   ───────────────────────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  if (!window.HTMLDialogElement) return;   /* sem <dialog>, fica como está */
+
+  var LUPA = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.8 12.8 4.2 4.2M8.5 6.2v4.6M6.2 8.5h4.6"/></svg>';
+  var CRUZ = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 5l10 10M15 5 5 15"/></svg>';
+  var SETA = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-6 6 6 6"/></svg>';
+
+  var alvos = Array.prototype.slice.call(
+    document.querySelectorAll('.vinheta img, .figura-lado img'));
+  if (!alvos.length) return;
+
+  /* Cada imagem torna-se um botão a sério: acessível por teclado, com nome
+     próprio, e não um <div> que só reage ao rato. */
+  alvos.forEach(function (img) {
+    var fig = img.closest('figure, article');
+    if (!fig) return;
+    fig.classList.add('ampliavel');
+    fig.setAttribute('role', 'button');
+    fig.setAttribute('tabindex', '0');
+    fig.setAttribute('aria-label', 'Ver maior: ' + (img.alt || 'ilustração'));
+    var selo = document.createElement('span');
+    selo.className = 'lupa-selo';
+    selo.setAttribute('aria-hidden', 'true');
+    selo.innerHTML = LUPA;
+    fig.appendChild(selo);
+  });
+
+  /* Uma caixa só, reutilizada — não uma por imagem. */
+  var caixa = document.createElement('dialog');
+  caixa.className = 'lupa';
+  caixa.innerHTML =
+    '<figure class="lupa-caixa">' +
+      '<button class="lupa-fechar" type="button" aria-label="Fechar">' + CRUZ + '</button>' +
+      '<img alt="">' +
+      '<figcaption></figcaption>' +
+    '</figure>' +
+    '<button class="lupa-passo lupa-anterior" type="button" aria-label="Vinheta anterior">' + SETA + '</button>' +
+    '<button class="lupa-passo lupa-seguinte" type="button" aria-label="Vinheta seguinte" style="transform:translateY(-50%) rotate(180deg)">' + SETA + '</button>' +
+    '<p class="lupa-conta" aria-live="polite"></p>';
+  document.body.appendChild(caixa);
+
+  var grande = caixa.querySelector('img');
+  var legenda = caixa.querySelector('figcaption');
+  var conta = caixa.querySelector('.lupa-conta');
+  var antes = caixa.querySelector('.lupa-anterior');
+  var depois = caixa.querySelector('.lupa-seguinte');
+
+  var grupo = [], indice = 0, origem = null;
+
+  /* A imagem grande é a maior do srcset, se houver. Assim a lupa mostra
+     mesmo o desenho, e não a miniatura esticada. */
+  function maior(img) {
+    var set = img.getAttribute('srcset');
+    if (!set) return img.currentSrc || img.src;
+    var maiorLargura = 0, url = img.src;
+    set.split(',').forEach(function (parte) {
+      var p = parte.trim().split(/\s+/);
+      var l = parseInt(p[1] || '0', 10);
+      if (l >= maiorLargura) { maiorLargura = l; url = p[0]; }
+    });
+    return url;
+  }
+
+  function mostrar(i) {
+    indice = (i + grupo.length) % grupo.length;
+    var fig = grupo[indice];
+    var img = fig.querySelector('img');
+    var cap = fig.querySelector('figcaption');
+    grande.src = maior(img);
+    grande.alt = img.alt || '';
+    legenda.textContent = cap ? cap.textContent.trim() : '';
+    legenda.hidden = !legenda.textContent;
+    var varios = grupo.length > 1;
+    antes.hidden = depois.hidden = !varios;
+    conta.textContent = varios ? (indice + 1) + ' de ' + grupo.length : '';
+  }
+
+  function abrir(fig) {
+    var tira = fig.closest('.tira');
+    grupo = tira ? Array.prototype.slice.call(tira.querySelectorAll('figure')) : [fig];
+    origem = fig;
+    mostrar(grupo.indexOf(fig));
+    caixa.showModal();
+  }
+
+  document.addEventListener('click', function (e) {
+    var fig = e.target.closest('.ampliavel');
+    if (!fig || caixa.contains(e.target)) return;
+    e.preventDefault();
+    abrir(fig);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var fig = document.activeElement && document.activeElement.closest('.ampliavel');
+    if (!fig || caixa.open) return;
+    e.preventDefault();
+    abrir(fig);
+  });
+
+  antes.addEventListener('click', function () { mostrar(indice - 1); });
+  depois.addEventListener('click', function () { mostrar(indice + 1); });
+  caixa.querySelector('.lupa-fechar').addEventListener('click', function () { caixa.close(); });
+
+  /* Clicar fora da imagem fecha — o reflexo de toda a gente. */
+  caixa.addEventListener('click', function (e) {
+    if (e.target === caixa) caixa.close();
+  });
+
+  caixa.addEventListener('keydown', function (e) {
+    if (grupo.length < 2) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); mostrar(indice + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); mostrar(indice - 1); }
+  });
+
+  /* Ao fechar, o foco volta de onde veio. Quem navega por teclado não fica
+     perdido no início da página. */
+  caixa.addEventListener('close', function () {
+    if (origem) origem.focus();
+    grande.removeAttribute('src');
+  });
+})();

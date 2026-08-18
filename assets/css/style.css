@@ -1805,3 +1805,153 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
    observador não disparasse a tira ficava invisível. Numa imagem, um
    efeito que pode falhar não compensa o efeito. */
 .tira.surge{ transition-duration:.6s }
+
+
+/* ── Figura de acompanhamento ───────────────────────────────────────────────
+   Uma imagem sozinha num bloco largo fica órfã: encosta a um lado e deixa
+   metade da linha em branco. Esta vive ao lado do texto que a explica, e é
+   pequena de propósito — ilustra, não ocupa. */
+.cabeca-com-figura{
+  display:grid; gap:clamp(24px, 3vw, 40px);
+  align-items:start;
+  margin-bottom:clamp(30px, 4vw, 44px);
+}
+@media (min-width:860px){
+  .cabeca-com-figura{ grid-template-columns:minmax(0,1fr) 300px }
+}
+.figura-lado{ margin:0; width:min(100%, 300px) }
+.figura-lado img{ display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover }
+.figura-lado figcaption{
+  padding:11px 14px; font-size:.78rem; font-weight:600; line-height:1.35;
+  color:var(--china); background:var(--sol); border-top:2.5px solid var(--china);
+}
+@media (max-width:859px){ .figura-lado{ margin-inline:auto } }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   22 · A LUPA — ver a vinheta ao tamanho do desenho
+   ═══════════════════════════════════════════════════════════════════════════
+   As ilustrações são densas: há um gato, há um balde, há um cano a pingar.
+   A 200px perde-se tudo isso, e a 600px a página fica pesada. A saída é
+   deixar as vinhetas pequenas e dar a quem quiser um clique para as ver
+   por inteiro.
+
+   Usa <dialog>, que traz de casa o que interessa: fecha com Escape, prende
+   o foco lá dentro, e o resto da página fica inerte para quem navega por
+   teclado ou leitor de ecrã.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.ampliavel{ cursor:zoom-in }
+
+/* O selo de lupa aparece ao passar, no canto da vinheta. Diz que há mais
+   para ver sem ocupar espaço enquanto não é preciso. */
+.ampliavel .lupa-selo{
+  position:absolute; top:8px; right:8px; z-index:3;
+  width:30px; height:30px; display:grid; place-items:center;
+  background:var(--sal); color:var(--china);
+  border:2px solid var(--china); border-radius:50%;
+  opacity:0; transform:scale(.75);
+  transition:opacity .18s ease, transform .18s cubic-bezier(.2,.8,.3,1);
+  pointer-events:none;
+}
+.ampliavel .lupa-selo svg{ width:15px }
+.ampliavel:hover .lupa-selo,
+.ampliavel:focus-visible .lupa-selo{ opacity:1; transform:scale(1) }
+.ampliavel:focus-visible{ outline:3px solid var(--ceu); outline-offset:3px }
+
+/* ── A caixa ─────────────────────────────────────────────────────────────── */
+.lupa{
+  border:0; padding:0; background:transparent;
+  max-width:min(94vw, 760px); max-height:92vh;
+  overflow:visible;
+}
+.lupa::backdrop{ background:rgba(16,32,44,.82) }
+
+.lupa-caixa{
+  position:relative;
+  background:var(--sal);
+  border:3px solid var(--china); border-radius:4px;
+  box-shadow:10px 10px 0 rgba(16,32,44,.45);
+  overflow:hidden;
+}
+.lupa-caixa img{ display:block; width:100%; height:auto; max-height:76vh; object-fit:contain }
+.lupa-caixa figcaption{
+  padding:14px 18px; font-size:.92rem; font-weight:600; line-height:1.4;
+  color:var(--china); background:var(--sol); border-top:3px solid var(--china);
+}
+
+.lupa-fechar{
+  position:absolute; top:10px; right:10px; z-index:2;
+  width:40px; height:40px; display:grid; place-items:center;
+  background:var(--sal); color:var(--china); cursor:pointer;
+  border:2.5px solid var(--china); border-radius:50%;
+  box-shadow:2px 2px 0 var(--china);
+  transition:transform .14s ease, background .14s ease;
+}
+.lupa-fechar svg{ width:17px }
+.lupa-fechar:hover{ transform:translate(-1px,-1px); background:var(--sol) }
+.lupa-fechar:active{ transform:translate(2px,2px); box-shadow:none }
+.lupa-fechar:focus-visible{ outline:3px solid var(--ceu); outline-offset:3px }
+
+/* Passar à vinheta seguinte sem fechar: uma tira lê-se em três tempos. */
+.lupa-passo{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+  width:42px; height:42px; display:grid; place-items:center;
+  background:var(--sal); color:var(--china); cursor:pointer;
+  border:2.5px solid var(--china); border-radius:50%;
+  box-shadow:2px 2px 0 var(--china);
+}
+.lupa-passo svg{ width:16px }
+.lupa-passo[hidden]{ display:none }
+.lupa-anterior{ left:-21px }
+.lupa-seguinte{ right:-21px }
+.lupa-passo:hover{ background:var(--sol) }
+.lupa-passo:focus-visible{ outline:3px solid var(--ceu); outline-offset:3px }
+@media (max-width:620px){
+  .lupa-anterior{ left:6px }
+  .lupa-seguinte{ right:6px }
+}
+
+.lupa-conta{
+  position:absolute; left:50%; bottom:-34px; transform:translateX(-50%);
+  font-size:.8rem; font-weight:600; color:#fff; letter-spacing:.04em;
+}
+
+.lupa[open]{ animation:lupa-abre .22s cubic-bezier(.2,.8,.3,1) }
+@keyframes lupa-abre{ from{ opacity:0; transform:scale(.94) } }
+@media (prefers-reduced-motion:reduce){
+  .lupa[open]{ animation:none }
+  .ampliavel .lupa-selo{ transition:none }
+  .lupa-fechar, .lupa-passo{ transition:none }
+}
+
+
+/* ── Barra de contacto no telemóvel ────────────────────────────────────────
+   Num telemóvel, o telefone fica escondido dentro do menu e o rodapé está a
+   um scroll de distância. A acção principal do site não pode depender de
+   nenhuma das duas coisas: fica uma barra fixa em baixo, com as duas
+   maneiras de falar connosco. Só em ecrãs estreitos — no computador o
+   telefone já está no cabeçalho. */
+.barra-contacto{
+  position:fixed; left:0; right:0; bottom:0; z-index:90;
+  display:none; grid-template-columns:1fr 1fr;
+  background:var(--sal); border-top:2.5px solid var(--china);
+  box-shadow:0 -6px 20px -12px rgba(16,32,44,.4);
+  padding-bottom:env(safe-area-inset-bottom, 0);
+}
+.barra-contacto a{
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  padding:15px 10px; text-decoration:none;
+  font-weight:600; font-size:.95rem; color:var(--china);
+}
+.barra-contacto a + a{ border-left:2.5px solid var(--china) }
+.barra-contacto svg{ width:19px; flex:none }
+.barra-contacto .bc-tel svg{ color:var(--ceu) }
+.barra-contacto .bc-wa svg{ color:#1FA855 }
+.barra-contacto a:active{ background:var(--sol-veu) }
+
+@media (max-width:599px){
+  .barra-contacto{ display:grid }
+  /* o rodapé deixa de ficar debaixo da barra */
+  body{ padding-bottom:60px }
+}
+@media print{ .barra-contacto{ display:none } }
