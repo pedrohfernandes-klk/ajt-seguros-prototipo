@@ -99,7 +99,9 @@
   --linha-campo:#868f9c;
   --linha-esc:  rgba(255,255,255,.14);
   --texto:      #22313c;   /* quase preto, azulado */
-  --texto-fraco:#60717d;
+  /* Escurecido de #60717d: sobre o véu do cabeçalho o anterior dava
+     4.39:1, abaixo do mínimo de 4.5. Este dá 4.78:1 no pior caso. */
+  --texto-fraco:#5b6b78;
   --texto-claro:#c5d4dc;   /* sobre fundo escuro */
   --verde:      #2f6b4f;   /* "está coberto" */
   --vermelho:   #a33a32;   /* "não está coberto" */
@@ -2235,3 +2237,47 @@ figure.figura-lado{ max-width:380px }
 .secao-tinta{ background:var(--tinta) }
 
 @media (prefers-reduced-motion:reduce){ .hero-interior::before{ opacity:.3 } }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   26 · O EQUILÍBRIO — três níveis em vez de dois
+   ═══════════════════════════════════════════════════════════════════════════
+   Tirado o azul, o site passou a abrir com dois brancos seguidos — o
+   cabeçalho e a primeira secção — e uma página que começa numa folha em
+   branco não tem por onde se agarrar. O problema não era a areia estar
+   clara de mais; era não haver degrau nenhum onde a página começa.
+
+   Passa a haver três níveis, e o ritmo faz-se entre eles:
+
+     véu     #eaf0f3   o cabeçalho de página e a faixa das vinhetas
+     areia   #f4f7f8   secções alternadas
+     branco  #ffffff   o corpo do texto
+
+   Continua sem fundos escuros a meio — o remate é que os tem.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root{ --veu:#eaf0f3 }
+
+/* O cabeçalho deixa de ser uma folha em branco: ganha o tom mais fundo dos
+   três, que é o que faz a página começar em algum sítio. */
+.hero-interior{ background:var(--veu) }
+.hero-interior::before{ opacity:.7 }
+
+/* E as vinhetas deixam de flutuar sobre nada. Uma tira sobre tom lê-se como
+   uma prancha pousada; sobre branco, lê-se como um recorte esquecido. */
+.secao:has(> .envelope > .tira),
+.secao:has(> .envelope .tira){
+  background:var(--veu);
+}
+/* Se duas faixas de tom ficarem encostadas, a de baixo passa a branco —
+   dois tons iguais seguidos são um bloco, não um ritmo. */
+.secao-areia + .secao:has(.tira){ background:var(--sal) }
+
+/* O filete de tinta entre tons deixa de ser preciso onde a cor já separa. */
+.secao:has(.tira) + .secao::before,
+.secao + .secao:has(.tira)::before{ display:none }
+
+@supports not selector(:has(*)){
+  /* sem :has(), a faixa das vinhetas fica branca — perde-se o tom, não a
+     legibilidade */
+  .hero-interior{ background:var(--veu) }
+}
