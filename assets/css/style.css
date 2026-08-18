@@ -1751,3 +1751,13 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 .marca:hover::after{ transform:scaleX(1) }
 .marca:focus-visible{ outline:3px solid var(--ceu); outline-offset:4px; border-radius:4px }
 @media (prefers-reduced-motion:reduce){ .marca::after{ transition:none } }
+
+
+/* ── A tira entra inteira ───────────────────────────────────────────────────
+   Três quadrados de uma tira são uma imagem cortada em três, não três
+   imagens. Entravam em cascata, com 90ms entre si, e por cima de um segundo
+   sistema de revelação no elemento-pai — o que punha os três a alturas
+   diferentes durante quase um segundo, de cada vez que se chegava à secção.
+   Agora entra o bloco, de uma vez, e as vinhetas nunca se desencontram. */
+.tira.entra{ transform-origin:50% 100% }
+.tira.entra > figure{ opacity:1 !important; transform:none !important; animation:none !important }
