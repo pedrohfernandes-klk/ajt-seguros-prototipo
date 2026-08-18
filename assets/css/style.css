@@ -1708,15 +1708,23 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   position:static; background:var(--sol); color:var(--china);
   border-top:2.5px solid var(--china); max-width:none; margin:0;
 }
-/* A imagem tem medida fixa e a legenda encosta ao fundo. Era isto que
-   faltava: com a imagem a esticar (flex:1), uma legenda de duas linhas
-   encolhia a sua vinheta e as três deixavam de bater certo. */
-.tira .vinheta{ display:flex; flex-direction:column }
-.tira .vinheta img{ flex:none; aspect-ratio:3/5; object-fit:cover }
-.tira .vinheta figcaption{
-  margin-top:auto;                     /* encosta ao fundo do quadrado */
-  min-height:calc(2.7em + 25px);       /* duas linhas, batam ou não batam */
-  display:flex; align-items:center;
+/* O alinhamento das três vinhetas resolve-se numa linha: a tira tem duas
+   filas — imagem e legenda — e cada vinheta herda-as com subgrid. Assim as
+   três imagens têm a mesma altura e as três legendas também, batam elas
+   uma linha ou duas. Sem subgrid seria preciso adivinhar alturas. */
+.tira{ grid-template-rows:auto auto }
+.tira .vinheta{
+  display:grid; grid-template-rows:subgrid; grid-row:span 2;
+}
+.tira .vinheta img{ aspect-ratio:3/5; object-fit:cover; height:100% }
+.tira .vinheta figcaption{ display:flex; align-items:center }
+
+/* Onde não houver subgrid, cai-se para caixas de altura fixa: alinha na
+   mesma, à custa de reservar sempre espaço para duas linhas. */
+@supports not (grid-template-rows:subgrid){
+  .tira .vinheta{ display:flex; flex-direction:column }
+  .tira .vinheta img{ flex:none }
+  .tira .vinheta figcaption{ margin-top:auto; min-height:calc(2.7em + 25px) }
 }
 
 
