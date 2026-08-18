@@ -225,7 +225,6 @@
      inclinar   as vinhetas rodam conforme a posição do ponteiro
      assentar   entram em cascata quando chegam ao ecrã
      deslizar   as camadas de fundo movem-se menos do que a frente
-     estrondo   um «PAM!» de banda desenhada no ponto do clique
 
    Nada disto é necessário para ler o site. Se o JavaScript não correr, se o
    ponteiro for um dedo, ou se o sistema estiver a pedir menos movimento, a
@@ -344,36 +343,12 @@
     desenhar();
   }
 
-  /* ── 4 · estrondo ────────────────────────────────────────────────────────
-     Um elemento com data-estrondo="PAM!" solta a onomatopeia no ponto do
-     clique. Dura 620ms e remove-se sozinho. É decoração pura: nunca
-     substitui nem intercepta o que o clique já fazia. */
-  var VOZES = ['PAM!', 'TCHIBUM!', 'ZÁS!', 'CRÁS!', 'BUM!', 'TRIM!', 'CATRAPÁS!'];
+  /* A onomatopeia de banda desenhada foi tentada aqui e retirada: num site
+     de seguros, um «PAM!» a saltar do clique não é assinatura gráfica, é
+     falta de compostura. A linguagem de BD fica nas molduras e na cor, que
+     é onde ela trabalha a favor. */
 
-  function estrondo() {
-    if (quieto.matches) return;
-
-    document.addEventListener('click', function (e) {
-      var alvo = e.target.closest('[data-estrondo]');
-      if (!alvo) return;
-
-      var voz = alvo.dataset.estrondo;
-      if (!voz || voz === 'aleatorio') {
-        voz = VOZES[Math.floor(Math.abs(Math.sin(Date.now())) * VOZES.length) % VOZES.length];
-      }
-
-      var som = document.createElement('span');
-      som.className = 'onomatopeia';
-      som.setAttribute('aria-hidden', 'true');
-      som.textContent = voz;
-      som.style.left = e.clientX + 'px';
-      som.style.top = e.clientY + 'px';
-      document.body.appendChild(som);
-      setTimeout(function () { som.remove(); }, 700);
-    });
-  }
-
-  function arrancar() { inclinar(); assentar(); deslizar(); estrondo(); }
+  function arrancar() { inclinar(); assentar(); deslizar(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', arrancar);

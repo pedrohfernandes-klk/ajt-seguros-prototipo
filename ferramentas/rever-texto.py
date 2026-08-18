@@ -52,6 +52,12 @@ REPROVADAS = [
     ("pior comprado",   "julga a compra em vez do produto; «mais mal escolhido»"),
     ("mal comprado",    "julga a compra em vez do produto"),
     ("bem comprado",    "julga a compra em vez do produto"),
+    ("na vila",         "registo de aldeia — Alcochete tem nome"),
+    ("da vila",         "registo de aldeia — Alcochete tem nome"),
+    ("ao balcão",       "soa a guichet e a senha; num mediador diz-se «escritório»"),
+    ("vir ter connosco", "registo de aldeia"),
+    ("cá estamos",      "registo de aldeia"),
+    ("o dia mau",       "eufemismo folclórico; diga o que acontece"),
 ]
 EXCEPCOES = {"a gente": ["toda a gente", "muita gente", "pouca gente",
                           "tanta gente", "que gente"]}

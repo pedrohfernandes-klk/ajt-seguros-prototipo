@@ -1509,25 +1509,6 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 }
 .balao::after{ bottom:-13px; border-top-color:var(--sal) }
 
-/* ── Onomatopeia ────────────────────────────────────────────────────────────
-   O «PAM!» da prancha. Não está na página à espera: é criado pelo JS no
-   ponto exacto do clique, faz o seu estrondo e desaparece. */
-.onomatopeia{
-  position:fixed; z-index:200; pointer-events:none;
-  font-family:var(--f-titulo); font-weight:700; font-style:italic;
-  font-size:clamp(1.6rem, 4vw, 2.6rem); letter-spacing:-.02em;
-  color:var(--sol);
-  -webkit-text-stroke:2.5px var(--china);
-  paint-order:stroke fill;
-  animation:estrondo .62s cubic-bezier(.15,.9,.3,1) forwards;
-}
-@keyframes estrondo{
-  0%   { transform:translate(-50%,-50%) scale(.3) rotate(-14deg); opacity:0 }
-  30%  { transform:translate(-50%,-50%) scale(1.18) rotate(-7deg); opacity:1 }
-  55%  { transform:translate(-50%,-58%) scale(1) rotate(-5deg); opacity:1 }
-  100% { transform:translate(-50%,-108%) scale(.94) rotate(-3deg); opacity:0 }
-}
-
 /* ── Entrada de vinheta ─────────────────────────────────────────────────────
    Cada quadrado entra como quem vira a página: roda ligeiramente sobre o
    seu eixo e assenta. O atraso é dado pelo JS, para entrarem em cascata. */
@@ -1584,7 +1565,6 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   .inclina, .camada{ transform:none !important; transition:none }
   .anima .entra{ opacity:1; transform:none }
   .anima .entra.dentro{ animation:none }
-  .onomatopeia{ display:none }
   .vinheta-brilho{ display:none }
 }
 
