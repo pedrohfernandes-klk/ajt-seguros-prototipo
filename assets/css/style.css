@@ -1184,9 +1184,12 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
    ───────────────────────────────────────────────────────────────────────── */
 .tira{
   display:grid; grid-template-columns:repeat(3, 1fr);
-  gap:clamp(10px, 1.4vw, 16px);
-  max-width:640px;                 /* travão: nunca ganha a página */
-  margin:clamp(28px, 3.5vw, 40px) 0 0;
+  align-items:stretch;
+  /* O espaço entre vinhetas é o que as faz ler como três momentos e não
+     como uma mancha. Estava apertado de mais. */
+  gap:clamp(16px, 2.2vw, 26px);
+  max-width:660px;                 /* travão: nunca ganha a página */
+  margin:clamp(34px, 4vw, 48px) auto 0;   /* centrada: é o destaque que tem */
 }
 .tira figure{ display:flex; flex-direction:column; gap:10px; margin:0 }
 .tira img{
@@ -1201,7 +1204,8 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
 /* o número faz a leitura em sequência sem precisar de setas */
 .tira figcaption::before{
   content:counter(vinheta); counter-increment:vinheta;
-  font-weight:700; color:var(--mare); font-size:.72rem; flex:none;
+  font-weight:700; color:var(--china); font-size:.78rem; flex:none;
+  opacity:.55;
 }
 .tira{ counter-reset:vinheta }
 
@@ -1704,5 +1708,38 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   position:static; background:var(--sol); color:var(--china);
   border-top:2.5px solid var(--china); max-width:none; margin:0;
 }
+/* A imagem tem medida fixa e a legenda encosta ao fundo. Era isto que
+   faltava: com a imagem a esticar (flex:1), uma legenda de duas linhas
+   encolhia a sua vinheta e as três deixavam de bater certo. */
 .tira .vinheta{ display:flex; flex-direction:column }
-.tira .vinheta img{ flex:1; object-fit:cover }
+.tira .vinheta img{ flex:none; aspect-ratio:3/5; object-fit:cover }
+.tira .vinheta figcaption{
+  margin-top:auto;                     /* encosta ao fundo do quadrado */
+  min-height:calc(2.7em + 25px);       /* duas linhas, batam ou não batam */
+  display:flex; align-items:center;
+}
+
+
+/* A figura editorial vive dentro do envelope como qualquer outro bloco.
+   Havia uma que tinha ficado fora e encostava ao canto do ecrã. */
+.figura-editorial.vinheta{ margin-inline:0 }
+.envelope > .figura-editorial{ margin-left:0; margin-right:auto }
+
+
+/* ── O Início na barra ───────────────────────────────────────────────────
+   O logotipo levava ao início, mas só quem já sabe é que sabe. Passa a
+   haver uma entrada com o nome escrito, como qualquer outra — e a marca
+   deixa de ser um enfeite silencioso: comporta-se como ligação. */
+.nav-inicio{ font-weight:600 }
+
+.marca{ position:relative }
+.marca .marca-nome b{ transition:color var(--transicao) }
+.marca:hover .marca-nome b{ color:var(--ceu) }
+.marca::after{
+  content:""; position:absolute; left:58px; right:0; bottom:1px; height:2px;
+  background:var(--ceu); transform:scaleX(0); transform-origin:left;
+  transition:transform var(--transicao);
+}
+.marca:hover::after{ transform:scaleX(1) }
+.marca:focus-visible{ outline:3px solid var(--ceu); outline-offset:4px; border-radius:4px }
+@media (prefers-reduced-motion:reduce){ .marca::after{ transition:none } }
