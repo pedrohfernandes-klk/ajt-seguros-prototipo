@@ -37,9 +37,29 @@
      cheio pesavam como um bloco. Este abre um tom e meio e ganha luz sem
      perder a gravidade — 8.5:1 sobre o papel, 8.7:1 com branco por cima,
      muito acima do mínimo AA. */
-  --tinta:      #21506c;   /* azul do estuário, cor institucional principal */
-  --tinta-90:   #2b607f;
+  --tinta:      #1d4e6e;   /* azul do estuário, cor institucional principal */
+  --tinta-90:   #2a6288;
   --tinta-70:   #4a7891;
+
+  /* ── Paleta de banda desenhada ──────────────────────────────────────────
+     As ilustrações do site são BD. A cor à volta delas era de relatório, e
+     o resultado é que as imagens pareciam coladas por cima de outra coisa.
+     Estes quatro tons são de prancha: chapados, saturados, sem gradiente.
+     O tinta-china é a linha; o céu, o sol e o carmim são o preenchimento. */
+  --china:      #10202c;   /* linha de contorno — quase preto, azulado */
+  --china-veu:  rgba(16,32,44,.14);
+  --ceu:        #1d8fd1;   /* azul de céu de vinheta */
+  --ceu-claro:  #7fc7ee;
+  --ceu-veu:    rgba(29,143,209,.12);
+  --sol:        #f0a92c;   /* ocre quente — o que salta da página */
+  --sol-forte:  #d08c14;
+  --sol-veu:    rgba(240,169,44,.16);
+  --carmim:     #b0201c;   /* o vermelho da companhia, agora um dos quatro */
+
+  /* Sombra de vinheta: dura, sem desfoque. É o que dá a uma prancha o ar
+     de papel recortado e pousado por cima da página. */
+  --sombra-bd:   4px 4px 0 var(--china);
+  --sombra-bd-g: 8px 8px 0 var(--china);
   --mare:       #236987;   /* azul-maré — ligações e acentos frios */
   --mare-forte: #185772;   /* estado premido / hover de superfícies azuis */
   --mare-claro: #9bc6d8;
@@ -1372,3 +1392,312 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   .secao{ padding-block:16px }
   a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:9pt; color:#555 }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   20 · PRANCHA — o vocabulário de banda desenhada
+   ═══════════════════════════════════════════════════════════════════════════
+
+   As ilustrações deste site são BD. Até aqui viviam dentro de molduras de
+   relatório: cantos redondos, hairline cinzenta, sombra difusa. O resultado
+   é que pareciam coladas por cima de um documento.
+
+   Esta secção dá-lhes a moldura que lhes pertence — a vinheta: linha de
+   tinta-china grossa, sombra dura sem desfoque, e o papel a levantar-se da
+   página. E dá-lhes profundidade a sério: a prancha tem perspectiva, e as
+   vinhetas inclinam-se conforme o ponteiro se aproxima.
+
+   Tudo o que se mexe aqui está atrás de duas condições: o ponteiro tem de
+   ser fino (rato, não dedo) e o sistema não pode estar a pedir menos
+   movimento. Quem não cumprir uma delas recebe a mesma composição, quieta.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* ── A vinheta ──────────────────────────────────────────────────────────── */
+.vinheta{
+  position:relative; display:block; margin:0;
+  background:var(--sal);
+  border:2.5px solid var(--china);
+  border-radius:3px;                    /* a BD não tem cantos redondos */
+  box-shadow:var(--sombra-bd);
+  overflow:hidden;
+  transition:box-shadow var(--transicao), transform var(--transicao);
+}
+.vinheta img{ display:block; width:100%; height:auto }
+
+/* A legenda de vinheta é o cartucho: caixa de texto pousada dentro do
+   quadrado, no fundo, como nas pranchas antigas. */
+.vinheta figcaption{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:12px 16px 13px;
+  font-family:var(--f-texto); font-size:.82rem; font-weight:600; line-height:1.35;
+  color:var(--china); background:var(--sol);
+  border-top:2.5px solid var(--china);
+}
+
+/* ── A prancha: o palco com perspectiva ─────────────────────────────────── */
+.prancha{ perspective:1100px; perspective-origin:50% 40% }
+
+/* ── Inclinação ao ponteiro ─────────────────────────────────────────────────
+   O JS escreve --rx, --ry e --lz; o CSS limita-se a aplicá-los. Sem JS, os
+   valores ficam a zero e a vinheta é uma vinheta quieta — nada se perde. */
+.inclina{
+  --rx:0deg; --ry:0deg; --lz:0px;
+  transform-style:preserve-3d;
+  transform:rotateX(var(--rx)) rotateY(var(--ry)) translateZ(var(--lz));
+  transition:transform .5s cubic-bezier(.2,.7,.3,1), box-shadow .5s ease;
+  will-change:transform;
+}
+@media (hover:hover) and (pointer:fine){
+  .inclina:hover{ box-shadow:var(--sombra-bd-g); transition-duration:.12s }
+  .inclina:hover .vinheta-brilho{ opacity:1 }
+}
+
+/* Reflexo que corre pela vinheta consoante o ângulo — o que faz o papel
+   parecer papel e não uma imagem chapada. */
+.vinheta-brilho{
+  position:absolute; inset:0; pointer-events:none; opacity:0;
+  transition:opacity .3s ease;
+  background:linear-gradient(105deg,
+    transparent 30%, rgba(255,255,255,.34) 48%, transparent 62%);
+  mix-blend-mode:overlay;
+}
+
+/* ── Rebentar a moldura ─────────────────────────────────────────────────────
+   O truque mais antigo e mais eficaz da BD: uma parte do desenho sai fora
+   do quadrado. Aqui é o elemento marcado que se projecta para a frente e
+   transborda — e, com perspectiva, transborda mesmo em profundidade. */
+.rebenta{
+  position:relative; z-index:2;
+  transform:translateZ(48px);
+  transform-style:preserve-3d;
+}
+
+/* ── Tramado ────────────────────────────────────────────────────────────────
+   A retícula de pontos com que a BD impressa fazia meios-tons. Serve de
+   textura de fundo atrás das vinhetas: dá densidade sem pedir uma imagem. */
+.tramado{ position:relative; isolation:isolate }
+.tramado::before{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:radial-gradient(var(--china-veu) 1.4px, transparent 1.5px);
+  background-size:11px 11px;
+  -webkit-mask-image:radial-gradient(ellipse 78% 62% at 50% 45%, #000 40%, transparent 100%);
+          mask-image:radial-gradient(ellipse 78% 62% at 50% 45%, #000 40%, transparent 100%);
+}
+
+/* ── Balão de fala ──────────────────────────────────────────────────────────
+   Para as frases que são mesmo fala — o que se diz ao balcão. */
+.balao{
+  position:relative; display:inline-block; max-width:34ch;
+  padding:18px 22px;
+  background:var(--sal); color:var(--china);
+  border:2.5px solid var(--china); border-radius:18px;
+  box-shadow:var(--sombra-bd);
+  font-family:var(--f-titulo); font-size:1.06rem; line-height:1.4;
+}
+.balao::before,
+.balao::after{
+  content:""; position:absolute; bottom:-17px; left:38px;
+  border:9px solid transparent; border-top-color:var(--china); border-bottom:0;
+}
+.balao::after{ bottom:-13px; border-top-color:var(--sal) }
+
+/* ── Onomatopeia ────────────────────────────────────────────────────────────
+   O «PAM!» da prancha. Não está na página à espera: é criado pelo JS no
+   ponto exacto do clique, faz o seu estrondo e desaparece. */
+.onomatopeia{
+  position:fixed; z-index:200; pointer-events:none;
+  font-family:var(--f-titulo); font-weight:700; font-style:italic;
+  font-size:clamp(1.6rem, 4vw, 2.6rem); letter-spacing:-.02em;
+  color:var(--sol);
+  -webkit-text-stroke:2.5px var(--china);
+  paint-order:stroke fill;
+  animation:estrondo .62s cubic-bezier(.15,.9,.3,1) forwards;
+}
+@keyframes estrondo{
+  0%   { transform:translate(-50%,-50%) scale(.3) rotate(-14deg); opacity:0 }
+  30%  { transform:translate(-50%,-50%) scale(1.18) rotate(-7deg); opacity:1 }
+  55%  { transform:translate(-50%,-58%) scale(1) rotate(-5deg); opacity:1 }
+  100% { transform:translate(-50%,-108%) scale(.94) rotate(-3deg); opacity:0 }
+}
+
+/* ── Entrada de vinheta ─────────────────────────────────────────────────────
+   Cada quadrado entra como quem vira a página: roda ligeiramente sobre o
+   seu eixo e assenta. O atraso é dado pelo JS, para entrarem em cascata. */
+.entra{
+  opacity:0;
+  transform:perspective(900px) rotateX(12deg) translateY(26px) scale(.97);
+}
+.entra.dentro{
+  animation:assenta .72s cubic-bezier(.2,.8,.25,1) forwards;
+  animation-delay:var(--atraso, 0ms);
+}
+@keyframes assenta{
+  to{ opacity:1; transform:perspective(900px) rotateX(0) translateY(0) scale(1) }
+}
+
+/* ── Parallax de camadas ────────────────────────────────────────────────────
+   O fundo desloca-se menos do que a frente enquanto se desce a página. É a
+   profundidade que se sente sem se ver. */
+.camada{ transform:translate3d(0, var(--deslize, 0px), 0); will-change:transform }
+
+/* ── Faixa de canais ────────────────────────────────────────────────────────
+   Telefone, WhatsApp e email lado a lado, em botões de vinheta. */
+.canais{ display:grid; gap:14px; grid-template-columns:1fr }
+@media (min-width:620px){ .canais{ grid-template-columns:repeat(3, 1fr) } }
+.canal{
+  display:flex; align-items:center; gap:13px; text-decoration:none;
+  padding:16px 18px; background:var(--sal); color:var(--china);
+  border:2.5px solid var(--china); border-radius:4px;
+  box-shadow:var(--sombra-bd);
+  transition:transform .16s cubic-bezier(.2,.7,.3,1), box-shadow .16s ease;
+}
+.canal:hover{ transform:translate(-2px,-2px); box-shadow:var(--sombra-bd-g) }
+.canal:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--china) }
+.canal svg{ width:22px; flex:none }
+.canal b{ display:block; font-family:var(--f-titulo); font-size:1.04rem; font-weight:600 }
+.canal span{ display:block; font-size:.76rem; color:var(--texto-fraco) }
+.canal-whatsapp svg{ color:#1FA855 }
+.canal-telefone svg{ color:var(--ceu) }
+.canal-email svg{ color:var(--carmim) }
+
+/* ── Quem não quer movimento não leva nenhum ───────────────────────────────
+   Não é uma versão degradada: é a mesma composição, parada. */
+@media (prefers-reduced-motion:reduce){
+  .inclina, .camada{ transform:none !important; transition:none }
+  .entra{ opacity:1; transform:none }
+  .entra.dentro{ animation:none }
+  .onomatopeia{ display:none }
+  .vinheta-brilho{ display:none }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   21 · AS 33 PERGUNTAS
+   ═══════════════════════════════════════════════════════════════════════════
+   Uma prancha de perguntas. Cada tema é uma cor de vinheta; cada pergunta é
+   uma tira que se abre. O número à esquerda existe para se poder dizer «é a
+   17» ao telefone — e porque uma lista numerada convida a percorrê-la.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.tema{
+  --tom:var(--ceu);
+  --tom-veu:var(--ceu-veu);
+  margin-bottom:clamp(40px, 5vw, 64px);
+  border:2.5px solid var(--china);
+  border-radius:4px;
+  background:var(--sal);
+  box-shadow:var(--sombra-bd-g);
+  overflow:hidden;
+}
+.tema-ceu   { --tom:var(--ceu);    --tom-veu:var(--ceu-veu) }
+.tema-sol   { --tom:var(--sol-forte); --tom-veu:var(--sol-veu) }
+.tema-carmim{ --tom:var(--carmim); --tom-veu:var(--tranquilidade-veu) }
+
+/* O título do tema é a faixa de topo da vinheta */
+.tema-titulo{
+  margin:0; padding:16px clamp(18px, 3vw, 30px);
+  background:var(--tom); color:#fff;
+  border-bottom:2.5px solid var(--china);
+  font-family:var(--f-titulo); font-weight:600;
+  font-size:clamp(1.12rem, 2.2vw, 1.4rem); letter-spacing:-.012em;
+}
+
+/* ── Cada pergunta ─────────────────────────────────────────────────────── */
+.pergunta{ border-bottom:1.5px solid var(--linha) }
+.pergunta:last-child{ border-bottom:0 }
+
+.pergunta > summary{
+  display:flex; align-items:flex-start; gap:16px;
+  padding:18px clamp(18px, 3vw, 30px);
+  cursor:pointer; list-style:none;
+  font-family:var(--f-texto); font-weight:600; font-size:1.02rem;
+  line-height:1.45; color:var(--china);
+  transition:background var(--transicao);
+}
+.pergunta > summary::-webkit-details-marker{ display:none }
+.pergunta > summary:hover{ background:var(--tom-veu) }
+.pergunta > summary:focus-visible{ outline:3px solid var(--tom); outline-offset:-3px }
+
+/* O número. Fica na cor do tema, em corpo de vinheta. */
+.pergunta-n{
+  flex:none; width:2.4em; padding-top:1px;
+  font-family:var(--f-titulo); font-weight:700; font-size:1.02rem;
+  font-variant-numeric:tabular-nums;
+  color:var(--tom);
+}
+
+/* A seta é desenhada em CSS e roda ao abrir */
+.pergunta > summary::after{
+  content:""; flex:none; margin-left:auto; margin-top:.35em;
+  width:11px; height:11px;
+  border-right:2.4px solid var(--tom); border-bottom:2.4px solid var(--tom);
+  transform:rotate(45deg);
+  transition:transform var(--transicao);
+}
+.pergunta[open] > summary::after{ transform:rotate(-135deg) }
+.pergunta[open] > summary{ background:var(--tom-veu) }
+
+.pergunta-corpo{
+  padding:2px clamp(18px, 3vw, 30px) 22px;
+  padding-left:calc(clamp(18px, 3vw, 30px) + 2.4em + 16px);
+  animation:abre-resposta .3s ease;
+}
+@keyframes abre-resposta{ from{ opacity:0; transform:translateY(-5px) } }
+.pergunta-corpo p{ margin:0; max-width:64ch; color:var(--texto); line-height:1.68 }
+
+/* ── Os três canais, dentro da resposta ────────────────────────────────────
+   Já vão preenchidos com a pergunta: o WhatsApp leva-a escrita, o email
+   leva-a no assunto. Quem tem a dúvida não a reescreve. */
+.resposta-canais{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  margin-top:18px; padding-top:15px;
+  border-top:1.5px dashed var(--linha);
+}
+.resposta-canais > span{
+  font-size:.76rem; font-weight:600; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--texto-fraco);
+  margin-right:4px;
+}
+.rc{
+  display:inline-flex; align-items:center; gap:7px;
+  padding:7px 13px; text-decoration:none;
+  font-size:.84rem; font-weight:600; color:var(--china);
+  background:var(--sal);
+  border:1.8px solid var(--china); border-radius:var(--raio-pilula);
+  transition:transform .14s ease, background .14s ease, color .14s ease;
+}
+.rc svg{ width:15px; flex:none }
+.rc:hover{ transform:translateY(-2px) }
+.rc-wa svg{ color:#1FA855 }
+.rc-wa:hover{ background:#1FA855; color:#fff }
+.rc-wa:hover svg{ color:#fff }
+.rc-tel svg{ color:var(--ceu) }
+.rc-tel:hover{ background:var(--ceu); color:#fff }
+.rc-tel:hover svg{ color:#fff }
+.rc-mail svg{ color:var(--carmim) }
+.rc-mail:hover{ background:var(--carmim); color:#fff }
+.rc-mail:hover svg{ color:#fff }
+
+@media (max-width:520px){
+  .pergunta-corpo{ padding-left:clamp(18px, 3vw, 30px) }
+  .pergunta > summary{ gap:12px }
+  .pergunta-n{ width:1.9em }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .pergunta-corpo{ animation:none }
+  .rc:hover{ transform:none }
+}
+
+/* A vinheta assume a moldura por inteiro: as regras antigas de figura
+   davam-lhe cantos redondos e uma hairline, que agora estorvam. */
+.figura.vinheta img, .figura-editorial.vinheta img, .cartao-instantaneo.vinheta img{
+  border:0; border-radius:0; width:100%; max-width:none;
+}
+.figura-editorial.vinheta{ width:min(100%, 420px) }
+.figura-larga.vinheta{ width:min(100%, 560px) }
+.figura.vinheta figcaption, .figura-editorial.vinheta figcaption,
+.tira .vinheta figcaption{
+  position:static; background:var(--sol); color:var(--china);
+  border-top:2.5px solid var(--china); max-width:none; margin:0;
+}
+.tira .vinheta{ display:flex; flex-direction:column }
+.tira .vinheta img{ flex:1; object-fit:cover }

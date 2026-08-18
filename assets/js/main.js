@@ -202,3 +202,159 @@
     });
   }
 })();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRANCHA — o movimento das vinhetas
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Quatro comportamentos, todos opcionais e todos desligáveis:
+
+     inclinar   as vinhetas rodam conforme a posição do ponteiro
+     assentar   entram em cascata quando chegam ao ecrã
+     deslizar   as camadas de fundo movem-se menos do que a frente
+     estrondo   um «PAM!» de banda desenhada no ponto do clique
+
+   Nada disto é necessário para ler o site. Se o JavaScript não correr, se o
+   ponteiro for um dedo, ou se o sistema estiver a pedir menos movimento, a
+   página fica exactamente na mesma — apenas quieta.
+   ───────────────────────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  var quieto = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var ponteiroFino = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  /* ── 1 · inclinar ────────────────────────────────────────────────────────
+     A vinheta roda para o lado onde está o ponteiro, no máximo 7 graus, e
+     levanta-se 14px. O cálculo é feito uma vez por frame — não uma vez por
+     evento de rato, que dispara dezenas de vezes por segundo. */
+  function inclinar() {
+    if (quieto.matches || !ponteiroFino.matches) return;
+
+    document.querySelectorAll('.inclina').forEach(function (alvo) {
+      var pendente = false, ultimo = null;
+
+      function desenhar() {
+        pendente = false;
+        if (!ultimo) return;
+        var c = alvo.getBoundingClientRect();
+        var x = (ultimo.clientX - c.left) / c.width - 0.5;   /* -0.5 … 0.5 */
+        var y = (ultimo.clientY - c.top) / c.height - 0.5;
+        alvo.style.setProperty('--ry', (x * 14).toFixed(2) + 'deg');
+        alvo.style.setProperty('--rx', (-y * 11).toFixed(2) + 'deg');
+        alvo.style.setProperty('--lz', '14px');
+
+        var brilho = alvo.querySelector('.vinheta-brilho');
+        if (brilho) {
+          brilho.style.backgroundPosition = (50 + x * 90).toFixed(0) + '% 50%';
+        }
+      }
+
+      alvo.addEventListener('pointermove', function (e) {
+        ultimo = e;
+        if (!pendente) { pendente = true; requestAnimationFrame(desenhar); }
+      });
+
+      alvo.addEventListener('pointerleave', function () {
+        ultimo = null;
+        alvo.style.setProperty('--rx', '0deg');
+        alvo.style.setProperty('--ry', '0deg');
+        alvo.style.setProperty('--lz', '0px');
+      });
+    });
+  }
+
+  /* ── 2 · assentar ────────────────────────────────────────────────────────
+     Cada vinheta entra quando chega ao ecrã. As que estão na mesma fila
+     entram em cascata, com 90ms de intervalo, como quem pousa uma prancha.
+     Depois de entrar, deixa de ser observada: não há trabalho a repetir. */
+  function assentar() {
+    var alvos = document.querySelectorAll('.entra');
+    if (!alvos.length) return;
+
+    if (quieto.matches || !('IntersectionObserver' in window)) {
+      alvos.forEach(function (a) { a.classList.add('dentro'); });
+      return;
+    }
+
+    var observador = new IntersectionObserver(function (entradas) {
+      var n = 0;
+      entradas.forEach(function (entrada) {
+        if (!entrada.isIntersecting) return;
+        entrada.target.style.setProperty('--atraso', (n * 90) + 'ms');
+        entrada.target.classList.add('dentro');
+        observador.unobserve(entrada.target);
+        n++;
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+    alvos.forEach(function (a) { observador.observe(a); });
+  }
+
+  /* ── 3 · deslizar ────────────────────────────────────────────────────────
+     Parallax honesto: o elemento move-se uma fracção do que a página se
+     moveu, e nunca mais do que 34px. Sem exageros — o que se pretende é
+     que se sinta profundidade, não que se note o efeito. */
+  function deslizar() {
+    if (quieto.matches) return;
+    var camadas = Array.prototype.slice.call(document.querySelectorAll('.camada'));
+    if (!camadas.length) return;
+
+    var pendente = false;
+
+    function desenhar() {
+      pendente = false;
+      var meio = window.innerHeight / 2;
+      camadas.forEach(function (c) {
+        var caixa = c.getBoundingClientRect();
+        if (caixa.bottom < -200 || caixa.top > window.innerHeight + 200) return;
+        var centro = caixa.top + caixa.height / 2;
+        var factor = parseFloat(c.dataset.deslize || '0.06');
+        var d = Math.max(-34, Math.min(34, (meio - centro) * factor));
+        c.style.setProperty('--deslize', d.toFixed(1) + 'px');
+      });
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!pendente) { pendente = true; requestAnimationFrame(desenhar); }
+    }, { passive: true });
+    desenhar();
+  }
+
+  /* ── 4 · estrondo ────────────────────────────────────────────────────────
+     Um elemento com data-estrondo="PAM!" solta a onomatopeia no ponto do
+     clique. Dura 620ms e remove-se sozinho. É decoração pura: nunca
+     substitui nem intercepta o que o clique já fazia. */
+  var VOZES = ['PAM!', 'TCHIBUM!', 'ZÁS!', 'CRÁS!', 'BUM!', 'TRIM!', 'CATRAPÁS!'];
+
+  function estrondo() {
+    if (quieto.matches) return;
+
+    document.addEventListener('click', function (e) {
+      var alvo = e.target.closest('[data-estrondo]');
+      if (!alvo) return;
+
+      var voz = alvo.dataset.estrondo;
+      if (!voz || voz === 'aleatorio') {
+        voz = VOZES[Math.floor(Math.abs(Math.sin(Date.now())) * VOZES.length) % VOZES.length];
+      }
+
+      var som = document.createElement('span');
+      som.className = 'onomatopeia';
+      som.setAttribute('aria-hidden', 'true');
+      som.textContent = voz;
+      som.style.left = e.clientX + 'px';
+      som.style.top = e.clientY + 'px';
+      document.body.appendChild(som);
+      setTimeout(function () { som.remove(); }, 700);
+    });
+  }
+
+  function arrancar() { inclinar(); assentar(); deslizar(); estrondo(); }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', arrancar);
+  } else {
+    arrancar();
+  }
+})();

@@ -26,6 +26,28 @@ Confirmar em <https://www.asf.com.pt> ou no certificado de registo da empresa.
 
 ---
 
+## 🔴 2 · Números de WhatsApp dos dois balcões
+
+**Onde aparece:** rodapé de todas as páginas, `perguntas.html`, `contactos.html`.
+**O que procurar nos ficheiros:** `351900000000`
+
+O WhatsApp precisa de um número de telemóvel — os fixos não servem.
+
+| Balcão | Número em uso | Estado |
+|---|---|---|
+| Rua Carlos Manuel Rodrigues Francisco | `351964036313` | telemóvel já publicado no site; **confirmar que aceita WhatsApp** |
+| Alameda do Grupo Desportivo Alcochetense | `351900000000` | 🔴 **inventado** — substituir antes de publicar |
+
+O `351900000000` é deliberadamente um número que não existe, para não
+haver hipótese de alguém escrever a um desconhecido. Enquanto não for
+substituído, todas as ligações de WhatsApp do site apontam para o balcão
+da Rua Carlos Manuel.
+
+Quando tiver os dois, procure `351900000000` e substitua. O formato é
+o internacional sem `+` nem espaços: `351` seguido dos nove dígitos.
+
+---
+
 ## 🔴 2 · Participações qualificadas
 
 **Onde aparece:** `informacao-legal.html`, secção "Natureza da actividade".
