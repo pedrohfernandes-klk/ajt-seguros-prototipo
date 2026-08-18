@@ -7,7 +7,7 @@ e nunca nos parágrafos, que se limitam a explicar.
 O que soar mal, diga. Vai para a lista negra em
 `ferramentas/rever-texto.py` e não volta a aparecer em lado nenhum.
 
-## Primeiro: as inventadas (340)
+## Primeiro: as inventadas (344)
 
 Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 
@@ -378,6 +378,13 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 - *destaque* — Atos dolosos
 - *destaque* — Guerra e terrorismo
 
+### perguntas.html
+
+- *título de página* — 33 perguntas que nos fazem ao balcão.
+- *título de secção* — A sua não estava nesta lista?
+- *destaque* — WhatsApp
+- *destaque* — Escrever-nos
+
 ### simular.html
 
 - *título de página* — Simule online. A conversa é connosco.
@@ -421,7 +428,7 @@ Títulos, etiquetas, legendas e destaques. São estas que arriscam.
 - *título de página* — Esta página mudou de sítio
 
 
-## Depois: as descritivas (238)
+## Depois: as descritivas (272)
 
 Perguntas e subtítulos. Quase sempre nomes de coisas — risco baixo,
 mas ficam aqui para leitura completa.
@@ -704,6 +711,43 @@ mas ficam aqui para leitura completa.
 - *pergunta* — Perco a bonificação do spread se mudar de seguradora?
 - *pergunta* — Tenho de fazer exames médicos?
 - *pergunta* — E se eu fumar ou tiver uma doença?
+
+### perguntas.html
+
+- *pergunta* — 01 Pago mais por contratar através de um mediador?
+- *pergunta* — 02 Vocês trabalham com quantas companhias?
+- *pergunta* — 03 Já tenho seguros noutro sítio. Vale a pena mudar?
+- *pergunta* — 04 Tenho de marcar hora?
+- *pergunta* — 05 Posso tratar de tudo por WhatsApp?
+- *pergunta* — 06 O que é exatamente a franquia?
+- *pergunta* — 07 E a carência?
+- *pergunta* — 08 Porque é que duas apólices com o mesmo preço são tão diferentes?
+- *pergunta* — 09 Tenho mesmo de declarar tudo?
+- *pergunta* — 10 O que é a rede convencionada?
+- *pergunta* — 11 Quanto tempo demora a ter uma proposta?
+- *pergunta* — 12 Tive um acidente. O que faço primeiro?
+- *pergunta* — 13 Quanto tempo tenho para participar?
+- *pergunta* — 14 Posso mandar reparar antes da peritagem?
+- *pergunta* — 15 O outro condutor recusou-se a assinar a declaração amigável.
+- *pergunta* — 16 Participar um sinistro faz o meu seguro subir?
+- *pergunta* — 17 A companhia recusou o meu sinistro. E agora?
+- *pergunta* — 18 Por quanto devo segurar a casa?
+- *pergunta* — 19 Sou inquilino. Preciso de seguro?
+- *pergunta* — 20 O banco pode obrigar-me a fazer os seguros com ele?
+- *pergunta* — 21 Vale a pena ter danos próprios num carro antigo?
+- *pergunta* — 22 O seguro da mota cobre o passageiro?
+- *pergunta* — 23 Levo o meu bónus quando mudo de companhia?
+- *pergunta* — 24 Posso tirar o seguro de vida do banco?
+- *pergunta* — 25 Que capital de vida devo contratar?
+- *pergunta* — 26 Tenho uma doença. Posso fazer seguro de saúde?
+- *pergunta* — 27 O seguro de saúde substitui o Serviço Nacional de Saúde?
+- *pergunta* — 28 O seguro do clube do meu filho não chega?
+- *pergunta* — 29 Tenho um só funcionário. Preciso mesmo de acidentes de trabalho?
+- *pergunta* — 30 O que acontece se declarar a massa salarial a menos?
+- *pergunta* — 31 A responsabilidade civil é obrigatória na minha atividade?
+- *pergunta* — 32 Já tenho acidentes de trabalho. Isso não chega?
+- *pergunta* — 33 O que são perdas de exploração?
+- *botão* — Falar por WhatsApp
 
 ### simular.html
 
