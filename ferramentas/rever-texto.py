@@ -48,6 +48,10 @@ REPROVADAS = [
     ("à sua medida",    "chavão comercial"),
     ("um mundo para",   "slogan abstracto; diga antes o que faz"),
     ("gama completa",   "chavão comercial"),
+    ("lá dentro",       "sítio nenhum — numa apólice chamam-se coberturas"),
+    ("pior comprado",   "julga a compra em vez do produto; «mais mal escolhido»"),
+    ("mal comprado",    "julga a compra em vez do produto"),
+    ("bem comprado",    "julga a compra em vez do produto"),
 ]
 EXCEPCOES = {"a gente": ["toda a gente", "muita gente", "pouca gente",
                           "tanta gente", "que gente"]}
