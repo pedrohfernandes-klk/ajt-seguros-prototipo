@@ -2146,3 +2146,92 @@ figure.figura-lado{ max-width:380px }
 @media (prefers-reduced-motion:reduce){
   .secao + .secao::before{ transform:scaleX(1); animation:none }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   25 · A COR DECIDE-SE
+   ═══════════════════════════════════════════════════════════════════════════
+   O site tinha 37% das secções em azul cheio. Não era uma escolha, era uma
+   acumulação: cada secção que precisava de destaque recebia fundo escuro, e
+   ao fim de vinte páginas o azul deixou de destacar seja o que for.
+
+   A regra passa a ser esta:
+
+     branco      é o estado normal da página, e a maioria do que se vê
+     tinta       fica para UM momento por página — o apelo final
+     azul        só para navegação e ligações
+     verde       o que protege, o que está coberto, o que corre bem
+     carmim      o que fica de fora, o prazo, o que é urgente
+     sol         o cartucho das vinhetas, e mais nada
+
+   Três acentos com significado valem mais do que um fundo escuro repetido.
+   Quem vê a página aprende, sem que ninguém lho diga, que o verde é o que
+   está incluído e o vermelho é o que não está.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* ── O cabeçalho de página deixa de ser uma mancha escura ───────────────────
+   Era azul cheio em vinte páginas. Passa a branco, com o filete de tinta a
+   marcar o fim — que separa tanto como o fundo separava, e pesa muito menos. */
+.hero-interior{
+  background:var(--sal); color:var(--texto);
+  border-bottom:2.5px solid var(--china);
+  padding-block:clamp(40px, 6vw, 72px) clamp(44px, 6vw, 76px);
+}
+.hero-interior::before{ opacity:.5 }
+.hero-interior .titulo,
+.hero-interior .titulo em{ color:var(--tinta) }
+.hero-interior .titulo em{ color:var(--mare) }
+.hero-interior .lede{ color:var(--texto) }
+.hero-interior .migalhas,
+.hero-interior .migalhas a{ color:var(--texto-fraco) }
+.hero-interior .migalhas a:hover{ color:var(--mare) }
+.hero-interior .migalhas [aria-current]{ color:var(--tinta) }
+.hero-interior .botao-primario{ background:var(--tinta); color:#fff }
+.hero-interior .botao-primario:hover{ background:var(--tinta-90) }
+.hero-interior .botao-secundario{ color:var(--tinta); border-color:var(--tinta) }
+.hero-interior .botao-secundario:hover{ background:var(--tinta); color:#fff }
+.hero-interior .ligacao{ color:var(--tinta) }
+.hero-interior .nota{ color:var(--texto-fraco) }
+.hero-interior .contacto-directo a{ border-color:var(--linha) }
+/* o símbolo passa a ser a única nota de cor do cabeçalho */
+.hero-interior .hero-simbolo{
+  background:var(--carmim); border-color:var(--carmim); color:#fff;
+}
+
+/* ── A areia clareia ────────────────────────────────────────────────────────
+   O branco tem de ganhar: a areia deixa de ser um cinzento-azulado e passa a
+   ser quase branco, só o suficiente para marcar o ritmo entre secções. */
+:root{ --areia:#f4f7f8 }
+
+/* ── Verde e carmim ganham trabalho a sério ─────────────────────────────────
+   Já existiam, escondidos numa lista. Passam a ser o código de cor do site:
+   verde é o que está coberto, carmim é o que fica de fora. */
+:root{
+  --verde:      #1f6b4a;
+  --verde-veu:  rgba(31,107,74,.10);
+  --carmim-veu: rgba(176,32,28,.09);
+}
+
+.balanco-inclui h3 .sinal{ background:var(--verde); border-color:var(--verde); color:#fff }
+.balanco-inclui h3{ color:var(--verde) }
+.balanco-inclui li svg{ color:var(--verde) }
+.balanco-exclui h3 .sinal{ background:var(--carmim); border-color:var(--carmim); color:#fff }
+.balanco-exclui h3{ color:var(--carmim) }
+.balanco-exclui li svg{ color:var(--carmim) }
+
+/* A etiqueta de secção deixa de ser sempre vermelha: recebe a cor do que
+   anuncia. É subtil, e ao fim de duas páginas já se lê sem pensar. */
+.etiqueta{ color:var(--tinta); background:transparent; border-color:var(--linha) }
+.etiqueta::before{
+  content:""; width:7px; height:7px; border-radius:50%;
+  background:var(--mare); flex:none;
+}
+.secao-inclui .etiqueta::before{ background:var(--verde) }
+.secao-exclui .etiqueta::before,
+.secao-areia .etiqueta::before{ background:var(--carmim) }
+
+/* ── A tinta fica para o remate ─────────────────────────────────────────────
+   Uma página inteira em branco precisa de um ponto final. É o último bloco,
+   e só ele. */
+.secao-tinta{ background:var(--tinta) }
+
+@media (prefers-reduced-motion:reduce){ .hero-interior::before{ opacity:.3 } }
