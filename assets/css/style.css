@@ -1191,6 +1191,19 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   max-width:660px;                 /* travão: nunca ganha a página */
   margin:clamp(34px, 4vw, 48px) auto 0;   /* centrada: é o destaque que tem */
 }
+
+/* Há histórias de três tempos e histórias de quatro. A grelha lê o número
+   de painéis e adapta-se — sem uma classe extra no HTML, e sem que quem
+   escreve a página tenha de saber disto. */
+.tira:has(> figure:nth-child(4)){
+  grid-template-columns:repeat(4, 1fr);
+  max-width:880px;
+}
+/* Onde não houver :has(), quatro painéis fazem duas filas de dois — que é
+   uma leitura correcta de banda desenhada, não um erro. */
+@supports not selector(:has(*)){
+  .tira{ grid-template-columns:repeat(2, 1fr); max-width:440px }
+}
 .tira figure{ display:flex; flex-direction:column; gap:10px; margin:0 }
 .tira img{
   width:100%; aspect-ratio:3/5; object-fit:cover;
@@ -1227,11 +1240,18 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
 .claro .tira figcaption, .secao-tinta .tira figcaption{ color:var(--texto-claro) }
 .claro .tira figcaption::before{ color:var(--mare-claro) }
 
+@media (max-width:700px){
+  /* em ecrãs estreitos, quatro ou três colunas dariam selos ilegíveis:
+     lê-se dois a dois, que é como uma prancha se lê num formato pequeno */
+  .tira, .tira:has(> figure:nth-child(4)){
+    grid-template-columns:1fr 1fr; max-width:440px;
+  }
+}
 @media (max-width:520px){
-  /* em ecrãs estreitos três colunas dariam selos ilegíveis */
-  .tira{ grid-template-columns:1fr 1fr; max-width:none }
-  .tira figure:last-child{ grid-column:1 / -1 }
-  .tira figure:last-child img{ aspect-ratio:16/10 }
+  /* com três painéis, o terceiro fica sozinho na segunda fila: atravessa-a
+     e passa a deitado, para não ficar um selo perdido ao lado de um vazio */
+  .tira:not(:has(> figure:nth-child(4))) figure:last-child{ grid-column:1 / -1 }
+  .tira:not(:has(> figure:nth-child(4))) figure:last-child img{ aspect-ratio:16/10 }
 }
 
 
@@ -1818,9 +1838,6 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 .figura-lado img{ display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover }
 /* A vinheta que desce da tira mantém o seu formato alto: recortá-la para
    16:9 dava-lhe cabo do enquadramento, que foi desenhado ao alto. */
-.figura-lado-alta{ width:min(100%, 210px) }
-.figura-lado-alta img{ aspect-ratio:3/5 }
-@media (min-width:820px){ .cabeca-com-figura:has(.figura-lado-alta){ grid-template-columns:minmax(0,1fr) 210px } }
 /* A legenda sai de dentro do quadrado. O cartucho amarelo é da tira, onde
    a legenda é a narrativa e tem de estar lá dentro; aqui é uma nota de
    rodapé da imagem, e a comer um terço do desenho não servia ninguém. */
