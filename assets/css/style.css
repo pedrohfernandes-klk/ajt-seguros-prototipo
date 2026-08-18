@@ -1830,6 +1830,9 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   box-shadow:var(--sombra-bd);
 }
 .figura-lado figcaption{
+  /* a regra da vinheta punha-a em absolute, encostada ao fundo do
+     quadrado; aqui ela fica onde caia naturalmente, por baixo */
+  position:static; inset:auto;
   margin-top:11px; padding:0;
   font-size:.79rem; font-weight:400; line-height:1.5;
   color:var(--texto-fraco); background:none; border:0;
