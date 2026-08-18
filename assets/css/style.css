@@ -2305,3 +2305,9 @@ figure.figura-lado{ max-width:380px }
 .secao-areia + .secao::before,
 .secao + .secao-areia::before,
 .hero-interior + .secao::before{ display:none }
+
+/* A banda editorial fica no tom do véu: é uma imagem sozinha numa secção
+   sua, e sobre branco não se distingue da secção anterior. */
+.secao-imagem-produto{ background:var(--veu) }
+.secao-imagem-produto + .secao:has(.tira),
+.secao:has(.tira) + .secao-imagem-produto{ background:var(--sal) }
