@@ -97,25 +97,15 @@
       observador.observe(el);
     });
 
-    /* E uma rede por baixo, para o caso de o observador nunca disparar:
-       ao rolar a página, o que estiver à vista revela-se na mesma. */
-    var porResgatar = true;
-    function resgatarSurge() {
+    /* E uma rede por baixo. Sem contas de posição: passados dois segundos,
+       tudo o que ainda não foi revelado é revelado, esteja onde estiver.
+       Um elemento que aparece cedo de mais é invisível para quem ainda não
+       lá chegou; um elemento que nunca aparece é um site partido. Entre os
+       dois riscos não há dúvida possível. */
+    setTimeout(function () {
       var faltam = document.querySelectorAll('.surge:not(.visivel)');
-      if (!faltam.length) {
-        porResgatar = false;
-        window.removeEventListener('scroll', resgatarSurge);
-        return;
-      }
-      Array.prototype.forEach.call(faltam, function (el) {
-        var c = el.getBoundingClientRect();
-        if (c.top < window.innerHeight * 1.15 && c.bottom > -150) {
-          el.classList.add('visivel');
-        }
-      });
-    }
-    window.addEventListener('scroll', resgatarSurge, { passive: true });
-    setTimeout(resgatarSurge, 1500);
+      Array.prototype.forEach.call(faltam, function (el) { el.classList.add('visivel'); });
+    }, 2000);
   }
 
   /* ---- 3b · Carrossel do cabeçalho ------------------------------------- */
@@ -304,35 +294,11 @@
        vinhetas estavam à vista — e é assim que ficam se algo falhar acima. */
     document.documentElement.classList.add('anima');
 
-    /* Rede de segurança, e não uma só. O observador pode nunca disparar --
-       separador em segundo plano, motor sem composição, extensão a
-       interferir. Uma verificação única aos dois segundos só salva o que
-       estivesse à vista nesse instante; tudo o resto ficaria invisível
-       para sempre. Por isso a rede também corre ao rolar a página, e
-       desliga-se quando já não há nada por mostrar. */
-    function resgatar() {
-      var restantes = document.querySelectorAll('.entra:not(.dentro)');
-      if (!restantes.length) {
-        window.removeEventListener('scroll', agendarResgate);
-        return;
-      }
-      restantes.forEach(function (a) {
-        var c = a.getBoundingClientRect();
-        if (c.top < window.innerHeight * 1.2 && c.bottom > -200) {
-          a.classList.add('dentro');
-        }
-      });
-    }
-
-    var resgatePendente = false;
-    function agendarResgate() {
-      if (resgatePendente) return;
-      resgatePendente = true;
-      requestAnimationFrame(function () { resgatePendente = false; resgatar(); });
-    }
-
-    window.addEventListener('scroll', agendarResgate, { passive: true });
-    setTimeout(resgatar, 1500);
+    /* A mesma rede: passados dois segundos, o que sobrar mostra-se. */
+    setTimeout(function () {
+      var faltam = document.querySelectorAll('.entra:not(.dentro)');
+      Array.prototype.forEach.call(faltam, function (el) { el.classList.add('dentro'); });
+    }, 2000);
 
     var observador = new IntersectionObserver(function (entradas) {
       var n = 0;
