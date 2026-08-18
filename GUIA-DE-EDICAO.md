@@ -243,3 +243,26 @@ git revert <código>        # desfazer uma alteração específica
 ```
 
 Em caso de dúvida, não apague nada — pergunte primeiro.
+
+
+---
+
+## Antes de publicar: carimbar os ficheiros
+
+```bash
+python ferramentas/versionar.py
+```
+
+Corra isto **sempre** depois de mexer no `style.css` ou no `main.js`, e
+antes de fazer `git push`.
+
+**Porquê:** o browser de quem visita guarda a folha de estilos em cache.
+Sem este passo, uma pessoa que já tenha visitado o site recebe o HTML
+novo mas continua a usar o CSS antigo — e a página aparece meia partida:
+uma imagem que devia ter 240px ocupa a largura toda, um bloco que devia
+estar em duas colunas fica em uma. Já aconteceu.
+
+O script põe a impressão digital do ficheiro na ligação
+(`style.css?v=8fd5d133`). Quando o ficheiro muda, o número muda, e o
+browser é obrigado a pedir a versão nova. Quando não muda, o número
+também não — portanto continua a não pedir nada.

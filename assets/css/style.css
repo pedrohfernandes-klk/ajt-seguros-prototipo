@@ -1816,16 +1816,16 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   align-items:start;
   margin-bottom:clamp(30px, 4vw, 44px);
 }
-@media (min-width:860px){
-  .cabeca-com-figura{ grid-template-columns:minmax(0,1fr) 300px }
+@media (min-width:820px){
+  .cabeca-com-figura{ grid-template-columns:minmax(0,1fr) 240px }
 }
-.figura-lado{ margin:0; width:min(100%, 300px) }
+.figura-lado{ margin:0; width:min(100%, 240px) }
 .figura-lado img{ display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover }
 .figura-lado figcaption{
-  padding:11px 14px; font-size:.78rem; font-weight:600; line-height:1.35;
+  padding:10px 12px; font-size:.74rem; font-weight:600; line-height:1.35;
   color:var(--china); background:var(--sol); border-top:2.5px solid var(--china);
 }
-@media (max-width:859px){ .figura-lado{ margin-inline:auto } }
+@media (max-width:819px){ .figura-lado{ margin-inline:auto; width:min(100%, 300px) } }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    22 · A LUPA — ver a vinheta ao tamanho do desenho
@@ -1955,3 +1955,10 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
   body{ padding-bottom:60px }
 }
 @media print{ .barra-contacto{ display:none } }
+
+
+/* Travão de segurança. Se por alguma razão a regra da largura não chegar
+   — uma folha em cache, uma classe que não bate certo — nenhuma figura de
+   acompanhamento passa daqui. Uma imagem grande de mais estraga a página;
+   uma imagem pequena de mais, não. */
+figure.figura-lado{ max-width:300px }
