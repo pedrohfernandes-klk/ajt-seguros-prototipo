@@ -1208,6 +1208,17 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   opacity:.55;
 }
 .tira{ counter-reset:vinheta }
+.tira > figure:nth-child(n+4){ display:none }
+
+/* Quarta imagem do produto: separada da história em três tempos e colocada
+   mais abaixo na página, como a imagem de peritagem em Habitação. */
+.imagem-produto{
+  width:min(100%, 420px); margin:0 auto;
+}
+.imagem-produto img{
+  display:block; width:100%; height:auto; aspect-ratio:3/5; object-fit:cover;
+}
+.secao-imagem-produto{ padding-top:clamp(36px, 5vw, 64px); padding-bottom:clamp(36px, 5vw, 64px) }
 
 /* Sobre fundo escuro */
 .claro .tira figcaption, .secao-tinta .tira figcaption{ color:var(--texto-claro) }
@@ -1220,13 +1231,6 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   .tira figure:last-child img{ aspect-ratio:16/10 }
 }
 
-/* Variante de quatro momentos; as tiras de três mantêm a composição original. */
-.tira-quatro{ grid-template-columns:repeat(4, 1fr); max-width:900px }
-@media (max-width:520px){
-  .tira-quatro{ grid-template-columns:1fr 1fr; max-width:none }
-  .tira-quatro figure:last-child{ grid-column:auto }
-  .tira-quatro figure:last-child img{ aspect-ratio:3/5 }
-}
 
 /* ─────────────────────────────────────────────────────────────────────────
    15e · SIMULADORES DAS COMPANHIAS
