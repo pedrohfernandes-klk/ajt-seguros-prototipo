@@ -255,6 +255,10 @@
         alvo.style.setProperty('--ry', (x * 14).toFixed(2) + 'deg');
         alvo.style.setProperty('--rx', (-y * 11).toFixed(2) + 'deg');
         alvo.style.setProperty('--lz', '14px');
+        /* o desenho desloca-se ao contrário da inclinação: é o que faz a
+           moldura parecer uma janela e não uma imagem inclinada */
+        alvo.style.setProperty('--px', x.toFixed(3));
+        alvo.style.setProperty('--py', y.toFixed(3));
 
         var brilho = alvo.querySelector('.vinheta-brilho');
         if (brilho) {
@@ -272,6 +276,8 @@
         alvo.style.setProperty('--rx', '0deg');
         alvo.style.setProperty('--ry', '0deg');
         alvo.style.setProperty('--lz', '0px');
+        alvo.style.setProperty('--px', '0');
+        alvo.style.setProperty('--py', '0');
       });
     });
   }

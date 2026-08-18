@@ -1208,12 +1208,13 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   opacity:.55;
 }
 .tira{ counter-reset:vinheta }
-.tira > figure:nth-child(n+4){ display:none }
 
 /* Quarta imagem do produto: separada da história em três tempos e colocada
    mais abaixo na página, como a imagem de peritagem em Habitação. */
 .imagem-produto{
-  width:min(100%, 800px); margin:0 auto;
+  /* 800px numa página de 1180 é uma banda, não uma ilustração. Fica no
+     mesmo travão das outras imagens do site. */
+  width:min(100%, 560px); margin:0 auto;
 }
 .imagem-produto img{
   display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover;
@@ -1813,6 +1814,11 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
 }
 .figura-lado{ margin:0; width:min(100%, 340px) }
 .figura-lado img{ display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover }
+/* A vinheta que desce da tira mantém o seu formato alto: recortá-la para
+   16:9 dava-lhe cabo do enquadramento, que foi desenhado ao alto. */
+.figura-lado-alta{ width:min(100%, 210px) }
+.figura-lado-alta img{ aspect-ratio:3/5 }
+@media (min-width:820px){ .cabeca-com-figura:has(.figura-lado-alta){ grid-template-columns:minmax(0,1fr) 210px } }
 /* A legenda sai de dentro do quadrado. O cartucho amarelo é da tira, onde
    a legenda é a narrativa e tem de estar lá dentro; aqui é uma nota de
    rodapé da imagem, e a comer um terço do desenho não servia ninguém. */
@@ -1966,3 +1972,77 @@ body{ padding-bottom:calc(56px + env(safe-area-inset-bottom)) }
    acompanhamento passa daqui. Uma imagem grande de mais estraga a página;
    uma imagem pequena de mais, não. */
 figure.figura-lado{ max-width:380px }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   23 · PROFUNDIDADE — a vinheta como janela
+   ═══════════════════════════════════════════════════════════════════════════
+   Três efeitos, todos feitos só com `transform` e `opacity` — as duas
+   propriedades que o browser compõe na placa gráfica sem voltar a calcular
+   o layout. É por isso que isto corre a 60 frames por segundo mesmo com
+   catorze vinhetas na página.
+
+   Nada disto muda o que se lê. Com o ponteiro num dedo, ou com o sistema
+   a pedir menos movimento, o site fica exactamente igual — parado.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* ── 1 · A janela ───────────────────────────────────────────────────────────
+   O desenho move-se dentro da moldura ao contrário da inclinação. É o que
+   separa uma imagem inclinada de uma janela para uma cena: o que está lá
+   dentro tem de responder à mudança de ângulo. */
+.vinheta{ --px:0; --py:0 }
+.vinheta img{
+  transform:scale(1.055) translate3d(calc(var(--px) * -7px), calc(var(--py) * -7px), 0);
+  transition:transform .5s cubic-bezier(.2,.7,.3,1);
+  will-change:transform;
+}
+@media (hover:hover) and (pointer:fine){
+  .inclina:hover img{ transition-duration:.1s }
+}
+
+/* ── 2 · O recuo dos vizinhos ───────────────────────────────────────────────
+   Quando o ponteiro escolhe uma vinheta, as outras da mesma tira afastam-se
+   um pouco e perdem contraste. A atenção passa a ter um sítio. */
+@media (hover:hover) and (pointer:fine){
+  .tira:hover .vinheta{
+    transition:transform .45s cubic-bezier(.2,.7,.3,1), filter .45s ease, opacity .45s ease;
+  }
+  .tira:hover figure:not(:hover) .vinheta,
+  .tira:hover > figure:not(:hover){
+    transform:translateZ(-26px) scale(.975);
+    filter:saturate(.82);
+    opacity:.88;
+  }
+  .tira{ transform-style:preserve-3d }
+}
+
+/* ── 3 · A folha que assenta ────────────────────────────────────────────────
+   Entrada ligada ao scroll, sem uma linha de JavaScript: o browser calcula
+   a animação a partir da posição do elemento no ecrã. Onde não houver
+   suporte, não acontece nada — e o elemento fica visível, que é o que
+   interessa. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .figura-lado, .imagem-produto, .cartao-instantaneo{
+      animation:folha-assenta linear both;
+      animation-timeline:view();
+      animation-range:entry 8% cover 32%;
+    }
+    @keyframes folha-assenta{
+      from{ opacity:0; transform:perspective(1200px) rotateX(9deg) translateY(30px) }
+      to  { opacity:1; transform:none }
+    }
+  }
+}
+
+/* ── O toque também merece resposta ─────────────────────────────────────────
+   Num telemóvel não há ponteiro, mas há dedo: a vinheta afunda enquanto se
+   carrega nela. É o mesmo vocabulário, traduzido. */
+@media (hover:none){
+  .vinheta:active{ transform:scale(.975); transition:transform .1s ease }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .vinheta img{ transform:none; transition:none }
+  .tira:hover > figure:not(:hover){ transform:none; filter:none; opacity:1 }
+  .figura-lado, .imagem-produto, .cartao-instantaneo{ animation:none }
+}
