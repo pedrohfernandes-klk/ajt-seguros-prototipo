@@ -2519,3 +2519,57 @@ figure.figura-lado{ max-width:380px }
 
 @media (prefers-reduced-motion:reduce){ .hero-simbolo{ box-shadow:none } }
 @media print{ .hero-simbolo{ box-shadow:none } }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   29 · A PÁGINA INICIAL ENTRA NA MESMA PRANCHA
+   ═══════════════════════════════════════════════════════════════════════════
+   A abertura do site era a única superfície sem retícula: uma fotografia a
+   toda a largura, tratada como fotografia. O resto do site é uma prancha,
+   e a página que se vê primeiro estava fora dela.
+
+   A retícula passa por cima da imagem. Não é um filtro sobre a fotografia —
+   é a trama de impressão que a prancha inteira tem, e que aqui só se nota
+   onde a imagem é clara. É o gesto que liga a abertura ao resto.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.hero::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:radial-gradient(rgba(8,22,34,.30) 1.7px, transparent 1.8px);
+  background-size:13px 13px;
+  /* densa no céu e no fundo, aberta no meio, onde a imagem tem o assunto */
+  -webkit-mask-image:linear-gradient(180deg, #000 0%, transparent 34%, transparent 62%, #000 100%);
+          mask-image:linear-gradient(180deg, #000 0%, transparent 34%, transparent 62%, #000 100%);
+}
+
+/* E um campo Ben-Day no canto da abertura, do mesmo tamanho e da mesma cor
+   dos que marcam os cabeçalhos interiores — para se reconhecer que é o
+   mesmo sistema, e não um efeito diferente em cada página. */
+@media (min-width:1200px){
+  .hero .envelope::after{
+    content:""; position:absolute; z-index:-1; pointer-events:none;
+    top:0; right:0; width:34%; height:100%;
+    background-image:radial-gradient(rgba(240,169,44,.30) 3px, transparent 3.1px);
+    background-size:19px 19px;
+    -webkit-mask-image:radial-gradient(120% 90% at 100% 20%, #000 0%, transparent 70%);
+            mask-image:radial-gradient(120% 90% at 100% 20%, #000 0%, transparent 70%);
+  }
+  .hero .envelope{ position:relative }
+}
+
+/* Os cartões de ramo ganham a trama ao passar o rato: a mesma retícula,
+   a aparecer onde a atenção está. */
+.ramo{ position:relative; isolation:isolate; overflow:hidden }
+.ramo::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:radial-gradient(var(--trama-ponto-fino) 1.4px, transparent 1.5px);
+  background-size:11px 11px;
+  opacity:0; transition:opacity var(--transicao);
+  -webkit-mask-image:radial-gradient(120% 120% at 100% 100%, #000 0%, transparent 66%);
+          mask-image:radial-gradient(120% 120% at 100% 100%, #000 0%, transparent 66%);
+}
+@media (hover:hover) and (pointer:fine){
+  .ramo:hover::after{ opacity:1 }
+}
+
+@media (prefers-reduced-motion:reduce){ .ramo::after{ transition:none } }
+@media print{ .hero::after, .hero .envelope::after, .ramo::after{ display:none } }
