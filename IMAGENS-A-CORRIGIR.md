@@ -20,8 +20,8 @@ vida, acidentes pessoais de empresa.
 > a acompanhar — as molduras de tinta, a retícula de meios-tons, o campo
 > Ben-Day, o cartucho amarelo. Tudo isso é linguagem de prancha.
 
-**Estilo B — pintura realista.** As treze bandas `editorial-*` e **toda**
-a série `vinheta-vidaemp-*`.
+**Estilo B — pintura realista.** As bandas `editorial-*` e a série
+`vinheta-vidaemp-*`.
 
 > Sem contorno, rendering suave, paleta dessaturada, luz fotográfica,
 > profundidade de campo. São bonitas — e são de outro sítio.
@@ -31,14 +31,38 @@ com poucos centímetros entre elas, e dentro da mesma moldura de tinta
 grossa. A moldura funciona à volta de uma vinheta de BD; à volta de uma
 pintura realista parece um erro de montagem.
 
-**O que peço:** redesenhar as catorze imagens do estilo B na linguagem do
-estilo A. Se isso for muito trabalho de uma vez, a ordem de prioridade é:
+### São 22 imagens, não 14
 
-1. `vinheta-vidaemp-1` a `-3` — são as três vinhetas de uma tira inteira,
-   sem nenhuma de BD ao lado, e o contraste é imediato;
+O número que dei antes estava errado. Contadas uma a uma, as imagens de
+estilo B **actualmente em uso** são estas:
+
+| grupo | quantas | quais |
+|---|---|---|
+| bandas nas páginas de produto | **13** | `acidentes` `actrab` `apemp` `auto` `frotas` `moto` `multirriscos` `rcemp` `rcfam` `saude` `saudegrupo` `vida` `vidaemp` |
+| bandas nas páginas gerais | **6** | `particulares` `empresas` `perguntas` `simular` `atendimento` `equipa` |
+| vinhetas da tira de Vida Empresas | **3** | `vinheta-vidaemp-1` a `-3` |
+| | **22** | |
+
+As seis bandas das páginas gerais são as que faltavam à minha conta:
+estão nos índices de Particulares e de Empresas, nas Perguntas, no
+Simulador e duas no Sobre nós. São as páginas por onde se entra.
+
+Existe ainda `vinheta-vidaemp-4`, que **não precisa de ser redesenhada**:
+saiu do site com as outras quartas vinhetas e o ficheiro fica no
+repositório por precaução.
+
+**O que peço:** redesenhar as 22 na linguagem do estilo A. Se for muito
+de uma vez, esta é a ordem:
+
+1. `vinheta-vidaemp-1` a `-3` — são a tira inteira de uma página, sem
+   nenhuma vinheta de BD ao lado. O contraste é imediato e não tem
+   disfarce;
 2. `editorial-particulares` e `editorial-empresas` — estão nos índices,
-   que são das páginas mais vistas;
-3. as restantes onze `editorial-*`.
+   que são as páginas mais vistas depois da inicial;
+3. as restantes quatro das páginas gerais — `perguntas`, `simular`,
+   `atendimento`, `equipa`;
+4. as treze das páginas de produto, que podem ir saindo ao ritmo que
+   der: cada uma vive sozinha na sua página.
 
 ---
 
