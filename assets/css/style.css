@@ -2466,7 +2466,9 @@ figure.figura-lado{ max-width:380px }
    tem 62ch, o campo de pontos começa depois dela.
    ───────────────────────────────────────────────────────────────────────── */
 
-@media (min-width:1080px){
+/* A 1100px a folga entre o texto e os pontos era de 48px — pouco para
+   confiar em fontes que carregam com larguras diferentes. Sobe para 1200. */
+@media (min-width:1200px){
   .hero-interior::before{
     /* ponto maior e vermelho — escala de cartaz, não de sombreado */
     background-image:radial-gradient(rgba(176,32,28,.34) 3px, transparent 3.1px) !important;
@@ -2484,8 +2486,20 @@ figure.figura-lado{ max-width:380px }
   }
 }
 
-/* Abaixo dos 1080px o texto ocupa a largura toda e não há campo livre:
-   volta a retícula de tinta, discreta, que é a que não estorva. */
+/* Abaixo dos 1200px o texto ocupa a largura toda e não há campo livre:
+   volta a retícula de tinta, discreta, que é a que não estorva.
+
+   E há cabeçalhos que nunca têm campo livre, por muito larga que seja a
+   janela: os que trazem a fila de canais ou os telefones directos, que
+   ocupam a linha inteira. Medido nas Perguntas, o texto chega aos 1083px
+   quando os pontos começavam aos 995. Nesses, o campo de cor não entra. */
+.hero-interior:has(.canais)::before,
+.hero-interior:has(.contacto-directo)::before{
+  background-image:radial-gradient(var(--trama-ponto) 1.5px, transparent 1.6px) !important;
+  background-size:12px 12px !important;
+  -webkit-mask-image:linear-gradient(to bottom, transparent 22%, rgba(0,0,0,.9) 100%) !important;
+          mask-image:linear-gradient(to bottom, transparent 22%, rgba(0,0,0,.9) 100%) !important;
+}
 
 /* ── O símbolo de página ganha o contorno grosso ────────────────────────────
    Nas pranchas do Lichtenstein a linha de contorno é sempre mais pesada do
