@@ -1202,9 +1202,11 @@ a.cartao:hover{ box-shadow:var(--sombra); transform:translateY(-2px); border-col
   margin:clamp(34px, 4vw, 48px) auto 0;   /* centrada: é o destaque que tem */
 }
 
-/* Há histórias de três tempos e histórias de quatro. A grelha lê o número
-   de painéis e adapta-se — sem uma classe extra no HTML, e sem que quem
-   escreve a página tenha de saber disto. */
+/* A tira é de três tempos. Houve uma altura em que teve quatro, e a
+   regra que se segue trata desse caso — fica, porque não custa nada e
+   evita que uma tira de quatro rebente a grelha se alguém a criar. Mas
+   hoje não há nenhuma: o quarto quadrado era sempre o desfecho, e um
+   desfecho percebe-se sem ser preciso mostrar. */
 .tira:has(> figure:nth-child(4)){
   grid-template-columns:repeat(4, 1fr);
   max-width:880px;
