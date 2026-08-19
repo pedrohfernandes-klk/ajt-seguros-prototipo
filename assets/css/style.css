@@ -2472,9 +2472,12 @@ figure.figura-lado{ max-width:380px }
     background-image:radial-gradient(rgba(176,32,28,.34) 3px, transparent 3.1px) !important;
     background-size:19px 19px !important;
     /* e só no terço direito, onde a coluna de texto já não chega */
-    -webkit-mask-image:linear-gradient(to right, transparent 58%, #000 82%),
+    /* Medido a 1440px: a coluna de texto acaba aos 64% da largura. Os
+       pontos só começam a aparecer aos 70% e só ficam cheios aos 88% —
+       nunca chegam a passar por baixo de uma linha de texto. */
+    -webkit-mask-image:linear-gradient(to right, transparent 70%, #000 88%),
                        linear-gradient(to bottom, #000 0%, transparent 92%) !important;
-            mask-image:linear-gradient(to right, transparent 58%, #000 82%),
+            mask-image:linear-gradient(to right, transparent 70%, #000 88%),
                        linear-gradient(to bottom, #000 0%, transparent 92%) !important;
     -webkit-mask-composite:source-in;
             mask-composite:intersect;
