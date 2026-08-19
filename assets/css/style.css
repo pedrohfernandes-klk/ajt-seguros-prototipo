@@ -2449,3 +2449,53 @@ figure.figura-lado{ max-width:380px }
   .secao-tinta::after, .secao-imagem-produto::after,
   .secao + .secao::before{ display:none }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   28 · BEN-DAY — o ponto ganha cor, num sítio só
+   ═══════════════════════════════════════════════════════════════════════════
+   O ponto de retícula a cores é a assinatura do Lichtenstein: pontos
+   grandes, chapados, quase sempre vermelhos, deixados a descoberto em vez
+   de disfarçados. Aqui entra num sítio por página — o campo à direita do
+   cabeçalho — e em mais nenhum. Um gesto repetido em cada secção deixa de
+   ser um gesto.
+
+   A restrição que decide tudo: os pontos NUNCA passam por baixo de texto.
+   Medido, o texto fraco sobre um ponto de carmim a 10% de opacidade dá
+   4.05:1, abaixo do mínimo de 4.5 — e a 26% dá 3.08:1. Não há alpha que
+   sirva. Portanto os pontos ficam onde o texto não vai: a coluna de texto
+   tem 62ch, o campo de pontos começa depois dela.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@media (min-width:1080px){
+  .hero-interior::before{
+    /* ponto maior e vermelho — escala de cartaz, não de sombreado */
+    background-image:radial-gradient(rgba(176,32,28,.34) 3px, transparent 3.1px) !important;
+    background-size:19px 19px !important;
+    /* e só no terço direito, onde a coluna de texto já não chega */
+    -webkit-mask-image:linear-gradient(to right, transparent 58%, #000 82%),
+                       linear-gradient(to bottom, #000 0%, transparent 92%) !important;
+            mask-image:linear-gradient(to right, transparent 58%, #000 82%),
+                       linear-gradient(to bottom, #000 0%, transparent 92%) !important;
+    -webkit-mask-composite:source-in;
+            mask-composite:intersect;
+  }
+}
+
+/* Abaixo dos 1080px o texto ocupa a largura toda e não há campo livre:
+   volta a retícula de tinta, discreta, que é a que não estorva. */
+
+/* ── O símbolo de página ganha o contorno grosso ────────────────────────────
+   Nas pranchas do Lichtenstein a linha de contorno é sempre mais pesada do
+   que o desenho pede. Aqui é só no símbolo, que é pequeno e aguenta. */
+.hero-simbolo{
+  border-width:2.5px !important;
+  box-shadow:3px 3px 0 var(--china);
+}
+
+/* ── O balão de fala ────────────────────────────────────────────────────────
+   Já existia. Ganha a cor chapada e o contorno pesado que lhe faltavam. */
+.balao{ background:var(--sol); border-width:3px }
+.balao::after{ border-top-color:var(--sol) }
+
+@media (prefers-reduced-motion:reduce){ .hero-simbolo{ box-shadow:none } }
+@media print{ .hero-simbolo{ box-shadow:none } }
