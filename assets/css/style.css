@@ -2311,3 +2311,141 @@ figure.figura-lado{ max-width:380px }
 .secao-imagem-produto{ background:var(--veu) }
 .secao-imagem-produto + .secao:has(.tira),
 .secao:has(.tira) + .secao-imagem-produto{ background:var(--sal) }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   27 · A TRAMA — o meio-tom como material do site
+   ═══════════════════════════════════════════════════════════════════════════
+   A banda desenhada impressa não tinha cinzentos: tinha pontos. Onde era
+   preciso escurecer, punha-se mais tinta por centímetro quadrado, e o olho
+   fazia o resto. Chamava-se retícula, e é a assinatura visual de uma
+   prancha — mais do que a cor ou a moldura.
+
+   Estava aqui numa página só, e no cabeçalho havia linhas brancas de um
+   fundo escuro que já não existe: invisíveis. Passa a ser material do
+   site, com três densidades e uma regra clara:
+
+     a trama nunca fica por baixo de texto corrido em cheio. Desvanece-se
+     sempre — por gradiente ou por máscara — de modo que o texto assenta
+     na parte limpa e a densidade fica nas margens.
+
+   Tudo isto é desenhado pelo browser a partir de dois gradientes. Não há
+   uma imagem, não há um pedido à rede, e escala para qualquer ecrã.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root{
+  --trama-ponto:      rgba(16,32,44,.16);
+  --trama-ponto-fino: rgba(16,32,44,.10);
+  --trama-ponto-claro:rgba(255,255,255,.16);
+}
+
+/* ── As três densidades ─────────────────────────────────────────────────── */
+.trama, .trama-media, .trama-larga{ position:relative; isolation:isolate }
+.trama::before, .trama-media::before, .trama-larga::before{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+}
+.trama::before{                       /* fina — 7px, quase um cinzento */
+  background-image:radial-gradient(var(--trama-ponto-fino) 1.1px, transparent 1.2px);
+  background-size:7px 7px;
+}
+.trama-media::before{                 /* média — 11px, o ponto lê-se */
+  background-image:radial-gradient(var(--trama-ponto) 1.4px, transparent 1.5px);
+  background-size:11px 11px;
+}
+.trama-larga::before{                 /* larga — 16px, ponto de cartaz */
+  background-image:radial-gradient(var(--trama-ponto) 2.1px, transparent 2.2px);
+  background-size:16px 16px;
+}
+
+/* ── O desvanecimento ───────────────────────────────────────────────────────
+   Quatro maneiras de a trama acabar. É isto que a impede de ser um padrão
+   de fundo e a torna sombreado. */
+.trama-baixo::before, .trama-media.trama-baixo::before, .trama-larga.trama-baixo::before{
+  -webkit-mask-image:linear-gradient(to bottom, transparent 30%, #000 100%);
+          mask-image:linear-gradient(to bottom, transparent 30%, #000 100%);
+}
+.trama-cima::before{
+  -webkit-mask-image:linear-gradient(to top, transparent 35%, #000 100%);
+          mask-image:linear-gradient(to top, transparent 35%, #000 100%);
+}
+.trama-canto::before{
+  -webkit-mask-image:radial-gradient(120% 120% at 100% 0%, #000 0%, transparent 62%);
+          mask-image:radial-gradient(120% 120% at 100% 0%, #000 0%, transparent 62%);
+}
+.trama-centro::before{
+  -webkit-mask-image:radial-gradient(ellipse 78% 62% at 50% 45%, transparent 30%, #000 100%);
+          mask-image:radial-gradient(ellipse 78% 62% at 50% 45%, transparent 30%, #000 100%);
+}
+
+/* Sobre fundo escuro, o ponto é branco. */
+.secao-tinta .trama::before, .secao-tinta.trama::before,
+.secao-tinta .trama-media::before, .secao-tinta.trama-media::before,
+.secao-tinta .trama-larga::before, .secao-tinta.trama-larga::before{
+  background-image:radial-gradient(var(--trama-ponto-claro) 1.6px, transparent 1.7px);
+}
+
+/* ── Onde ela entra, sem ser preciso mexer no HTML ──────────────────────── */
+
+/* O cabeçalho de página tinha linhas brancas de um fundo escuro que já não
+   existe. Passa a ter retícula a adensar para baixo, como uma prancha
+   sombreada até à linha de tinta que a fecha. */
+.hero-interior::before{
+  background-image:radial-gradient(var(--trama-ponto) 1.5px, transparent 1.6px) !important;
+  background-size:12px 12px !important;
+  opacity:1 !important;
+  -webkit-mask-image:linear-gradient(to bottom, transparent 22%, rgba(0,0,0,.9) 100%);
+          mask-image:linear-gradient(to bottom, transparent 22%, rgba(0,0,0,.9) 100%);
+}
+
+/* A faixa das vinhetas ganha retícula larga: é a que mais se parece com o
+   fundo de uma prancha, e as vinhetas assentam nela. */
+.secao:has(.tira){ position:relative; isolation:isolate }
+.secao:has(.tira)::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:radial-gradient(var(--trama-ponto) 2px, transparent 2.1px);
+  background-size:16px 16px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 50%, transparent 34%, #000 100%);
+          mask-image:radial-gradient(ellipse 70% 80% at 50% 50%, transparent 34%, #000 100%);
+}
+
+/* O remate escuro leva retícula branca a subir do fundo. */
+.secao-tinta{ position:relative; isolation:isolate }
+.secao-tinta::after{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:radial-gradient(var(--trama-ponto-claro) 1.7px, transparent 1.8px);
+  background-size:13px 13px;
+  -webkit-mask-image:linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 58%);
+          mask-image:linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 58%);
+}
+.secao-tinta > *{ position:relative; z-index:1 }
+
+/* A banda editorial recebe retícula ao canto — o gesto de sombrear um
+   quadrado numa prancha, feito com uma máscara em vez de uma caneta. */
+.secao-imagem-produto{ position:relative; isolation:isolate }
+.secao-imagem-produto::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:radial-gradient(var(--trama-ponto) 1.6px, transparent 1.7px);
+  background-size:13px 13px;
+  -webkit-mask-image:radial-gradient(90% 130% at 88% 4%, #000 0%, transparent 58%);
+          mask-image:radial-gradient(90% 130% at 88% 4%, #000 0%, transparent 58%);
+}
+
+/* ── O separador de secção passa a ser uma fita de pontos ──────────────────
+   Um filete de um pixel é tipografia; uma fita de retícula é banda
+   desenhada. Substitui o filete onde ele existia. */
+.secao + .secao::before{
+  height:9px; background:transparent;
+  background-image:radial-gradient(var(--trama-ponto-fino) 1.3px, transparent 1.4px);
+  background-size:9px 9px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .secao + .secao::before{ transform:scaleX(1) }
+}
+
+/* Na impressão, retícula nenhuma: gasta tinta e não diz nada num papel. */
+@media print{
+  .trama::before, .trama-media::before, .trama-larga::before,
+  .hero-interior::before, .secao:has(.tira)::after,
+  .secao-tinta::after, .secao-imagem-produto::after,
+  .secao + .secao::before{ display:none }
+}
